@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliana de Campos Ribeiro — Portfólio</title>
+<meta name="description" content="Advogada, especialista em direito público, construtora com Claude. Licitações, contratos e ferramentas com IA para o terceiro setor.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23f4f1ea%22/><text y=%22.92em%22 x=%2210%22 font-size=%2298%22 font-family=%22serif%22 font-style=%22italic%22 font-weight=%22300%22 fill=%22%231d4ed8%22>j</text></svg>">
+
+<style>
+  :root {
+    /* Paleta — bone warm + carbono + cobalto elétrico */
+    --bg:        #f4f1ea;
+    --bg-deep:   #ece8de;
+    --bg-darker: #e3dfd2;
+    --ink:       #0a0a0c;
+    --ink-2:     #1f1f22;
+    --ink-3:     #3a3a3e;
+    --muted:     #6b6357;
+    --muted-2:   #8a8275;
+    --hairline:  rgba(10, 10, 12, 0.08);
+    --hairline-2:rgba(10, 10, 12, 0.14);
+    --accent:    #1d4ed8;
+    --accent-2:  #2563eb;
+    --accent-glow: rgba(29, 78, 216, 0.12);
+    --paper-on-dark: #f4f1ea;
+
+    /* Tipografia */
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body:    'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+    /* Easing */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  body {
+    font-family: var(--body);
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  /* Grain overlay sutil */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: var(--paper-on-dark); }
+  
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; border: none; background: none; cursor: pointer; }
+  
+  /* ============================================
+     NAV
+     ============================================ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(244, 241, 234, 0.72);
+    border-bottom: 1px solid var(--hairline);
+    transition: padding 0.4s var(--ease-out-expo);
+  }
+  
+  nav.scrolled { padding: 0.85rem 2.5rem; }
+  
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 30;
+  }
+  
+  .logo .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    align-self: center;
+    transform: translateY(-0.15em);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2.25rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  
+  .nav-links a {
+    position: relative;
+    padding: 0.4rem 0;
+    color: var(--ink-3);
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.4s var(--ease-out-expo);
+  }
+  
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+  
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero {
+    min-height: 100vh;
+    padding: 7rem 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 4rem;
+  }
+  
+  .hero-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--hairline);
+    border-radius: 100px;
+    background: rgba(244, 241, 234, 0.5);
+  }
+  
+  .hero-meta-pill .live {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(29, 78, 216, 0); }
+  }
+  
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(3.2rem, 11.5vw, 11rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    font-weight: 350;
+    font-variation-settings: "opsz" 144, "SOFT" 25;
+    color: var(--ink);
+  }
+  
+  .hero-name .line {
+    display: block;
+    overflow: hidden;
+  }
+  
+  .hero-name .line-inner {
+    display: block;
+    transform: translateY(110%);
+    animation: heroReveal 1.1s var(--ease-out-expo) forwards;
+  }
+  
+  .hero-name .line:nth-child(1) .line-inner { animation-delay: 0.1s; }
+  .hero-name .line:nth-child(2) .line-inner { animation-delay: 0.22s; }
+  .hero-name .line:nth-child(3) .line-inner { animation-delay: 0.34s; }
+  
+  @keyframes heroReveal {
+    from { transform: translateY(110%); }
+    to   { transform: translateY(0); }
+  }
+  
+  .hero-name .italic {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
+  }
+  
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--hairline);
+    opacity: 0;
+    animation: fadeUp 1.1s var(--ease-out-expo) 0.7s forwards;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 720px) {
+    .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  
+  .hero-tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    line-height: 1.4;
+    max-width: 42ch;
+    color: var(--ink-2);
+    font-variation-settings: "SOFT" 80, "opsz" 36;
+    font-weight: 350;
+  }
+  
+  .hero-tagline em {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+  }
+  
+  .hero-tagline .rotating {
+    color: var(--accent);
+    font-weight: 500;
+    display: inline-block;
+    min-width: 11ch;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  @media (max-width: 720px) {
+    .hero-tags { justify-content: flex-start; }
+  }
+  
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-2);
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--hairline-2);
+    border-radius: 100px;
+    background: rgba(244, 241, 234, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  
+  /* ============================================
+     STATS BAR
+     ============================================ */
+  .stats {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    background: var(--bg-deep);
+  }
+  
+  .stats-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (max-width: 900px) { .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
+  @media (max-width: 480px) { .stats-inner { grid-template-columns: 1fr; } }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+  
+  .stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -1rem;
+    width: 1px;
+    height: 100%;
+    background: var(--hairline);
+  }
+  
+  @media (max-width: 900px) {
+    .stat:not(:last-child)::after { display: none; }
+  }
+  
+  .stat-num {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 350;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .stat-num .plus, .stat-num .suffix {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  
+  /* ============================================
+     MANIFESTO
+     ============================================ */
+  .manifesto {
+    padding: 9rem 2.5rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+    gap: 5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .manifesto { grid-template-columns: 1fr; gap: 2rem; padding: 6rem 2rem; }
+  }
+  
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.5s var(--ease-out-expo);
+  }
+  
+  .section-label.visible::before { width: 40px; }
+  
+  .manifesto-text {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1.45;
+    font-weight: 300;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 60, "SOFT" 30;
+  }
+  
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+    font-variation-settings: "opsz" 60, "SOFT" 100, "WONK" 1;
+  }
+  
+  /* ============================================
+     MARQUEE
+     ============================================ */
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 1.5rem 0;
+    background: var(--bg-deep);
+  }
+  
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: scroll 55s linear infinite;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+    font-weight: 300;
+    color: var(--ink);
+    font-variation-settings: "SOFT" 80, "opsz" 60;
+  }
+  
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  
+  .marquee-track span {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .marquee-track .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  /* ============================================
+     FACES
+     ============================================ */
+  .faces {
+    padding: 7rem 2.5rem 9rem;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  .faces-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--hairline);
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .faces-header h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  
+  .faces-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .face {
+    display: grid;
+    grid-template-columns: 90px 1fr 2fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: start;
+    transition: padding 0.5s var(--ease-out-expo), background 0.5s var(--ease-out-expo);
+    position: relative;
+  }
+  
+  .face::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-glow), transparent 70%);
+    transition: width 0.6s var(--ease-out-expo);
+    pointer-events: none;
+  }
+  
+  .face:hover::before { width: 100%; }
+  .face:hover { padding-left: 1.5rem; }
+  
+  @media (max-width: 900px) {
+    .face { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+    .face:hover { padding-left: 0; }
+  }
+  
+  .face-num {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-style: italic;
+  }
+  
+  .face-icon {
+    margin-top: 0.6rem;
+    color: var(--accent);
+  }
+  
+  .face-title h3 {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 80, "SOFT" 30;
+  }
+  
+  .face-title h3 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  
+  .face-title .tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  
+  .face-body p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin-bottom: 1rem;
+  }
+  
+  .face-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+  }
+  
+  .face-tags span {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--muted);
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--hairline-2);
+    border-radius: 100px;
+    transition: all 0.3s ease;
+  }
+  
+  .face-tags span:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+  
+  /* ============================================
+     CASES (horizontal scroll)
+     ============================================ */
+  .cases {
+    position: relative;
+    background: var(--ink);
+    color: var(--paper-on-dark);
+  }
+  
+  .cases-intro {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 7rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: end;
+  }
+  
+  @media (max-width: 900px) {
+    .cases-intro { grid-template-columns: 1fr; gap: 2rem; padding: 5rem 2rem 3rem; }
+  }
+  
+  .cases-intro h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  
+  .cases-intro h2 em {
+    font-style: italic;
+    color: #93c5fd;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .cases-intro .section-label {
+    color: rgba(244, 241, 234, 0.55);
+  }
+  
+  .cases-intro .section-label::before { background: #93c5fd; }
+  
+  .cases-intro p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    line-height: 1.5;
+    color: rgba(244, 241, 234, 0.7);
+    max-width: 50ch;
+    font-variation-settings: "SOFT" 80;
+  }
+  
+  /* horizontal scroll mechanic */
+  .cases-scroll {
+    position: relative;
+    height: 580vh; /* longer = slower */
+  }
+  
+  .cases-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cases-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2.5rem;
+    will-change: transform;
+  }
+  
+  @media (max-width: 900px) {
+    .cases-scroll { height: auto; }
+    .cases-sticky { position: relative; height: auto; padding: 2rem 0 5rem; }
+    .cases-track { flex-direction: column; padding: 0 2rem; transform: none !important; }
+  }
+  
+  .case-card {
+    flex: 0 0 clamp(320px, 38vw, 540px);
+    height: 72vh;
+    min-height: 480px;
+    max-height: 680px;
+    padding: 2.5rem;
+    border: 1px solid rgba(244, 241, 234, 0.14);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(244, 241, 234, 0.02);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.5s ease, background 0.5s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @media (max-width: 900px) {
+    .case-card { flex: 0 0 auto; height: auto; min-height: auto; }
+  }
+  
+  .case-card:hover {
+    border-color: #93c5fd;
+    background: rgba(147, 197, 253, 0.04);
+  }
+  
+  .case-card.featured {
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.18), rgba(29, 78, 216, 0.04));
+    border-color: rgba(147, 197, 253, 0.3);
+  }
+  
+  .case-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.75rem;
+  }
+  
+  .case-num {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: rgba(244, 241, 234, 0.45);
+  }
+  
+  .case-tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #93c5fd;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    border-radius: 100px;
+  }
+  
+  .case-icon {
+    width: 48px;
+    height: 48px;
+    color: #93c5fd;
+    margin-bottom: 1.5rem;
+  }
+  
+  .case-card h4 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+    font-variation-settings: "opsz" 80, "SOFT" 30;
+  }
+  
+  .case-card h4 em {
+    font-style: italic;
+    color: #93c5fd;
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  
+  .case-sub {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(244, 241, 234, 0.5);
+    margin-bottom: 1.5rem;
+  }
+  
+  .case-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  
+  .case-body p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: rgba(244, 241, 234, 0.82);
+  }
+  
+  .case-body strong {
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .case-numbers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(244, 241, 234, 0.12);
+    border-bottom: 1px solid rgba(244, 241, 234, 0.12);
+  }
+  
+  .case-num-item .v {
+    display: block;
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    font-weight: 350;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #93c5fd;
+    font-variation-settings: "opsz" 144;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .case-num-item .l {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(244, 241, 234, 0.55);
+    margin-top: 0.4rem;
+  }
+  
+  .case-cta {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(244, 241, 234, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(244, 241, 234, 0.1);
+    width: 100%;
+  }
+  
+  /* When case-cta is an actual link */
+  a.case-cta {
+    color: #93c5fd;
+    transition: color 0.3s ease, gap 0.4s var(--ease-out-expo);
+    cursor: pointer;
+  }
+  
+  a.case-cta::after {
+    content: '↗';
+    margin-left: auto;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  
+  a.case-cta:hover { gap: 0.8rem; color: #c7dcff; }
+  a.case-cta:hover::after { transform: translate(3px, -3px); }
+  
+  .case-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 1rem;
+  }
+  
+  .case-stack span {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 0.6rem;
+    color: rgba(244, 241, 234, 0.65);
+    border: 1px solid rgba(244, 241, 234, 0.18);
+    border-radius: 100px;
+  }
+  
+  .cases-progress {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: rgba(244, 241, 234, 0.15);
+    overflow: hidden;
+  }
+  
+  .cases-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #93c5fd;
+    transition: width 0.1s linear;
+  }
+  
+  @media (max-width: 900px) {
+    .cases-progress { display: none; }
+  }
+  
+  /* ============================================
+     FERRAMENTAS (Solvo + VOZ Checklist)
+     ============================================ */
+  .tools {
+    padding: 8rem 2.5rem;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  .tools-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--hairline);
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .tools-header h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  
+  .tools-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+  
+  .tool-card {
+    position: relative;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-deep);
+    transition: transform 0.5s var(--ease-out-expo), border-color 0.4s ease;
+  }
+  
+  .tool-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  
+  .tool-preview {
+    aspect-ratio: 16/10;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tool-preview-solvo {
+    background: linear-gradient(135deg, #0a0a0c 0%, #1d4ed8 100%);
+  }
+  
+  .tool-preview-voz {
+    background: linear-gradient(135deg, #1a1a1c 0%, #2a2a2e 100%);
+  }
+  
+  .tool-preview svg.preview-art {
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+  }
+  
+  .tool-preview .browser-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+  
+  .tool-preview .browser-bar .b-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .tool-preview .browser-bar .b-url {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.05em;
+  }
+  
+  .tool-info {
+    padding: 2rem;
+  }
+  
+  .tool-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .tool-info h4 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-variation-settings: "opsz" 80, "SOFT" 30;
+  }
+  
+  .tool-info h4 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  
+  .tool-info .badge {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 100px;
+    background: var(--accent-glow);
+  }
+  
+  .tool-info p {
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 0.94rem;
+  }
+  
+  .tool-link {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.4s var(--ease-out-expo);
+  }
+  
+  .tool-link::after { content: '↗'; transition: transform 0.3s ease; }
+  .tool-link:hover { gap: 0.8rem; }
+  .tool-link:hover::after { transform: translate(3px, -3px); }
+  
+  /* ============================================
+     FORMACAO
+     ============================================ */
+  .credentials {
+    padding: 7rem 2.5rem 8rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  .credentials-header {
+    margin-bottom: 4rem;
+  }
+  
+  .credentials-header h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.025em;
+    margin-top: 1rem;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  
+  .credentials-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+    gap: 5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .credentials-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  
+  .credentials-grid .intro {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    line-height: 1.5;
+    color: var(--muted);
+    font-variation-settings: "SOFT" 80, "opsz" 36;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 110px 1fr 80px;
+    gap: 2.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+    transition: padding 0.4s var(--ease-out-expo);
+  }
+  
+  .timeline-item:hover { padding-left: 1rem; }
+  .timeline-item:last-child { border-bottom: none; }
+  
+  @media (max-width: 600px) {
+    .timeline-item { grid-template-columns: 80px 1fr; gap: 1.5rem; }
+    .timeline-item .place { display: none; }
+  }
+  
+  .timeline-year {
+    font-family: var(--display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-variation-settings: "SOFT" 90, "opsz" 60;
+  }
+  
+  .timeline-content h5 {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  
+  .timeline-content p {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+  
+  .timeline-item .place {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted-2);
+    text-align: right;
+  }
+  
+  /* ============================================
+     CONTACT
+     ============================================ */
+  .contact {
+    padding: 8rem 2.5rem 4rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  .contact-headline {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 7.5vw, 7rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    font-variation-settings: "opsz" 144, "SOFT" 25;
+    margin-bottom: 4rem;
+    max-width: 18ch;
+  }
+  
+  .contact-headline em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  
+  .contact-primary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .contact-email {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper-on-dark);
+    border-radius: 100px;
+    width: fit-content;
+    transition: transform 0.4s var(--ease-spring), background 0.3s ease;
+    font-family: var(--body);
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .contact-email:hover {
+    background: var(--accent);
+    transform: scale(1.02);
+  }
+  
+  .contact-email::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateY(100%);
+    transition: transform 0.5s var(--ease-out-expo);
+    z-index: 0;
+  }
+  
+  .contact-email:hover::before { transform: translateY(0); }
+  .contact-email > * { position: relative; z-index: 1; }
+  
+  .contact-email-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .contact-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline-2);
+    border-radius: 100px;
+    width: fit-content;
+    transition: transform 0.4s var(--ease-spring), border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+    font-family: var(--body);
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  
+  .contact-whatsapp:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--accent);
+    transform: scale(1.02);
+  }
+  
+  .contact-whatsapp-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+  }
+  
+  .contact-whatsapp:hover .contact-whatsapp-icon {
+    background: var(--accent);
+    color: var(--paper-on-dark);
+  }
+  
+  .contact-availability {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .contact-availability .live {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #16a34a;
+    box-shadow: 0 0 0 0 #16a34a;
+    animation: pulseGreen 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGreen {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+  }
+  
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    .social-grid { grid-template-columns: 1fr; }
+  }
+  
+  .social-card {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--hairline-2);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: all 0.4s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .social-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-deep);
+    transform: translateY(-3px);
+  }
+  
+  .social-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .social-card svg.platform-icon {
+    width: 22px; height: 22px;
+    color: var(--ink-2);
+    transition: color 0.3s ease;
+  }
+  
+  .social-card:hover svg.platform-icon { color: var(--accent); }
+  
+  .social-card .arrow {
+    color: var(--muted);
+    transition: transform 0.4s var(--ease-spring), color 0.3s ease;
+  }
+  
+  .social-card:hover .arrow {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+  
+  .social-card-handle {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    word-break: break-all;
+  }
+  
+  .social-card-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+  
+  /* ============================================
+     FOOTER
+     ============================================ */
+  footer {
+    padding: 3rem 2.5rem 2rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  footer .built {
+    font-style: italic;
+    font-family: var(--display);
+    text-transform: none;
+    letter-spacing: -0.005em;
+    font-size: 0.95rem;
+    font-variation-settings: "SOFT" 80, "opsz" 36;
+    color: var(--ink-2);
+  }
+  
+  footer .built em {
+    color: var(--accent);
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+  }
+  
+  /* ============================================
+     REVEALS
+     ============================================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  }
+  
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  }
+  
+  .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.15s; }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.25s; }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
+  .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.45s; }
+  
+  /* ============================================
+     COMPLEMENTAR
+     ============================================ */
+  .complementar {
+    padding: 7rem 2.5rem 9rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  .complementar-header {
+    margin-bottom: 3rem;
+  }
+  
+  .complementar-header h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.025em;
+    margin-top: 1rem;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  
+  .complementar-header h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .complementar-meta {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    align-items: end;
+  }
+  
+  @media (max-width: 900px) {
+    .complementar-meta { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  
+  .complementar-meta .intro {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    line-height: 1.5;
+    color: var(--muted);
+    font-variation-settings: "SOFT" 80, "opsz" 36;
+    max-width: 40ch;
+  }
+  
+  .complementar-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  
+  @media (max-width: 600px) {
+    .complementar-stats { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.25rem 0; }
+  }
+  
+  .comp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    position: relative;
+  }
+  
+  .comp-stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 10%; right: -0.75rem;
+    width: 1px;
+    height: 80%;
+    background: var(--hairline);
+  }
+  
+  @media (max-width: 600px) {
+    .comp-stat:not(:last-child)::after { display: none; }
+  }
+  
+  .comp-stat-v {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 350;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .comp-stat-v em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  
+  .comp-stat-l {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+  
+  .complementar-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .complementar-toolbar .hint {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+  
+  .toggle-all {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-2);
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--hairline-2);
+    border-radius: 100px;
+    background: var(--bg);
+    transition: all 0.3s var(--ease-out-expo);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .toggle-all:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+  
+  .toggle-all .icon {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.4s var(--ease-spring);
+  }
+  
+  .toggle-all.expanded .icon {
+    transform: rotate(45deg);
+  }
+  
+  .categories {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  .category {
+    border-bottom: 1px solid var(--hairline);
+    transition: background 0.5s var(--ease-out-expo);
+    position: relative;
+  }
+  
+  .category::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-glow), transparent 60%);
+    transition: width 0.6s var(--ease-out-expo);
+    pointer-events: none;
+  }
+  
+  .category.open::before { width: 100%; }
+  .category.open { background: rgba(244, 241, 234, 0.6); }
+  
+  .cat-summary {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 56px 1fr auto 32px;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.85rem 1rem;
+    text-align: left;
+    transition: padding-left 0.4s var(--ease-out-expo);
+    color: inherit;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cat-summary:hover { padding-left: 2rem; }
+  
+  @media (max-width: 600px) {
+    .cat-summary { grid-template-columns: 40px 1fr 30px; gap: 1rem; padding: 1.5rem 0.5rem; }
+    .cat-summary:hover { padding-left: 1rem; }
+    .cat-summary .cat-count { display: none; }
+  }
+  
+  .cat-icon {
+    color: var(--accent);
+    transition: transform 0.5s var(--ease-spring);
+  }
+  
+  .category.open .cat-icon {
+    transform: scale(1.1);
+  }
+  
+  .cat-title h4 {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+    font-variation-settings: "opsz" 80, "SOFT" 30;
+    color: var(--ink);
+  }
+  
+  .cat-title h4 em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  
+  .cat-title .cat-mobile-meta {
+    display: none;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+  
+  @media (max-width: 600px) {
+    .cat-title .cat-mobile-meta { display: block; }
+  }
+  
+  .cat-count {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+  
+  .cat-count .h {
+    display: inline-block;
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    margin-left: 0.4rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid var(--hairline-2);
+  }
+  
+  .cat-chevron {
+    color: var(--muted);
+    transition: transform 0.5s var(--ease-spring), color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .category.open .cat-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+  
+  .cat-list-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.6s var(--ease-out-expo);
+  }
+  
+  .category.open .cat-list-wrap {
+    grid-template-rows: 1fr;
+  }
+  
+  .cat-list-inner {
+    overflow: hidden;
+  }
+  
+  .cat-list {
+    padding: 0.5rem 1rem 2.5rem 5rem;
+  }
+  
+  @media (max-width: 600px) {
+    .cat-list { padding: 0.5rem 0.5rem 2rem 0.5rem; }
+  }
+  
+  .course-row {
+    display: grid;
+    grid-template-columns: 1fr 180px 70px 90px;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--hairline);
+    align-items: baseline;
+    transition: padding-left 0.3s ease;
+  }
+  
+  .course-row:first-child { border-top: none; }
+  .course-row:hover { padding-left: 0.75rem; }
+  
+  @media (max-width: 720px) {
+    .course-row {
+      grid-template-columns: 1fr auto;
+      gap: 0.25rem 1rem;
+      padding: 0.9rem 0;
+    }
+    .course-row .name { grid-column: 1 / -1; }
+    .course-row .inst { font-size: 0.62rem; }
+  }
+  
+  .course-row .name {
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  
+  .course-row .name .ongoing {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-radius: 100px;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    vertical-align: middle;
+  }
+  
+  .course-row .inst {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  
+  .course-row .hrs {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-2);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+  
+  .course-row .date {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .credentials-subtitle {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .hero-name .line-inner { transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <a class="logo" href="#">
+    <span>j</span><span class="dot"></span><span>cr</span>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre" data-cursor="hover">Sobre</a>
+    <a href="#atuacao" data-cursor="hover">Atuação</a>
+    <a href="#cases" data-cursor="hover">Cases</a>
+    <a href="#ferramentas" data-cursor="hover">Ferramentas</a>
+    <a href="#formacao" data-cursor="hover">Formação</a>
+    <a href="#complementar" data-cursor="hover">Cursos</a>
+    <a href="#contato" data-cursor="hover">Contato</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-meta">
+    <span class="hero-meta-pill">
+      <span class="live"></span>
+      Portfólio
+    </span>
+    <span>Porto Alegre / RS · Brasil</span>
+  </div>
+  
+  <h1 class="hero-name">
+    <span class="line"><span class="line-inner">Juliana</span></span>
+    <span class="line"><span class="line-inner">de Campos</span></span>
+    <span class="line"><span class="line-inner"><span class="italic">Ribeiro</span></span></span>
+  </h1>
+  
+  <div class="hero-bottom">
+    <p class="hero-tagline">
+      Trabalho na intersecção entre <em>direito</em>,
+      <span class="rotating" id="rotator">tecnologia</span>
+      e gestão — construindo ferramentas, processos e ideias.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">OAB/RS 94.800</span>
+      <span class="hero-tag">Especialista em Direito Público</span>
+      <span class="hero-tag">Faixa Preta · IBJJF</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS BAR ============ -->
+<section class="stats">
+  <div class="stats-inner reveal-stagger">
+    <div class="stat">
+      <span class="stat-num" data-target="5"><span class="num">0</span><span class="suffix">a</span></span>
+      <span class="stat-label">Anos no<br>SENAR-RS</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="1000"><span class="num">0</span><span class="plus">+</span></span>
+      <span class="stat-label">Contratos<br>geridos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="40"><span class="num">0</span><span class="plus">+</span></span>
+      <span class="stat-label">Lotes conduzidos<br>por ano</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="12"><span class="num">0</span><span class="suffix">a</span></span>
+      <span class="stat-label">Anos<br>no jiu-jitsu</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="9"><span class="num">0</span><span class="suffix">k+</span></span>
+      <span class="stat-label">Views em posts<br>do VOZ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section id="sobre" class="manifesto">
+  <div class="section-label reveal">§ 01 — Manifesto</div>
+  <p class="manifesto-text reveal">
+    Trabalho com <em>direito</em>, <em>tecnologia</em> e <em>gestão</em> — três campos que costumam ser tratados em separado e que, na prática, se atravessam. Há cinco anos atuo com licitações e contratos no SENAR-RS. Há doze anos pratico jiu-jitsu. Há dois anos construo produtos, automações e ferramentas inteiras com Inteligência Artificial. Aqui está o que tenho feito.
+  </p>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Direito Público<span class="dot"></span></span>
+    <span>Licitações &amp; Contratos<span class="dot"></span></span>
+    <span>Claude / IA Aplicada<span class="dot"></span></span>
+    <span>Jiu-Jitsu<span class="dot"></span></span>
+    <span>Comunicação Digital<span class="dot"></span></span>
+    <span>BPMN<span class="dot"></span></span>
+    <span>Pareceres Jurídicos<span class="dot"></span></span>
+    <span>Direito Público<span class="dot"></span></span>
+    <span>Licitações &amp; Contratos<span class="dot"></span></span>
+    <span>Claude / IA Aplicada<span class="dot"></span></span>
+    <span>Jiu-Jitsu<span class="dot"></span></span>
+    <span>Comunicação Digital<span class="dot"></span></span>
+    <span>BPMN<span class="dot"></span></span>
+    <span>Pareceres Jurídicos<span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ============ FACES / ATUAÇÃO ============ -->
+<section id="atuacao" class="faces">
+  <div class="faces-header reveal">
+    <h2>Quatro frentes,<br>uma <em>prática.</em></h2>
+    <span class="section-label">§ 02 — Atuação</span>
+  </div>
+  
+  <article class="face reveal" data-cursor="hover">
+    <div class="face-num">01</div>
+    <div class="face-title">
+      <svg class="face-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16"/><path d="M5 9h14l-1 11H6L5 9z"/><path d="M9 9V5a3 3 0 0 1 6 0v4"/><path d="M12 14v3"/></svg>
+      <h3>Advogada &amp; <em>pregoeira.</em></h3>
+      <div class="tag">SENAR-RS · OAB/RS 94.800</div>
+    </div>
+    <div class="face-body">
+      <p>
+        Cinco anos como Analista de Licitações e Contratos II e Pregoeira no SENAR-RS — Serviço Nacional de Aprendizagem Rural, entidade paraestatal integrante do Sistema S. Especialista em direito público pela FMP/RS.
+      </p>
+      <p>
+        Atuo desde o planejamento da contratação até a gestão e fiscalização contratual, com domínio prático do Regulamento de Licitações e Contratos próprio da entidade, LGPD e regimes correlatos. <strong>Presidente da Comissão Permanente de Licitação (CPL)</strong>.
+      </p>
+      <div class="face-tags">
+        <span>RLC/SENAR</span><span>Pareceres</span><span>LGPD</span><span>Compliance</span><span>Editais</span><span>Pregão Eletrônico</span><span>Direito Público</span>
+      </div>
+    </div>
+  </article>
+  
+  <article class="face reveal" data-cursor="hover">
+    <div class="face-num">02</div>
+    <div class="face-title">
+      <svg class="face-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="M5.6 5.6l2.1 2.1"/><path d="M16.3 16.3l2.1 2.1"/><path d="M5.6 18.4l2.1-2.1"/><path d="M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>
+      <h3>Construtora com <em>Claude.</em></h3>
+      <div class="tag">IA aplicada · automação · design</div>
+    </div>
+    <div class="face-body">
+      <p>
+        Construo produtos, marcas e ferramentas inteiras com Claude — site, código, design, automações jurídicas, peças visuais e conteúdo. Solvo nasceu inteira dentro de conversas com a IA.
+      </p>
+      <p>
+        Tenho me posicionado como referência em IA aplicada ao setor público e paraestatal brasileiro. Acredito em uso responsável, contexto como elemento-chave, e em processos reais — não em mágica.
+      </p>
+      <div class="face-tags">
+        <span>Claude</span><span>Prompt Engineering</span><span>Setor Público</span><span>Automação Jurídica</span><span>Claude Design</span><span>No-code</span><span>Skills Claude</span>
+      </div>
+    </div>
+  </article>
+  
+  <article class="face reveal" data-cursor="hover">
+    <div class="face-num">03</div>
+    <div class="face-title">
+      <svg class="face-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/></svg>
+      <h3>Faixa preta, <em>método.</em></h3>
+      <div class="tag">VOZ · IBJJF · 12 anos</div>
+    </div>
+    <div class="face-body">
+      <p>
+        Faixa preta de jiu-jitsu, afiliada à mestre Yvone Duarte (IBJJF). Doze anos de prática. Fundadora do <strong>VOZ</strong> — projeto de desenvolvimento de mulheres no jiu-jitsu, com método próprio, sessões práticas e produção de conteúdo técnico.
+      </p>
+      <p>
+        O projeto opera em quatro dimensões: técnica, acadêmica, prática e territorial. Inclui o Checklist de Espaços Seguros — ferramenta autocontida para avaliação de academias.
+      </p>
+      <div class="face-tags">
+        <span>IBJJF</span><span>Yvone Duarte</span><span>Mulheres no Esporte</span><span>Metodologia</span><span>Checklist</span>
+      </div>
+    </div>
+  </article>
+  
+  <article class="face reveal" data-cursor="hover">
+    <div class="face-num">04</div>
+    <div class="face-title">
+      <svg class="face-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <h3>Criadora &amp; <em>comunicadora.</em></h3>
+      <div class="tag">FADERGS · LinkedIn · Instagram</div>
+    </div>
+    <div class="face-body">
+      <p>
+        Pós-graduada em Comunicação em Redes Sociais pela FADERGS (2021). Conduzo o Instagram da Solvo (jurídico), do VOZ (jiu-jitsu) e o meu pessoal. No LinkedIn, sustento posição autoral sobre IA aplicada ao setor público.
+      </p>
+      <p>
+        Conteúdo construído com Claude — texto, design, identidade visual. Posts do VOZ ultrapassando <strong>9 mil visualizações</strong>.
+      </p>
+      <div class="face-tags">
+        <span>Conteúdo Estratégico</span><span>Identidade Visual</span><span>Carrosséis</span><span>Branding</span><span>LinkedIn Autoral</span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ CASES (horizontal scroll) ============ -->
+<section id="cases" class="cases">
+  <div class="cases-intro">
+    <div>
+      <div class="section-label reveal">§ 03 — Cases</div>
+      <h2 class="reveal">Projetos<br>que <em>entreguei.</em></h2>
+    </div>
+    <p class="reveal">
+      Da arquitetura de processos ao código de uma skill. Cada projeto resolve um problema concreto que eu vi acontecer dentro de uma entidade real.
+    </p>
+  </div>
+  
+  <div class="cases-scroll">
+    <div class="cases-sticky">
+      <div class="cases-track" id="casesTrack">
+        
+        <!-- CASE 01 — Portal de Contratos -->
+        <div class="case-card featured">
+          <div class="case-card-top">
+            <span class="case-num">/ 01</span>
+            <span class="case-tag">SENAR-RS · em produção</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="24" height="20" rx="2"/><line x1="4" y1="12" x2="28" y2="12"/><line x1="10" y1="18" x2="22" y2="18"/><line x1="10" y1="22" x2="18" y2="22"/></svg>
+          <h4>Portal de <em>Contratos</em></h4>
+          <div class="case-sub">Hub de gestão · Fluig + RM Totvs</div>
+          <div class="case-body">
+            <p>
+              Liderei a concepção e implementação do portal único de contratos da entidade. Antes: informações desencontradas em sistemas e planilhas. Hoje: uma camada que <strong>aglutina os dados do RM Totvs no Fluig</strong>, com acesso centralizado para todos os gestores.
+            </p>
+            <div class="case-numbers">
+              <div class="case-num-item"><span class="v">1.000+</span><span class="l">contratos sob gestão</span></div>
+              <div class="case-num-item"><span class="v">15</span><span class="l">gestores no portal</span></div>
+            </div>
+            <div class="case-stack">
+              <span>Fluig</span><span>RM Totvs</span><span>BPMN</span><span>Gestão</span>
+            </div>
+          </div>
+          <span class="case-cta">Implementado em 12/2025</span>
+        </div>
+        
+        <!-- CASE 02 — Assistente SMS/TR -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 02</span>
+            <span class="case-tag">Claude · ferramenta interna</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H9l-5 4V7a4 4 0 0 1 4-4h9a4 4 0 0 1 4 4v8z"/><path d="M28 21a4 4 0 0 1-4 4h-2l-3 3v-3h-3a4 4 0 0 1-4-4v-1"/></svg>
+          <h4>Assistente <em>SMS / TR</em></h4>
+          <div class="case-sub">Gerador guiado de documentos</div>
+          <div class="case-body">
+            <p>
+              Demandantes internos tinham dificuldade enorme de produzir os documentos essenciais para formalização das demandas. Construí um assistente que <strong>guia o demandante etapa por etapa</strong> na elaboração da Solicitação de Materiais (SMS) e do Termo de Referência (TR).
+            </p>
+            <p>
+              <strong>Resultado:</strong> documentos significativamente melhores, mais fundamentados e padronizados — reduzindo o retrabalho na cadeia de contratação.
+            </p>
+            <div class="case-stack">
+              <span>Claude</span><span>Artifact</span><span>UX Conversacional</span>
+            </div>
+          </div>
+          <a href="https://claude.ai/public/artifacts/9971c364-743b-45c9-9f05-59d4ac7c9994" target="_blank" rel="noopener" class="case-cta" data-cursor="text">Abrir ferramenta</a>
+        </div>
+        
+        <!-- CASE 03 — Mapeamento BPMN -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 03</span>
+            <span class="case-tag">Governança · norma interna</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="26" cy="6" r="3"/><circle cx="6" cy="26" r="3"/><circle cx="26" cy="26" r="3"/><circle cx="16" cy="16" r="3"/><line x1="9" y1="6" x2="13" y2="14"/><line x1="23" y1="6" x2="19" y2="14"/><line x1="9" y1="26" x2="13" y2="18"/><line x1="23" y1="26" x2="19" y2="18"/></svg>
+          <h4>Mapeamento <em>BPMN</em></h4>
+          <div class="case-sub">Todos os processos da entidade</div>
+          <div class="case-body">
+            <p>
+              Realizei o mapeamento BPMN de <strong>todos os processos da entidade</strong>, com foco crítico em: contratos, compras, licitações, notificações e atestados de capacidade técnica.
+            </p>
+            <p>
+              Resultado convertido em <strong>normativas internas</strong> que padronizam a operação inteira — do gatilho da demanda até a finalização contratual.
+            </p>
+            <div class="case-numbers">
+              <div class="case-num-item"><span class="v">5</span><span class="l">macroprocessos críticos</span></div>
+              <div class="case-num-item"><span class="v">100%</span><span class="l">cobertura institucional</span></div>
+            </div>
+            <div class="case-stack">
+              <span>BPMN 2.0</span><span>Governança</span><span>Compliance</span>
+            </div>
+          </div>
+          <span class="case-cta">Norma interna publicada</span>
+        </div>
+        
+        <!-- CASE 04 — Lotes anuais -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 04</span>
+            <span class="case-tag">Pregão · operação contínua</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l-8 8m0 0l-2 8 8-2 8-8z"/><path d="M14 4l8 8-6 6-8-8z" /><line x1="22" y1="12" x2="28" y2="18"/></svg>
+          <h4>40+ lotes / <em>ano</em></h4>
+          <div class="case-sub">Condução de pregões eletrônicos</div>
+          <div class="case-body">
+            <p>
+              Pregoeira designada da entidade. <strong>Conduzo mais de 40 lotes por ano</strong> — média sustentada nos últimos exercícios.
+            </p>
+            <p>
+              Em paralelo, atuo como <strong>referência técnica interna do RLC do SENAR-RS</strong>, capacitando colegas em elaboração de documentos que amparam as contratações e disseminando boa prática.
+            </p>
+            <div class="case-numbers">
+              <div class="case-num-item"><span class="v">40+</span><span class="l">lotes / ano</span></div>
+              <div class="case-num-item"><span class="v">200+</span><span class="l">lotes desde 2021</span></div>
+            </div>
+            <div class="case-stack">
+              <span>Pregão Eletrônico</span><span>RLC</span><span>Capacitação</span>
+            </div>
+          </div>
+          <span class="case-cta">Operação permanente</span>
+        </div>
+        
+        <!-- CASE 05 — Análise contratual -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 05</span>
+            <span class="case-tag">Auxílio à gestão</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V10z"/><polyline points="20 4 20 10 26 10"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="20" x2="21" y2="20"/><line x1="11" y1="24" x2="17" y2="24"/></svg>
+          <h4>Análise <em>contratual</em></h4>
+          <div class="case-sub">Ferramentas para gestores</div>
+          <div class="case-body">
+            <p>
+              Desenvolvi ferramentas auxiliares para gestores realizarem <strong>análise estruturada de contratos</strong> sob sua responsabilidade — diagnóstico de cláusulas críticas, prazos sensíveis e pontos de atenção.
+            </p>
+            <p>
+              Reduz a dependência do jurídico em consultas operacionais e empodera o gestor com critérios objetivos.
+            </p>
+            <div class="case-stack">
+              <span>Claude</span><span>Direito Contratual</span><span>Gestão</span>
+            </div>
+          </div>
+          <span class="case-cta">Em uso interno</span>
+        </div>
+        
+        <!-- CASE 06 — Skill Procuração -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 06</span>
+            <span class="case-tag">Skill Claude · jurídico</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h12v18h-6l-6 4v-4H8a2 2 0 0 1-2-2V8a4 4 0 0 1 4-4z"/><line x1="12" y1="11" x2="20" y2="11"/><line x1="12" y1="15" x2="22" y2="15"/></svg>
+          <h4>Skill <em>Procuração</em></h4>
+          <div class="case-sub">Automação jurídica com Claude</div>
+          <div class="case-body">
+            <p>
+              Skill Claude que gera <strong>procurações ad judicia et extra</strong> a partir dos dados do cliente, em formato .docx pronto para assinatura — eliminando o passo manual de redação repetitiva.
+            </p>
+            <p>
+              Workflow validado, presente_files integrado, e tempo de produção reduzido de minutos para <strong>segundos por documento</strong>.
+            </p>
+            <div class="case-stack">
+              <span>Claude Skills</span><span>python-docx</span><span>Workflow</span>
+            </div>
+          </div>
+          <span class="case-cta">Skill em uso ativo</span>
+        </div>
+        
+        <!-- CASE 07 — Skill Social Content -->
+        <div class="case-card">
+          <div class="case-card-top">
+            <span class="case-num">/ 07</span>
+            <span class="case-tag">Skill Claude · conteúdo</span>
+          </div>
+          <svg class="case-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="4"/><circle cx="12" cy="12" r="2"/><path d="M28 20l-6-6-12 12"/></svg>
+          <h4>Skill <em>Social Content</em></h4>
+          <div class="case-sub">Produção multi-canal</div>
+          <div class="case-body">
+            <p>
+              Skill que orquestra <strong>produção de conteúdo para cinco contas</strong> simultâneas (Instagram pessoal, VOZ, Solvo, LinkedIn pessoal, LinkedIn Solvo) — com voz, tom e estilo calibrados para cada plataforma.
+            </p>
+            <p>
+              Adapta uma ideia central em múltiplos formatos: post, carrossel, caption, artigo, sempre mantendo coerência editorial.
+            </p>
+            <div class="case-stack">
+              <span>Claude Skills</span><span>Conteúdo</span><span>Branding</span>
+            </div>
+          </div>
+          <span class="case-cta">Skill em uso ativo</span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="cases-progress">
+      <div class="cases-progress-bar" id="casesProgress"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FERRAMENTAS ============ -->
+<section id="ferramentas" class="tools">
+  <div class="tools-header reveal">
+    <h2>Ferramentas <em>publicadas.</em></h2>
+    <span class="section-label">§ 04 — No ar</span>
+  </div>
+  
+  <div class="tools-grid reveal-stagger">
+    
+    <a class="tool-card" href="https://solv0.github.io/solvo/" target="_blank" rel="noopener" data-cursor="text">
+      <div class="tool-preview tool-preview-solvo">
+        <div class="browser-bar">
+          <span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span>
+          <span class="b-url">solv0.github.io/solvo</span>
+        </div>
+        <svg class="preview-art" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="solvoGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#93c5fd" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#1d4ed8" stop-opacity=".7"/>
+            </linearGradient>
+          </defs>
+          <text x="200" y="135" text-anchor="middle" font-family="Fraunces, serif" font-size="80" font-style="italic" font-weight="400" fill="url(#solvoGrad)">solvo</text>
+          <text x="200" y="170" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="3">PARECERES JURÍDICOS</text>
+          <line x1="120" y1="190" x2="280" y2="190" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="tool-info">
+        <div class="tool-info-top">
+          <h4>Solvo <em>Jurídico</em></h4>
+          <span class="badge">Live</span>
+        </div>
+        <p>
+          Serviço de pareceres jurídicos sob demanda, com linguagem clara e prazo definido. <strong>Estrutura completa</strong> — site, identidade, metodologia, fluxo de atendimento — construída integralmente com Claude.
+        </p>
+        <span class="tool-link">Visitar site</span>
+      </div>
+    </a>
+    
+    <a class="tool-card" href="https://vozescoladeresistencia.github.io/checklist/" target="_blank" rel="noopener" data-cursor="text">
+      <div class="tool-preview tool-preview-voz">
+        <svg class="preview-art" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="vozGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#93c5fd" stop-opacity=".85"/>
+            </linearGradient>
+          </defs>
+          <text x="200" y="120" text-anchor="middle" font-family="Fraunces, serif" font-size="64" font-weight="400" fill="url(#vozGrad)" letter-spacing="-2">checklist</text>
+          <text x="200" y="155" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.55)" letter-spacing="3">ESPAÇOS · SEGUROS · VOZ</text>
+          <g stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none">
+            <rect x="105" y="180" width="14" height="14" rx="2"/><path d="M108 187l3 3 6-6" stroke="#93c5fd" stroke-width="1.5"/>
+            <rect x="135" y="180" width="14" height="14" rx="2"/><path d="M138 187l3 3 6-6" stroke="#93c5fd" stroke-width="1.5"/>
+            <rect x="165" y="180" width="14" height="14" rx="2"/><path d="M168 187l3 3 6-6" stroke="#93c5fd" stroke-width="1.5"/>
+            <rect x="195" y="180" width="14" height="14" rx="2"/>
+            <rect x="225" y="180" width="14" height="14" rx="2"/>
+            <rect x="255" y="180" width="14" height="14" rx="2"/>
+            <rect x="285" y="180" width="14" height="14" rx="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tool-info">
+        <div class="tool-info-top">
+          <h4>Checklist <em>VOZ</em></h4>
+          <span class="badge">Live</span>
+        </div>
+        <p>
+          Ferramenta autocontida para avaliação de academias de jiu-jitsu, com sistema de pontuação e identificação de pontos críticos. Foi um dos projetos mais gratificantes de construir.
+        </p>
+        <span class="tool-link">Abrir checklist</span>
+      </div>
+    </a>
+    
+  </div>
+</section>
+
+<!-- ============ FORMAÇÃO ACADÊMICA ============ -->
+<section id="formacao" class="credentials">
+  <div class="credentials-header reveal">
+    <div class="section-label">§ 05 — Formação Acadêmica</div>
+    <h2>Onde a prática se <em>fundamenta.</em></h2>
+  </div>
+  
+  <div class="credentials-grid reveal">
+    <p class="intro">
+      Bacharelado em Direito e duas pós-graduações — uma em direito público, outra em comunicação digital. Três degraus complementares para a forma como eu trabalho.
+    </p>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-year">2013</span>
+        <div class="timeline-content">
+          <h5>Bacharelado em Direito</h5>
+          <p>Faculdade de Direito</p>
+        </div>
+        <span class="place">PUCRS</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2016</span>
+        <div class="timeline-content">
+          <h5>Especialista em Direito Público</h5>
+          <p>Pós-graduação</p>
+        </div>
+        <span class="place">FMP/RS</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2021</span>
+        <div class="timeline-content">
+          <h5>Comunicação em Redes Sociais</h5>
+          <p>Pós-graduação</p>
+        </div>
+        <span class="place">FADERGS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMAÇÃO COMPLEMENTAR ============ -->
+<section id="complementar" class="complementar">
+  <div class="complementar-header reveal">
+    <div class="section-label">§ 06 — Formação Complementar</div>
+    <h2>Sessenta cursos, <em>mil horas.</em></h2>
+  </div>
+  
+  <div class="complementar-meta reveal">
+    <p class="intro">
+      Aprender de forma contínua é parte do método. O recorte vai de licitações públicas a inteligência artificial, passando por compliance, BPMN, idiomas e contabilidade.
+    </p>
+    <div class="complementar-stats">
+      <div class="comp-stat">
+        <span class="comp-stat-v" data-target="61"><span class="num">0</span></span>
+        <span class="comp-stat-l">cursos<br>concluídos</span>
+      </div>
+      <div class="comp-stat">
+        <span class="comp-stat-v" data-target="1000"><span class="num">0</span><em>+</em></span>
+        <span class="comp-stat-l">horas<br>investidas</span>
+      </div>
+      <div class="comp-stat">
+        <span class="comp-stat-v" data-target="24"><span class="num">0</span></span>
+        <span class="comp-stat-l">instituições<br>de ensino</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="complementar-toolbar reveal">
+    <span class="hint">Clique em uma área para expandir</span>
+    <button class="toggle-all" id="toggleAll" data-cursor="hover">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span class="toggle-all-text">Expandir todas</span>
+    </button>
+  </div>
+  
+  <div class="categories">
+    
+    <!-- IA -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>
+        <div class="cat-title">
+          <h4>Inteligência <em>Artificial</em></h4>
+          <span class="cat-mobile-meta">15 cursos · 111h+</span>
+        </div>
+        <div class="cat-count">15 cursos<span class="h">111h+</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Engenharia de Prompt para ChatGPT</span><span class="inst">ISC · TCU</span><span class="hrs">15h</span><span class="date">mai/2026</span></div>
+        <div class="course-row"><span class="name">AI Fluency: Framework &amp; Foundations</span><span class="inst">Anthropic</span><span class="hrs">—</span><span class="date">abr/2026</span></div>
+        <div class="course-row"><span class="name">Claude 101</span><span class="inst">Anthropic</span><span class="hrs">—</span><span class="date">abr/2026</span></div>
+        <div class="course-row"><span class="name">AI Boost Bites: Prompting like a Pro with Google Workspace</span><span class="inst">Google</span><span class="hrs">—</span><span class="date">abr/2026</span></div>
+        <div class="course-row"><span class="name">AI Boost Bites: Personalization with customized prompts</span><span class="inst">Google</span><span class="hrs">—</span><span class="date">abr/2026</span></div>
+        <div class="course-row"><span class="name">AI Boost Bites: TL;DR with Gemini in Docs &amp; Drive</span><span class="inst">Google</span><span class="hrs">—</span><span class="date">abr/2026</span></div>
+        <div class="course-row"><span class="name">Desvendando a IA na Administração Pública</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">set/2025</span></div>
+        <div class="course-row"><span class="name">IA no Contexto do Serviço Público</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">set/2025</span></div>
+        <div class="course-row"><span class="name">Bootcamp IA Generativa com AWS</span><span class="inst">Trybe · AWS</span><span class="hrs">10h</span><span class="date">set/2024</span></div>
+        <div class="course-row"><span class="name">IA Generativa Aplicada ao Direito</span><span class="inst">OAB SP · Trybe · Jusbrasil · ITS</span><span class="hrs">4h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Trilha fluêncIA</span><span class="inst">Enap</span><span class="hrs">10h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">IA e o Novo Contexto da Cultura Digital</span><span class="inst">Fundação Bradesco</span><span class="hrs">20h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">IA para Simplificar o Dia a Dia</span><span class="inst">Enap</span><span class="hrs">4h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">IA na Prática</span><span class="inst">Future Law</span><span class="hrs">2h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Como Utilizar a IA em Licitações e Contratos</span><span class="inst">Sollicita</span><span class="hrs">1h</span><span class="date">mar/2024</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- LICITAÇÕES -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M9 7h6"/><path d="M5 21V11l7-7 7 7v10"/><path d="M10 21v-6h4v6"/></svg>
+        <div class="cat-title">
+          <h4>Licitações &amp; <em>Contratos</em></h4>
+          <span class="cat-mobile-meta">22 cursos · 551h</span>
+        </div>
+        <div class="cat-count">22 cursos<span class="h">551h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Termo de Referência e Projeto Básico nas Licitações</span><span class="inst">EGP · TCE-PR</span><span class="hrs">8h</span><span class="date">set/2025</span></div>
+        <div class="course-row"><span class="name">Treinamento e Capacitação — Gestão de Contratos (RLC Sistema S)</span><span class="inst">INGEP</span><span class="hrs">20h</span><span class="date">out/2024</span></div>
+        <div class="course-row"><span class="name">Treinamento Orientativo — Gestão de Contratos (RLC Sistema S)</span><span class="inst">INGEP</span><span class="hrs">16h</span><span class="date">out/2024</span></div>
+        <div class="course-row"><span class="name">Licitação e Contratos Administrativos: Lei 14.133/2021</span><span class="inst">ILB · Senado Federal</span><span class="hrs">60h</span><span class="date">set/2024</span></div>
+        <div class="course-row"><span class="name">Elaboração de Editais para Aquisições no Setor Público</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">jan/2024</span></div>
+        <div class="course-row"><span class="name">Aplicação de Penalidades nos Contratos Administrativos</span><span class="inst">Enap</span><span class="hrs">32h</span><span class="date">jan/2024</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Seleção do Fornecedor e Procedimentos Auxiliares</span><span class="inst">CNJ</span><span class="hrs">15h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Governança e Planejamento das Contratações</span><span class="inst">CNJ</span><span class="hrs">15h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Execução Contratual</span><span class="inst">CNJ</span><span class="hrs">15h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Formação de Pregoeiros — Visão Geral</span><span class="inst">Enap</span><span class="hrs">30h</span><span class="date">out/2023</span></div>
+        <div class="course-row"><span class="name">Formação de Pregoeiros — Teoria</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">out/2023</span></div>
+        <div class="course-row"><span class="name">Licitação por Concorrência, Concurso, Leilão e Diálogo Competitivo</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">out/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Gestão Contratual</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">out/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações e Contratos: Aspectos Gerais e Pontos de Atenção</span><span class="inst">Enap</span><span class="hrs">40h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Sanções ao Fornecedor</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Modalidade e Seleção de Fornecedores</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Procedimentos Auxiliares</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Contratações Diretas</span><span class="inst">Enap</span><span class="hrs">30h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Nova Lei de Licitações: Visão Geral</span><span class="inst">Enap</span><span class="hrs">10h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Elaboração de Termos de Referência para Contratação de Bens e Serviços</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">set/2023</span></div>
+        <div class="course-row"><span class="name">Gestão e Fiscalização de Contratos Administrativos</span><span class="inst">Enap</span><span class="hrs">40h</span><span class="date">abr/2022</span></div>
+        <div class="course-row"><span class="name">Fundamentos dos Contratos</span><span class="inst">Prime Cursos</span><span class="hrs">40h</span><span class="date">jun/2021</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- COMPLIANCE -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="cat-title">
+          <h4>Proteção de Dados &amp; <em>Compliance</em></h4>
+          <span class="cat-mobile-meta">9 cursos · 114h</span>
+        </div>
+        <div class="cat-count">9 cursos<span class="h">114h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Proteção de Dados Pessoais</span><span class="inst">OAB Federal</span><span class="hrs">2h</span><span class="date">set/2024</span></div>
+        <div class="course-row"><span class="name">Compliance e Proteção de Dados</span><span class="inst">PUCRS</span><span class="hrs">10h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Como Implementar a LGPD: Bases, Mecanismos e Processos</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Corrupção e Compliance: Desafios Contemporâneos</span><span class="inst">ESA · OAB SP</span><span class="hrs">12h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Normas Anticorrupção, Antissuborno e Compliance Público</span><span class="inst">FGV Online</span><span class="hrs">5h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Proteção de Dados</span><span class="inst">FGV · nic.br</span><span class="hrs">5h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Compliance</span><span class="inst">FGV</span><span class="hrs">30h</span><span class="date">nov/2022</span></div>
+        <div class="course-row"><span class="name">Fundamentos da LGPD</span><span class="inst">Enap</span><span class="hrs">15h</span><span class="date">abr/2022</span></div>
+        <div class="course-row"><span class="name">Introdução à Lei Brasileira de Proteção de Dados Pessoais</span><span class="inst">Enap</span><span class="hrs">10h</span><span class="date">fev/2022</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- GESTÃO DE PROCESSOS -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg>
+        <div class="cat-title">
+          <h4>Gestão de <em>Processos</em></h4>
+          <span class="cat-mobile-meta">4 cursos · 50h</span>
+        </div>
+        <div class="cat-count">4 cursos<span class="h">50h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Mapeamento de Processos de Trabalho com BPMN e Bizagi</span><span class="inst">ISC · TCU</span><span class="hrs">10h</span><span class="date">set/2025</span></div>
+        <div class="course-row"><span class="name">Estratégias de Produtividade: Clareza, Propósito e Priorização</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Get Started with Bizagi Modeler</span><span class="inst">Bizagi Training</span><span class="hrs">—</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Scrum no Contexto do Serviço Público</span><span class="inst">Enap</span><span class="hrs">15h</span><span class="date">out/2023</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- COMUNICAÇÃO -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div class="cat-title">
+          <h4>Comunicação &amp; <em>Desenvolvimento</em></h4>
+          <span class="cat-mobile-meta">4 cursos · 90h</span>
+        </div>
+        <div class="cat-count">4 cursos<span class="h">90h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Diversidade e Inclusão no Ambiente de Trabalho</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">set/2025</span></div>
+        <div class="course-row"><span class="name">Virtudes e Forças de Caráter</span><span class="inst">PUCRS</span><span class="hrs">10h</span><span class="date">set/2024</span></div>
+        <div class="course-row"><span class="name">Comunicação Não Violenta</span><span class="inst">Enap</span><span class="hrs">20h</span><span class="date">dez/2023</span></div>
+        <div class="course-row"><span class="name">Redação Oficial</span><span class="inst">Prime Cursos</span><span class="hrs">40h</span><span class="date">jun/2021</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- TECNOLOGIA -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="cat-title">
+          <h4>Tecnologia &amp; <em>Ferramentas</em></h4>
+          <span class="cat-mobile-meta">4 cursos · 52,5h</span>
+        </div>
+        <div class="cat-count">4 cursos<span class="h">52,5h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Direito e Novas Tecnologias</span><span class="inst">Enap</span><span class="hrs">5h</span><span class="date">ago/2024</span></div>
+        <div class="course-row"><span class="name">Microsoft Outlook</span><span class="inst">CNJ</span><span class="hrs">20h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Plataforma Digital — Novas Formas de Trabalho</span><span class="inst">ESA · OAB SP</span><span class="hrs">2,5h</span><span class="date">nov/2023</span></div>
+        <div class="course-row"><span class="name">Excel</span><span class="inst">Enap</span><span class="hrs">25h</span><span class="date">out/2023</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- CONTABILIDADE -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+        <div class="cat-title">
+          <h4>Contabilidade</h4>
+          <span class="cat-mobile-meta">1 curso · 30h</span>
+        </div>
+        <div class="cat-count">1 curso<span class="h">30h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Análise das Demonstrações Contábeis</span><span class="inst">FGV</span><span class="hrs">30h</span><span class="date">mai/2026</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- IDIOMAS -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="cat-title">
+          <h4>Idiomas</h4>
+          <span class="cat-mobile-meta">Inglês · C2 Proficient</span>
+        </div>
+        <div class="cat-count">1 certificação<span class="h">C2</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">EF SET English Certificate — Nível C2 Proficient</span><span class="inst">EF SET</span><span class="hrs">—</span><span class="date">ago/2024</span></div>
+      </div></div></div>
+    </div>
+    
+    <!-- SAÚDE E SEGURANÇA -->
+    <div class="category">
+      <button class="cat-summary" data-cursor="hover" type="button">
+        <svg class="cat-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="cat-title">
+          <h4>Saúde &amp; <em>Segurança</em></h4>
+          <span class="cat-mobile-meta">1 curso · 12h</span>
+        </div>
+        <div class="cat-count">1 curso<span class="h">12h</span></div>
+        <span class="cat-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="cat-list-wrap"><div class="cat-list-inner"><div class="cat-list">
+        <div class="course-row"><span class="name">Capacitação NR05 — CIPA</span><span class="inst">PRESEGMED</span><span class="hrs">12h</span><span class="date">jun/2025</span></div>
+      </div></div></div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contato" class="contact">
+  <h2 class="contact-headline reveal">
+    Vamos<br><em>conversar.</em>
+  </h2>
+  
+  <div class="contact-grid">
+    <div class="contact-primary reveal">
+      <a class="contact-email" href="mailto:juridicojulianacampos@gmail.com" data-cursor="hover">
+        <span class="contact-email-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+        <span>Me envie um email</span>
+      </a>
+      <a class="contact-whatsapp" href="https://wa.me/5551999764941" target="_blank" rel="noopener" data-cursor="hover">
+        <span class="contact-whatsapp-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.768.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+        </span>
+        <span>Me chama no WhatsApp</span>
+      </a>
+      <span class="contact-availability">
+        <span class="live"></span>
+        Disponível para conversas e projetos
+      </span>
+    </div>
+    
+    <div class="social-grid reveal-stagger">
+      
+      <a class="social-card" href="https://www.linkedin.com/in/julianadecampos/" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="social-card-top">
+          <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <span class="social-card-handle">/julianadecampos</span>
+        <span class="social-card-label">LinkedIn · pessoal</span>
+      </a>
+      
+      <a class="social-card" href="https://www.instagram.com/julianacampos/" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="social-card-top">
+          <svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="0.8" fill="currentColor"/></svg>
+          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <span class="social-card-handle">@julianacampos</span>
+        <span class="social-card-label">Instagram · pessoal</span>
+      </a>
+      
+      <a class="social-card" href="https://www.linkedin.com/company/solv0/" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="social-card-top">
+          <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <span class="social-card-handle">/company/solv0</span>
+        <span class="social-card-label">LinkedIn · Solvo</span>
+      </a>
+      
+      <a class="social-card" href="https://www.instagram.com/solvo.juridico/" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="social-card-top">
+          <svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="0.8" fill="currentColor"/></svg>
+          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <span class="social-card-handle">@solvo.juridico</span>
+        <span class="social-card-label">Instagram · Solvo</span>
+      </a>
+      
+      <a class="social-card" href="https://www.instagram.com/voz________/" target="_blank" rel="noopener" data-cursor="hover">
+        <div class="social-card-top">
+          <svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="0.8" fill="currentColor"/></svg>
+          <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </div>
+        <span class="social-card-handle">@voz________</span>
+        <span class="social-card-label">Instagram · VOZ</span>
+      </a>
+      
+    </div>
+  </div>
+  
+  <footer>
+    <span>© 2026 · Juliana de Campos Ribeiro</span>
+    <span>Porto Alegre · RS · BR</span>
+  </footer>
+</section>
+
+<script>
+  // ============ NAV SCROLL STATE ============
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) navEl.classList.add('scrolled');
+    else navEl.classList.remove('scrolled');
+  });
+  
+  // ============ ROTATING WORD ============
+  const words = ['tecnologia', 'gestão', 'design', 'inteligência', 'linguagem'];
+  let wordIndex = 0;
+  const rotator = document.getElementById('rotator');
+  
+  if (rotator) {
+    setInterval(() => {
+      rotator.style.opacity = '0';
+      rotator.style.transform = 'translateY(-8px)';
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        rotator.textContent = words[wordIndex];
+        rotator.style.opacity = '1';
+        rotator.style.transform = 'translateY(0)';
+      }, 300);
+    }, 3000);
+  }
+  
+  // ============ REVEAL ON SCROLL ============
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  
+  document.querySelectorAll('.reveal, .reveal-stagger, .section-label').forEach(el => observer.observe(el));
+  
+  // ============ STAT COUNTERS ============
+  const animateNumber = (el, target) => {
+    const numEl = el.querySelector('.num');
+    if (!numEl) return;
+    const duration = 1800;
+    const startTime = performance.now();
+    
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      // ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      const display = target >= 1000 ? current.toLocaleString('pt-BR').replace(',', '.') : current;
+      numEl.textContent = display;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = parseInt(entry.target.dataset.target, 10);
+        animateNumber(entry.target, target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+  
+  // Animate case-numbers .v on view too
+  const caseNumObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const v = entry.target;
+        const text = v.textContent.trim();
+        // Animate only pure numeric or "X+" patterns
+        const match = text.match(/^(\d+)([+%]?)$/);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          const suffix = match[2];
+          let cur = 0;
+          const dur = 1500;
+          const start = performance.now();
+          const tick = (now) => {
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            cur = Math.floor(eased * num);
+            const display = num >= 1000 ? cur.toLocaleString('pt-BR').replace(',', '.') : cur;
+            v.textContent = display + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          caseNumObserver.unobserve(v);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('.case-num-item .v').forEach(el => caseNumObserver.observe(el));
+  
+  // ============ HORIZONTAL SCROLL FOR CASES ============
+  const casesScroll = document.querySelector('.cases-scroll');
+  const casesTrack  = document.getElementById('casesTrack');
+  const casesProgress = document.getElementById('casesProgress');
+  
+  function updateCasesScroll() {
+    if (!casesScroll || !casesTrack) return;
+    if (window.innerWidth < 901) return;
+    
+    const rect = casesScroll.getBoundingClientRect();
+    const scrollHeight = rect.height - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, -rect.top / scrollHeight));
+    
+    const trackWidth = casesTrack.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const distance = trackWidth - viewportWidth + 80;
+    
+    casesTrack.style.transform = `translateX(${-distance * progress}px)`;
+    
+    if (casesProgress) {
+      casesProgress.style.width = (progress * 100) + '%';
+    }
+  }
+  
+  window.addEventListener('scroll', updateCasesScroll, { passive: true });
+  window.addEventListener('resize', updateCasesScroll);
+  updateCasesScroll();
+  
+  // ============ MAGNETIC EFFECT ON BUTTONS ============
+  const magneticEls = document.querySelectorAll('.contact-email, .contact-whatsapp, .social-card, .tool-card');
+  
+  magneticEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 901) return;
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const strength = (el.classList.contains('contact-email') || el.classList.contains('contact-whatsapp')) ? 0.25 : 0.08;
+      el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+  
+  // ============ FACE CARD TILT ============
+  document.querySelectorAll('.face').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 901) return;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1200px) rotateX(${-y * 1.5}deg) rotateY(${x * 1.5}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+  
+  // ============ CATEGORIES ACCORDION ============
+  const categories = document.querySelectorAll('.category');
+  const toggleAllBtn = document.getElementById('toggleAll');
+  const toggleText = toggleAllBtn?.querySelector('.toggle-all-text');
+  
+  categories.forEach(cat => {
+    const summary = cat.querySelector('.cat-summary');
+    if (!summary) return;
+    summary.addEventListener('click', () => {
+      const isOpen = cat.classList.toggle('open');
+      summary.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      updateToggleAllState();
+    });
+  });
+  
+  function updateToggleAllState() {
+    if (!toggleAllBtn) return;
+    const openCount = document.querySelectorAll('.category.open').length;
+    const allOpen = openCount === categories.length;
+    toggleAllBtn.classList.toggle('expanded', allOpen);
+    if (toggleText) {
+      toggleText.textContent = allOpen ? 'Fechar todas' : 'Expandir todas';
+    }
+  }
+  
+  if (toggleAllBtn) {
+    toggleAllBtn.addEventListener('click', () => {
+      const openCount = document.querySelectorAll('.category.open').length;
+      const shouldOpen = openCount < categories.length;
+      categories.forEach((cat, idx) => {
+        setTimeout(() => {
+          cat.classList.toggle('open', shouldOpen);
+          const sum = cat.querySelector('.cat-summary');
+          if (sum) sum.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+        }, idx * 50);
+      });
+      setTimeout(updateToggleAllState, categories.length * 50 + 100);
+    });
+  }
+  
+  // Animate complementar stats on view
+  const compStatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const numEl = el.querySelector('.num');
+        if (!numEl || isNaN(target)) return;
+        const duration = 1800;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const current = Math.floor(eased * target);
+          numEl.textContent = target >= 1000 ? current.toLocaleString('pt-BR').replace(',', '.') : current;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        compStatObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  
+  document.querySelectorAll('.comp-stat-v').forEach(el => compStatObserver.observe(el));
+</script>
+
+</body>
+</html>
