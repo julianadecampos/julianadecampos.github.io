@@ -616,62 +616,165 @@
   .degree h3 { font-family: var(--display); font-weight: 420; font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.01em; font-variation-settings: "opsz" 48, "SOFT" 30; }
   .degree .inst { color: var(--ink-2); font-size: 0.95rem; margin-top: auto; }
 
-  .courses { padding: clamp(1.2rem, 2.4vw, 2rem); }
-  .courses > * { position: relative; z-index: 3; }
-  .courses-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-  .courses-top h3 { font-family: var(--display); font-weight: 420; font-size: 1.5rem; letter-spacing: -0.015em; }
-  .courses-top p { color: var(--muted); font-size: 0.95rem; }
-  .toggle-all { height: 40px; padding: 0 1.1rem; font-size: 0.9rem; font-weight: 500; }
+  /* =========================================================
+     Contato
+     ========================================================= */
+  footer { padding: 2.5rem 0 3rem; color: var(--muted); font-size: 0.88rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
 
-  .cat { border-top: 1px solid var(--line); }
-  .cat-btn {
-    width: 100%; display: grid; grid-template-columns: 1fr auto 28px; gap: 1rem; align-items: center;
-    padding: 1rem 0.25rem; text-align: left; border-radius: 2px;
+
+  /* barra de leitura na navegação */
+  .progress {
+    position: absolute; left: 22px; right: 22px; bottom: 0; height: 1.5px; z-index: 3;
+    background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0));
+    border-radius: 2px; opacity: 0.75; pointer-events: none;
   }
-  .cat-btn .t { font-weight: 500; font-size: 1.02rem; }
-  .cat-btn .n { color: var(--muted); font-size: 0.88rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* método: abas de vidro */
+  .method { padding: clamp(1.2rem, 2.6vw, 2.2rem); }
+  .method > * { position: relative; z-index: 3; }
+  .tabs {
+    position: relative; display: inline-flex; padding: 5px; gap: 2px;
+    background: var(--line); box-shadow: none; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  }
+  .tabs::before, .tabs::after { display: none; }
+  .tab {
+    position: relative; z-index: 2; height: 42px; padding: 0 1.25rem;
+    border-radius: var(--r-pill); font-weight: 500; font-size: 0.95rem; color: var(--muted);
+    white-space: nowrap;
+  }
+  .tab[aria-selected="true"] { color: var(--ink); }
+  .tab-drop {
+    position: absolute; top: 5px; left: 0; height: 42px; z-index: 1; border-radius: var(--r-pill);
+    background: var(--glass-2);
+    box-shadow: 0 1px 0 var(--spec-a) inset, 0 8px 18px -10px rgba(16,22,40,0.45);
+    transition: transform 0.6s var(--spring), width 0.6s var(--spring);
+  }
+  .pane { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem 4rem; }
+  .pane[hidden] { display: none; }
+  .pane.is-on .pane-lead, .pane.is-on .proof li { animation: paneIn 0.6s var(--ease) both; }
+  .pane.is-on .proof li:nth-child(2) { animation-delay: 0.06s; }
+  .pane.is-on .proof li:nth-child(3) { animation-delay: 0.12s; }
+  @keyframes paneIn { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+  @media (max-width: 860px) { .pane { grid-template-columns: 1fr; } }
+  .pane-lead h3 {
+    font-family: var(--display); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem);
+    line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 0.9rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .pane-lead p { color: var(--ink-2); max-width: 44ch; }
+  .proof { list-style: none; border-top: 1px solid var(--line-2); }
+  .proof li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 0.4rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  @media (max-width: 560px) { .proof li { grid-template-columns: 1fr; } }
+  .proof b { font-weight: 500; }
+  .proof span { color: var(--ink-2); font-size: 0.95rem; }
+
+  /* tatame */
+  .dojo { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem 4rem; align-items: center; padding: clamp(1.6rem, 4vw, 3.5rem); }
+  .dojo > * { position: relative; z-index: 3; }
+  @media (max-width: 860px) { .dojo { grid-template-columns: 1fr; } }
+  .dojo h2 {
+    font-family: var(--display); font-style: italic; font-weight: 360;
+    font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 0.95; letter-spacing: -0.035em;
+    font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1; margin: 0.4rem 0 1.25rem;
+  }
+  .dojo p { color: var(--ink-2); max-width: 54ch; margin-bottom: 0.9rem; }
+  .dojo strong { font-weight: 500; color: var(--ink); }
+  .belt { display: grid; gap: 1rem; justify-items: end; }
+  .belt-band {
+    position: relative; width: 100%; max-width: 420px; height: 64px; border-radius: 3px;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 7px),
+      linear-gradient(180deg, #2A2D36 0%, #111319 55%, #07080C 100%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 -2px 0 rgba(0,0,0,0.4) inset, 0 22px 40px -22px rgba(0,0,0,0.7);
+    transform: rotate(-2deg);
+  }
+  .belt-band::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0 6px, transparent 6px 11px);
+  }
+  .belt-band::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 10px; height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0 6px, transparent 6px 11px);
+  }
+  .belt-bar {
+    position: absolute; right: 34px; top: 0; bottom: 0; width: 34%;
+    background: linear-gradient(180deg, #D3323A, #9E1C24);
+    display: flex; gap: 7px; align-items: stretch; justify-content: flex-end; padding-right: 9px;
+    box-shadow: 1px 0 0 rgba(0,0,0,0.3), -1px 0 0 rgba(0,0,0,0.3);
+  }
+  .belt-bar { transform: scaleX(0); transform-origin: right; transition: transform 0.9s var(--spring); }
+  .belt.seen .belt-bar { transform: none; }
+  .belt figcaption { color: var(--muted); font-size: 0.95rem; }
+  .belt figcaption span { font-family: var(--display); font-size: 2rem; color: var(--ink); margin-right: 0.3rem; font-variation-settings: "opsz" 72; }
+
+  /* diário de bordo */
+  .logbook { padding: clamp(1.3rem, 3vw, 2.4rem); }
+  .logbook > * { position: relative; z-index: 3; }
+  .log-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; margin-bottom: 0.75rem; }
+  .log-top h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.2vw, 2.6rem); letter-spacing: -0.025em; line-height: 1; margin-top: 0.35rem; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .odometer { display: flex; align-items: baseline; gap: 0.25rem; }
+  .odo {
+    font-family: var(--display); font-weight: 340; font-size: clamp(3.6rem, 8vw, 6rem); line-height: 0.9;
+    letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
+    font-variation-settings: "opsz" 144, "SOFT" 20;
+    background: linear-gradient(180deg, var(--ink) 40%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .odo-unit { font-family: var(--display); font-style: italic; font-size: 1.8rem; color: var(--accent); }
+  .log-note { color: var(--muted); max-width: 62ch; margin-bottom: 1.75rem; }
+  .leg { border-top: 1px solid var(--line-2); }
+  .leg-btn { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(90px, 220px) auto 28px; gap: 1rem; align-items: center; padding: 1.05rem 0.25rem; text-align: left; border-radius: 2px; }
+  .leg-btn .t { font-weight: 500; font-size: 1.03rem; }
+  .leg-btn .t small { display: block; font-weight: 400; color: var(--muted); font-size: 0.86rem; margin-top: 0.1rem; }
+  .gauge { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
+  .gauge i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 1.2s var(--ease); }
+  .route.seen .gauge i { width: var(--w); }
+  .leg-btn .h { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 0.92rem; white-space: nowrap; text-align: right; min-width: 3.5rem; }
+  @media (max-width: 620px) {
+    .leg-btn { grid-template-columns: minmax(0, 1fr) auto 28px; }
+    .leg-btn .gauge { display: none; }
+  }
   .chev { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); transition: transform 0.5s var(--spring), background-color 0.3s var(--ease); }
   .chev svg { width: 14px; height: 14px; }
-  .cat.open .chev { transform: rotate(180deg); background: var(--accent-soft); color: var(--accent); }
-  .cat-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s var(--ease); }
-  .cat.open .cat-body { grid-template-rows: 1fr; }
-  .cat-body > div { overflow: hidden; }
+  .leg.open .chev { transform: rotate(180deg); background: var(--accent-soft); color: var(--accent); }
+  .leg-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s var(--ease); }
+  .leg.open .leg-body { grid-template-rows: 1fr; }
+  .leg-body > div { overflow: hidden; }
+  .leg-body .pad { padding: 0 0.25rem 1rem; }
   .course {
-    display: grid; grid-template-columns: minmax(0, 1fr) 170px 52px 72px; gap: 1rem;
-    padding: 0.6rem 0.25rem; border-top: 1px dashed var(--line); font-size: 0.92rem; align-items: baseline;
+    display: grid; grid-template-columns: minmax(0, 1fr) 190px 52px 72px; gap: 1rem;
+    padding: 0.6rem 0; border-top: 1px dashed var(--line); font-size: 0.92rem; align-items: baseline;
   }
   .course:first-child { border-top: 0; }
   .course .ci, .course .cd { color: var(--muted); font-size: 0.85rem; }
   .course .ch { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 0.85rem; }
   .course .cd { text-align: right; }
-  .cat-body .pad { padding-bottom: 1rem; }
+  .course.key .cn::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 0.55rem; transform: translateY(-2px); }
   @media (max-width: 700px) {
     .course { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1rem; }
     .course .cn { grid-column: 1 / -1; }
     .course .ch { display: none; }
   }
+  .archive { margin-top: 2rem; }
+  .archive .leg { border-top: 1px dashed var(--line-2); opacity: 0.72; transition: opacity 0.3s var(--ease); }
+  .archive .leg:hover, .archive .leg.open { opacity: 1; }
+  .archive-label { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.25rem; }
 
-  /* =========================================================
-     Contato
-     ========================================================= */
-  .contact { padding: clamp(2rem, 5vw, 4rem); }
-  .contact > * { position: relative; z-index: 3; }
-  .contact h2 {
-    font-family: var(--display); font-weight: 360;
-    font-size: clamp(2.8rem, 7vw, 6rem); line-height: 0.92; letter-spacing: -0.04em;
-    font-variation-settings: "opsz" 144, "SOFT" 40;
-    margin-bottom: 1.25rem;
-  }
-  .contact .lead { color: var(--ink-2); max-width: 46ch; margin-bottom: 2rem; font-size: 1.08rem; }
-  .contact .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.75rem; }
+  /* contato sóbrio */
+  .contact { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem 3rem; padding: clamp(1.6rem, 3.5vw, 2.8rem); }
+  .contact h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; letter-spacing: -0.025em; margin-bottom: 0.5rem; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .contact .lead { color: var(--ink-2); margin: 0; }
+  .contact .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .contact .btn svg { width: 18px; height: 18px; }
-  .socials { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 1.75rem; border-top: 1px solid var(--line-2); }
-  .social { height: 40px; padding: 0 1rem 0 0.8rem; font-size: 0.9rem; }
-  .social svg { width: 16px; height: 16px; }
-  .social small { color: var(--muted); font-size: 0.82rem; }
 
-  footer { padding: 2.5rem 0 3rem; color: var(--muted); font-size: 0.88rem; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+  /* jogo: fechar */
+  .play-close {
+    position: absolute; top: 10px; right: 10px; z-index: 5; display: none;
+    height: 34px; padding: 0 0.9rem; font-size: 0.85rem; font-weight: 500;
+    background: rgba(255,255,255,0.78); color: #101628;
+  }
+  .play.on .play-close { display: inline-flex; }
 
   /* =========================================================
      Movimento reduzido
@@ -685,15 +788,17 @@
 </head>
 <body>
 
-<a class="skip" href="#projetos">Pular para os projetos</a>
+<a class="skip" href="#metodo">Pular para o conteúdo</a>
 
 <div class="field" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
 <!-- ================= Navegação ================= -->
 <nav class="nav glass pill" aria-label="Principal">
+  <span class="progress" id="progress" aria-hidden="true"></span>
   <a class="brand" href="#topo" aria-label="Início">j<i></i>cr</a>
   <div class="nav-links" id="navLinks">
     <span class="drop" id="drop" aria-hidden="true"></span>
+    <a href="#metodo">Método</a>
     <a href="#projetos">Projetos</a>
     <a href="#trajetoria">Trajetória</a>
     <a href="#formacao">Formação</a>
@@ -715,10 +820,10 @@
     <div>
       <span class="status glass pill rise d1"><span class="pulse"></span>Legal Analyst em Legal Corporate</span>
       <h1 class="rise d2">Juliana de Campos Ribeiro</h1>
-      <p class="lead rise d3">Advogada. Uso inteligência artificial para transformar trabalho jurídico em processos, agentes e ferramentas que o time inteiro usa.</p>
+      <p class="lead rise d3">Instrumentalizo times jurídicos com processo, tecnologia e IA, e ensino as pessoas a usar o que construí.</p>
       <div class="actions rise d4">
-        <a class="btn btn-solid pill press" href="#projetos">Ver projetos</a>
-        <a class="btn btn-glass glass pill press" href="#contato">Falar comigo</a>
+        <a class="btn btn-solid pill press" href="#metodo">Como eu trabalho</a>
+        <a class="btn btn-glass glass pill press" href="#contato">Entrar em contato</a>
       </div>
     </div>
 
@@ -735,6 +840,72 @@
     </div>
   </div>
 </header>
+
+<!-- ================= Método ================= -->
+<section id="metodo" class="section">
+  <div class="wrap">
+    <div class="head">
+      <h2>Quatro alavancas, uma entrega</h2>
+      <p>Um time jurídico rende mais quando o trabalho tem caminho, ferramenta e gente que sabe usar as duas. É nisso que eu atuo.</p>
+    </div>
+
+    <div class="method glass panel">
+      <div class="tabs glass pill" role="tablist" aria-label="Alavancas">
+        <span class="tab-drop" id="tabDrop" aria-hidden="true"></span>
+        <button class="tab press" role="tab" aria-selected="true" aria-controls="m-processo" id="t-processo">Processo</button>
+        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-tecnologia" id="t-tecnologia" tabindex="-1">Tecnologia</button>
+        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-ia" id="t-ia" tabindex="-1">IA</button>
+        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-ensino" id="t-ensino" tabindex="-1">Ensino</button>
+      </div>
+
+      <div class="panes">
+        <div class="pane is-on" role="tabpanel" id="m-processo" aria-labelledby="t-processo">
+          <div class="pane-lead">
+            <h3>Antes da ferramenta, o mapa.</h3>
+            <p>Levanto as tarefas reais de quem executa e desenho o fluxo a partir delas. Sem processo claro, automação só acelera a bagunça.</p>
+          </div>
+          <ul class="proof">
+            <li><b>Task inventory com IA</b><span>Mapeamento de processos no jurídico corporativo, do levantamento ao fluxo.</span></li>
+            <li><b>Procurações</b><span>Base que vivia numa pasta do Drive, agora mapeada e com processo definido.</span></li>
+            <li><b>BPMN institucional</b><span>Todos os processos de uma entidade do Sistema S mapeados e convertidos em normas internas.</span></li>
+          </ul>
+        </div>
+        <div class="pane" role="tabpanel" id="m-tecnologia" aria-labelledby="t-tecnologia" hidden>
+          <div class="pane-lead">
+            <h3>Cada demanda com dono, prazo e histórico.</h3>
+            <p>Escolho a ferramenta pelo problema e coloco a fila do time num lugar só, onde dá para enxergar e medir.</p>
+          </div>
+          <ul class="proof">
+            <li><b>Mais de 90% no Jira</b><span>As demandas do time entram por um canal, com triagem e títulos padronizados pelo Rovo.</span></li>
+            <li><b>Portal de Contratos</b><span>Mais de 1.000 contratos e 15 gestores reunidos no Fluig, com dados do RM Totvs.</span></li>
+          </ul>
+        </div>
+        <div class="pane" role="tabpanel" id="m-ia" aria-labelledby="t-ia" hidden>
+          <div class="pane-lead">
+            <h3>IA onde o trabalho se repete.</h3>
+            <p>Construo com Claude e Claude Code: agentes que consultam bases, rotinas que resumem conversas, assistentes que guiam quem pede.</p>
+          </div>
+          <ul class="proof">
+            <li><b>Agente de procurações</b><span>Responde dúvidas consultando a base diretamente.</span></li>
+            <li><b>Resumo semanal</b><span>Toda sexta, o space mais movimentado do jurídico vira uma newsletter com link para cada conversa.</span></li>
+            <li><b>Assistente de SMS e TR</b><span>Guia demandantes na elaboração dos documentos que formalizam uma contratação.</span></li>
+          </ul>
+        </div>
+        <div class="pane" role="tabpanel" id="m-ensino" aria-labelledby="t-ensino" hidden>
+          <div class="pane-lead">
+            <h3>Ferramenta que ninguém sabe usar não muda nada.</h3>
+            <p>Por isso ensino. Em oficina, em conversa individual, em jogo. O hábito vem do tatame.</p>
+          </div>
+          <ul class="proof">
+            <li><b>83 pessoas em três oficinas de IA</b><span>Legal Corporate Brasil, Legal Corporate Latam e o jurídico inteiro.</span></li>
+            <li><b>O Labirinto</b><span>Jogo que ensina a quem pede ao jurídico qual é o canal certo para cada demanda.</span></li>
+            <li><b>Capacitação interna</b><span>Colegas treinados na elaboração dos documentos que amparam as contratações.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= Projetos ================= -->
 <section id="projetos" class="section">
@@ -756,11 +927,12 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
             Jogar a primeira fase
           </button>
+          <button class="play-close glass pill press" id="playClose" type="button">Fechar jogo</button>
           <span class="play-note">Teclado: setas ou WASD. No celular, controles na tela.</span>
         </div>
         <p>Um jogo de plataforma para ensinar a quem pede ajuda ao jurídico qual é o canal certo para cada demanda. São cinco fases, e a personagem precisa entregar um legal assessment atravessando a vida corporativa, com o poder do foco para não ser atingida. A primeira fase está liberada aqui.</p>
         <div class="hazards" aria-label="Obstáculos do jogo">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>Emails bumerangue</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 1 3 6.2"/><path d="M4 19v-5h5"/></svg>Follow-up que sempre volta</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg>Pilhas de papel</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M3 3l18 18"/></svg>Microfone no mudo</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg>Poder do foco</span>
@@ -844,6 +1016,26 @@
   </div>
 </section>
 
+<!-- ================= Tatame ================= -->
+<section id="tatame" class="section">
+  <div class="wrap">
+    <div class="dojo glass panel">
+      <div class="dojo-text">
+        <span class="kind">Onde aprendi a ensinar</span>
+        <h2>No tatame.</h2>
+        <p>Sou faixa preta de jiu-jitsu, aluna da mestra Yvone Duarte, com doze anos de prática. No jiu-jitsu, técnica se aprende repetindo, com alguém do lado corrigindo o detalhe. Levo essa lógica para as oficinas e para o dia a dia do time.</p>
+        <p>Fundei o <strong>VOZ</strong>, projeto social de desenvolvimento de mulheres no jiu-jitsu.</p>
+      </div>
+      <figure class="belt" aria-label="Faixa preta de jiu-jitsu">
+        <div class="belt-band">
+          <span class="belt-bar"></span>
+        </div>
+        <figcaption><span>12</span> anos de prática</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ================= Trajetória ================= -->
 <section id="trajetoria" class="section">
   <div class="wrap">
@@ -882,13 +1074,6 @@
           <div class="where">GAZEN Advogados, E3 Licitações e LICIJUR</div>
         </div>
       </li>
-      <li class="stop">
-        <div class="when">Projetos próprios</div>
-        <div>
-          <h3>Solvo e VOZ</h3>
-          <p>Solvo, serviço de pareceres jurídicos sob demanda, com site, identidade e metodologia construídos com IA. VOZ, projeto de desenvolvimento de mulheres no jiu-jitsu. Sou faixa preta, com doze anos de prática.</p>
-        </div>
-      </li>
     </ol>
   </div>
 </section>
@@ -898,7 +1083,7 @@
   <div class="wrap">
     <div class="head">
       <h2>Formação</h2>
-      <p>Direito, direito público e comunicação na base. Agora, M&amp;A. Em volta, mais de mil horas de cursos, com inteligência artificial e contratações no centro.</p>
+      <p>Direito, direito público e comunicação na base. Agora, M&amp;A. Em volta, um diário de bordo de cursos que não para de somar horas.</p>
     </div>
 
     <div class="degrees">
@@ -924,15 +1109,19 @@
       </div>
     </div>
 
-    <div class="courses glass panel">
-      <div class="courses-top">
+    <div class="logbook glass panel">
+      <div class="log-top">
         <div>
-          <h3>Formação complementar</h3>
-          <p>61 cursos, mais de 1.000 horas, 24 instituições.</p>
+          <span class="kind">Diário de bordo</span>
+          <h3>Horas de voo</h3>
         </div>
-        <button class="toggle-all glass pill press" id="toggleAll" type="button" aria-expanded="false">Abrir todas as áreas</button>
+        <div class="odometer" aria-label="913,5 horas registradas">
+          <span class="odo" id="odo" data-to="913.5">0</span><span class="odo-unit">h</span>
+        </div>
       </div>
-      <div id="cats"></div>
+      <p class="log-note">Cada curso conta como hora de voo. A rota atual é o que uso hoje; os voos anteriores ficam registrados no diário.</p>
+      <div class="route" id="route"></div>
+      <div class="archive" id="archive"></div>
     </div>
   </div>
 </section>
@@ -941,24 +1130,19 @@
 <section id="contato" class="section">
   <div class="wrap">
     <div class="contact glass panel">
-      <h2>Vamos conversar.</h2>
-      <p class="lead">Sobre IA no jurídico, contratos, processos ou uma ferramenta que ainda não existe no seu time.</p>
+      <div>
+        <h2>Contato</h2>
+        <p class="lead">Para falar sobre IA no jurídico, processos ou oficinas.</p>
+      </div>
       <div class="actions">
         <a class="btn btn-solid pill press" href="mailto:juridicojulianacampos@gmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-          Me envie um email
+          Enviar e-mail
         </a>
-        <a class="btn btn-glass glass pill press" href="https://wa.me/5551999764941" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88M20.46 3.49A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/></svg>
-          Me chama no WhatsApp
+        <a class="btn btn-glass glass pill press" href="https://www.linkedin.com/in/julianadecampos/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
         </a>
-      </div>
-      <div class="socials">
-        <a class="social glass pill press" href="https://www.linkedin.com/in/julianadecampos/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>LinkedIn</a>
-        <a class="social glass pill press" href="https://www.instagram.com/julianacampos/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Instagram</a>
-        <a class="social glass pill press" href="https://www.instagram.com/solvo.juridico/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Solvo <small>Instagram</small></a>
-        <a class="social glass pill press" href="https://www.linkedin.com/company/solv0/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>Solvo <small>LinkedIn</small></a>
-        <a class="social glass pill press" href="https://www.instagram.com/voz________/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>VOZ <small>Instagram</small></a>
       </div>
     </div>
   </div>
@@ -1105,38 +1289,127 @@
   }
 
 
+  /* ---------- Barra de leitura ---------- */
+  var prog = document.getElementById('progress');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.setProperty('--p', h > 0 ? Math.min(1, scrollY / h) : 0);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- Método: abas ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var tabDrop = document.getElementById('tabDrop');
+  function placeTab(t) {
+    tabDrop.style.width = t.offsetWidth + 'px';
+    tabDrop.style.transform = 'translateX(' + (t.offsetLeft - 5) + 'px)';
+  }
+  function selectTab(t, focus) {
+    tabs.forEach(function (x) {
+      var on = x === t, pane = document.getElementById(x.getAttribute('aria-controls'));
+      x.setAttribute('aria-selected', on ? 'true' : 'false');
+      x.tabIndex = on ? 0 : -1;
+      pane.hidden = !on; pane.classList.toggle('is-on', on);
+    });
+    placeTab(t);
+    if (focus) t.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, n = null;
+      if (k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      if (k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (k === 'Home') n = tabs[0];
+      if (k === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
+  });
+  requestAnimationFrame(function () { tabDrop.style.transition = 'none'; placeTab(tabs[0]); requestAnimationFrame(function () { tabDrop.style.transition = ''; }); });
+  addEventListener('resize', function () { placeTab(tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0]); });
+
   /* ---------- Demo jogável ---------- */
   var play = document.getElementById('play');
+  var frame = null;
+  function closeGame() {
+    if (!frame) return;
+    frame.remove(); frame = null;            // remover o iframe corta música e efeitos na hora
+    play.classList.remove('on');
+  }
   document.getElementById('playBtn').addEventListener('click', function () {
-    var f = document.createElement('iframe');
-    f.src = 'assets/labirinto/index.html';
-    f.title = 'O Labirinto, primeira fase jogável';
-    f.allow = 'autoplay';
-    play.appendChild(f);
+    frame = document.createElement('iframe');
+    frame.src = 'assets/labirinto/index.html';
+    frame.title = 'O Labirinto, primeira fase jogável';
+    play.appendChild(frame);
     play.classList.add('on');
-    f.addEventListener('load', function () { f.focus(); });
+    frame.addEventListener('load', function () { frame && frame.focus(); });
+  });
+  document.getElementById('playClose').addEventListener('click', closeGame);
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (!e.isIntersecting) closeGame(); });
+  }, { threshold: 0 }).observe(play);
+  window.addEventListener('message', function (e) {
+    if (e.data === 'labirinto:fim' && frame && e.source === frame.contentWindow) { /* o próprio jogo já parou o som */ }
   });
 
-  /* ---------- Formação complementar ---------- */
-  var data = [
-    ['Inteligência artificial', [
-      ['Engenharia de Prompt para ChatGPT', 'ISC · TCU', '15h', 'mai/2026'],
-      ['AI Fluency: Framework & Foundations', 'Anthropic', '', 'abr/2026'],
-      ['Claude 101', 'Anthropic', '', 'abr/2026'],
+  /* ---------- Faixa ---------- */
+  var belt = document.querySelector('.belt');
+  new IntersectionObserver(function (es, o) {
+    es.forEach(function (e) { if (e.isIntersecting) { belt.classList.add('seen'); o.disconnect(); } });
+  }, { threshold: 0.6 }).observe(belt);
+
+  /* ---------- Diário de bordo ---------- */
+  var route = [
+    ['Inteligência artificial e tecnologia', 'Ferramenta de trabalho diária', [
+      ['Engenharia de Prompt para ChatGPT', 'ISC · TCU', '15h', 'mai/2026', 1],
+      ['AI Fluency: Framework & Foundations', 'Anthropic', '', 'abr/2026', 1],
+      ['Claude 101', 'Anthropic', '', 'abr/2026', 1],
       ['AI Boost Bites: Prompting like a Pro with Google Workspace', 'Google', '', 'abr/2026'],
       ['AI Boost Bites: Personalization with customized prompts', 'Google', '', 'abr/2026'],
       ['AI Boost Bites: TL;DR with Gemini in Docs & Drive', 'Google', '', 'abr/2026'],
       ['Desvendando a IA na Administração Pública', 'Enap', '25h', 'set/2025'],
       ['IA no Contexto do Serviço Público', 'Enap', '20h', 'set/2025'],
-      ['Bootcamp IA Generativa com AWS', 'Trybe · AWS', '10h', 'set/2024'],
-      ['IA Generativa Aplicada ao Direito', 'OAB SP · Trybe · Jusbrasil · ITS', '4h', 'ago/2024'],
+      ['Bootcamp IA Generativa com AWS', 'Trybe · AWS', '10h', 'set/2024', 1],
+      ['IA Generativa Aplicada ao Direito', 'OAB SP · Trybe · Jusbrasil · ITS', '4h', 'ago/2024', 1],
       ['Trilha fluêncIA', 'Enap', '10h', 'ago/2024'],
       ['IA e o Novo Contexto da Cultura Digital', 'Fundação Bradesco', '20h', 'ago/2024'],
+      ['Direito e Novas Tecnologias', 'Enap', '5h', 'ago/2024'],
       ['IA para Simplificar o Dia a Dia', 'Enap', '4h', 'ago/2024'],
       ['IA na Prática', 'Future Law', '2h', 'ago/2024'],
-      ['Como Utilizar a IA em Licitações e Contratos', 'Sollicita', '1h', 'mar/2024']
+      ['Como Utilizar a IA em Licitações e Contratos', 'Sollicita', '1h', 'mar/2024'],
+      ['Plataforma Digital: Novas Formas de Trabalho', 'ESA · OAB SP', '2,5h', 'nov/2023']
     ]],
-    ['Licitações e contratos', [
+    ['Proteção de dados e compliance', 'Governança e risco no dia a dia corporativo', [
+      ['Como Implementar a LGPD: Bases, Mecanismos e Processos', 'Enap', '25h', 'ago/2024', 1],
+      ['Compliance e Proteção de Dados', 'PUCRS', '10h', 'ago/2024', 1],
+      ['Proteção de Dados Pessoais', 'OAB Federal', '2h', 'set/2024'],
+      ['Corrupção e Compliance: Desafios Contemporâneos', 'ESA · OAB SP', '12h', 'nov/2023'],
+      ['Normas Anticorrupção, Antissuborno e Compliance Público', 'FGV Online', '5h', 'nov/2023'],
+      ['Proteção de Dados', 'FGV · nic.br', '5h', 'nov/2023'],
+      ['Compliance', 'FGV', '30h', 'nov/2022', 1],
+      ['Fundamentos da LGPD', 'Enap', '15h', 'abr/2022'],
+      ['Introdução à Lei Brasileira de Proteção de Dados Pessoais', 'Enap', '10h', 'fev/2022']
+    ]],
+    ['Processos e gestão', 'Mapeamento, priorização e projetos', [
+      ['Mapeamento de Processos de Trabalho com BPMN e Bizagi', 'ISC · TCU', '10h', 'set/2025', 1],
+      ['Estratégias de Produtividade: Clareza, Propósito e Priorização', 'Enap', '25h', 'ago/2024'],
+      ['Scrum no Contexto do Serviço Público', 'Enap', '15h', 'out/2023', 1],
+      ['Get Started with Bizagi Modeler', 'Bizagi Training', '', 'nov/2023']
+    ]],
+    ['Contabilidade', 'Base financeira para M&A', [
+      ['Análise das Demonstrações Contábeis', 'FGV', '30h', 'mai/2026', 1]
+    ]],
+    ['Comunicação e pessoas', 'Ensinar e conduzir times', [
+      ['Comunicação Não Violenta', 'Enap', '20h', 'dez/2023', 1],
+      ['Diversidade e Inclusão no Ambiente de Trabalho', 'Enap', '20h', 'set/2025'],
+      ['Virtudes e Forças de Caráter', 'PUCRS', '10h', 'set/2024']
+    ]],
+    ['Inglês', 'EF SET, nível C2 Proficient', [
+      ['EF SET English Certificate, nível C2 Proficient', 'EF SET', '', 'ago/2024', 1]
+    ]]
+  ];
+  var archive = [
+    ['Contratações públicas', 'Cinco anos como pregoeira e analista de contratos', [
       ['Termo de Referência e Projeto Básico nas Licitações', 'EGP · TCE-PR', '8h', 'set/2025'],
       ['Treinamento e Capacitação: Gestão de Contratos (RLC Sistema S)', 'INGEP', '20h', 'out/2024'],
       ['Treinamento Orientativo: Gestão de Contratos (RLC Sistema S)', 'INGEP', '16h', 'out/2024'],
@@ -1159,88 +1432,55 @@
       ['Elaboração de Termos de Referência para Contratação de Bens e Serviços', 'Enap', '20h', 'set/2023'],
       ['Gestão e Fiscalização de Contratos Administrativos', 'Enap', '40h', 'abr/2022'],
       ['Fundamentos dos Contratos', 'Prime Cursos', '40h', 'jun/2021']
-    ]],
-    ['Proteção de dados e compliance', [
-      ['Proteção de Dados Pessoais', 'OAB Federal', '2h', 'set/2024'],
-      ['Compliance e Proteção de Dados', 'PUCRS', '10h', 'ago/2024'],
-      ['Como Implementar a LGPD: Bases, Mecanismos e Processos', 'Enap', '25h', 'ago/2024'],
-      ['Corrupção e Compliance: Desafios Contemporâneos', 'ESA · OAB SP', '12h', 'nov/2023'],
-      ['Normas Anticorrupção, Antissuborno e Compliance Público', 'FGV Online', '5h', 'nov/2023'],
-      ['Proteção de Dados', 'FGV · nic.br', '5h', 'nov/2023'],
-      ['Compliance', 'FGV', '30h', 'nov/2022'],
-      ['Fundamentos da LGPD', 'Enap', '15h', 'abr/2022'],
-      ['Introdução à Lei Brasileira de Proteção de Dados Pessoais', 'Enap', '10h', 'fev/2022']
-    ]],
-    ['Gestão de processos', [
-      ['Mapeamento de Processos de Trabalho com BPMN e Bizagi', 'ISC · TCU', '10h', 'set/2025'],
-      ['Estratégias de Produtividade: Clareza, Propósito e Priorização', 'Enap', '25h', 'ago/2024'],
-      ['Get Started with Bizagi Modeler', 'Bizagi Training', '', 'nov/2023'],
-      ['Scrum no Contexto do Serviço Público', 'Enap', '15h', 'out/2023']
-    ]],
-    ['Comunicação e desenvolvimento', [
-      ['Diversidade e Inclusão no Ambiente de Trabalho', 'Enap', '20h', 'set/2025'],
-      ['Virtudes e Forças de Caráter', 'PUCRS', '10h', 'set/2024'],
-      ['Comunicação Não Violenta', 'Enap', '20h', 'dez/2023'],
-      ['Redação Oficial', 'Prime Cursos', '40h', 'jun/2021']
-    ]],
-    ['Tecnologia e ferramentas', [
-      ['Direito e Novas Tecnologias', 'Enap', '5h', 'ago/2024'],
-      ['Microsoft Outlook', 'CNJ', '20h', 'nov/2023'],
-      ['Plataforma Digital: Novas Formas de Trabalho', 'ESA · OAB SP', '2,5h', 'nov/2023'],
-      ['Excel', 'Enap', '25h', 'out/2023']
-    ]],
-    ['Contabilidade', [
-      ['Análise das Demonstrações Contábeis', 'FGV', '30h', 'mai/2026']
-    ]],
-    ['Idiomas', [
-      ['EF SET English Certificate, nível C2 Proficient', 'EF SET', '', 'ago/2024']
-    ]],
-    ['Saúde e segurança no trabalho', [
-      ['Capacitação NR05: CIPA', 'PRESEGMED', '12h', 'jun/2025']
     ]]
   ];
 
-  function hours(list) {
-    var sum = 0;
-    list.forEach(function (c) { if (c[2]) sum += parseFloat(c[2].replace(',', '.')); });
-    return sum;
-  }
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function hrs(list) { var t = 0; list.forEach(function (c) { if (c[2]) t += parseFloat(c[2].replace(',', '.')); }); return t; }
+  function fmt(n) { return String(n).replace('.', ','); }
+  function esc(x) { return x.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  var maxH = Math.max.apply(null, route.map(function (c) { return hrs(c[2]); }));
 
-  var cats = document.getElementById('cats');
-  cats.innerHTML = data.map(function (cat, i) {
-    var n = cat[1].length, h = hours(cat[1]);
-    var meta = n + (n === 1 ? ' curso' : ' cursos') + (h ? ', ' + String(h).replace('.', ',') + 'h' : '');
-    var rows = cat[1].map(function (c) {
-      return '<div class="course"><span class="cn">' + esc(c[0]) + '</span><span class="ci">' + esc(c[1]) + '</span><span class="ch">' + (c[2] || '') + '</span><span class="cd">' + c[3] + '</span></div>';
+  function legHTML(cat, id, gauge) {
+    var h = hrs(cat[2]), n = cat[2].length;
+    var rows = cat[2].map(function (c) {
+      return '<div class="course' + (c[4] ? ' key' : '') + '"><span class="cn">' + esc(c[0]) + '</span><span class="ci">' + esc(c[1]) + '</span><span class="ch">' + (c[2] || '') + '</span><span class="cd">' + c[3] + '</span></div>';
     }).join('');
-    return '<div class="cat"><button class="cat-btn" type="button" aria-expanded="false" aria-controls="cat-' + i + '">' +
-      '<span class="t">' + cat[0] + '</span><span class="n">' + meta + '</span>' +
+    return '<div class="leg"><button class="leg-btn" type="button" aria-expanded="false" aria-controls="' + id + '">' +
+      '<span class="t">' + cat[0] + '<small>' + cat[1] + '</small></span>' +
+      (gauge && h ? '<span class="gauge" aria-hidden="true"><i style="--w:' + Math.max(4, h / maxH * 100).toFixed(1) + '%"></i></span>' : '<span></span>') +
+      '<span class="h">' + (h ? fmt(h) + 'h' : n + (n === 1 ? ' certificado' : ' cursos')) + '</span>' +
       '<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>' +
-      '<div class="cat-body" id="cat-' + i + '"><div><div class="pad">' + rows + '</div></div></div></div>';
-  }).join('');
-
-  var catEls = Array.prototype.slice.call(cats.querySelectorAll('.cat'));
-  var toggleAll = document.getElementById('toggleAll');
-  function sync() {
-    var all = catEls.every(function (c) { return c.classList.contains('open'); });
-    toggleAll.textContent = all ? 'Fechar todas as áreas' : 'Abrir todas as áreas';
-    toggleAll.setAttribute('aria-expanded', all ? 'true' : 'false');
+      '<div class="leg-body" id="' + id + '"><div><div class="pad">' + rows + '</div></div></div></div>';
   }
-  function setOpen(c, open) {
-    c.classList.toggle('open', open);
-    c.querySelector('.cat-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  catEls.forEach(function (c) {
-    c.querySelector('.cat-btn').addEventListener('click', function () {
-      setOpen(c, !c.classList.contains('open')); sync();
+  var routeEl = document.getElementById('route'), archEl = document.getElementById('archive');
+  routeEl.innerHTML = route.map(function (c, i) { return legHTML(c, 'r' + i, true); }).join('');
+  archEl.innerHTML = '<div class="archive-label">Voos anteriores</div>' + archive.map(function (c, i) { return legHTML(c, 'a' + i, false); }).join('');
+  document.querySelectorAll('.leg').forEach(function (l) {
+    var b = l.querySelector('.leg-btn');
+    b.addEventListener('click', function () {
+      var open = !l.classList.contains('open');
+      l.classList.toggle('open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
-  toggleAll.addEventListener('click', function () {
-    var open = !catEls.every(function (c) { return c.classList.contains('open'); });
-    catEls.forEach(function (c, i) { setTimeout(function () { setOpen(c, open); }, reduce ? 0 : i * 45); });
-    setTimeout(sync, reduce ? 0 : catEls.length * 45 + 20);
-  });
+
+  // odômetro: soma tudo e conta até o total quando o diário entra na tela
+  var total = hrs([].concat.apply([], route.concat(archive).map(function (c) { return c[2]; })));
+  var odo = document.getElementById('odo');
+  odo.parentNode.setAttribute('aria-label', fmt(total) + ' horas registradas');
+  new IntersectionObserver(function (es, o) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      o.disconnect(); routeEl.classList.add('seen');
+      if (reduce) { odo.textContent = fmt(total); return; }
+      var t0 = performance.now(), D = 1600;
+      (function step(now) {
+        var k = Math.min(1, (now - t0) / D), ease = 1 - Math.pow(1 - k, 4);
+        var v = total * ease;
+        odo.textContent = k < 1 ? Math.floor(v).toLocaleString('pt-BR') : fmt(total);
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }, { threshold: 0.35 }).observe(document.querySelector('.logbook'));
 })();
 </script>
 </body>
