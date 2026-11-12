@@ -478,14 +478,6 @@
   }
 
   /* jogo */
-  .shot {
-    border-radius: 2px; overflow: hidden;
-    border: 1px solid var(--line-2);
-    box-shadow: 0 18px 40px -24px rgba(16,22,40,0.5);
-    aspect-ratio: 1902 / 844;
-    background: var(--bg-2);
-  }
-  .shot img { width: 100%; height: 100%; object-fit: cover; }
   .hazards { display: flex; flex-wrap: wrap; gap: 6px; }
   .hazards span {
     display: inline-flex; align-items: center; gap: 0.45rem;
@@ -494,6 +486,29 @@
     box-shadow: 0 1px 0 var(--spec-a) inset;
   }
   .hazards svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
+
+
+  /* demo jogável */
+  .play {
+    position: relative; overflow: hidden; border-radius: 2px;
+    border: 1px solid var(--line-2); background: #DCE6FB;
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 18px 40px -24px rgba(16,22,40,0.5);
+  }
+  .play img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 60%; transition: filter 0.6s var(--ease), transform 0.8s var(--ease); }
+  .play:hover img { transform: scale(1.02); }
+  .play::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(16,22,40,0.35)); z-index: 1; pointer-events: none; }
+  .play-btn {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
+    height: 54px; padding: 0 1.5rem 0 1.15rem; font-weight: 500; font-size: 1rem;
+    background: rgba(255,255,255,0.62); color: #101628;
+  }
+  .play-btn:active { transform: translate(-50%, -50%) scale(0.965); }
+  .play-btn svg { width: 20px; height: 20px; color: #2B4CF0; }
+  .play-note { position: absolute; left: 0; right: 0; bottom: 0.8rem; text-align: center; z-index: 3; font-size: 0.8rem; color: rgba(255,255,255,0.92); text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+  .play iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 4; background: #DCE6FB; }
+  .play.on img, .play.on .play-btn, .play.on .play-note, .play.on::before { display: none; }
+  @media (hover: none) { .play-note { display: none; } }
 
   /* oficinas */
   .big {
@@ -734,11 +749,16 @@
       <!-- Jogo -->
       <article class="card c-game glass panel">
         <span class="kind">Jogo educativo · Claude Code</span>
-        <h3>Cinco andares até o legal assessment</h3>
-        <figure class="shot">
+        <h3>O Labirinto</h3>
+        <div class="play" id="play">
           <img src="assets/jogo.jpg" alt="Primeira fase do jogo: a personagem no andar de recepção, cercada de documentos, telas e mesas de escritório" width="1902" height="844" loading="lazy">
-        </figure>
-        <p>Um jogo de plataforma para ensinar a quem pede ajuda ao jurídico qual é o canal certo para cada demanda. São cinco fases, uma em cada andar. A personagem precisa entregar um legal assessment e atravessar a vida corporativa no caminho, usando o poder do foco para não ser atingida.</p>
+          <button class="play-btn glass pill press" id="playBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+            Jogar a primeira fase
+          </button>
+          <span class="play-note">Teclado: setas ou WASD. No celular, controles na tela.</span>
+        </div>
+        <p>Um jogo de plataforma para ensinar a quem pede ajuda ao jurídico qual é o canal certo para cada demanda. São cinco fases, e a personagem precisa entregar um legal assessment atravessando a vida corporativa, com o poder do foco para não ser atingida. A primeira fase está liberada aqui.</p>
         <div class="hazards" aria-label="Obstáculos do jogo">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>Emails bumerangue</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg>Pilhas de papel</span>
@@ -1083,6 +1103,19 @@
       requestAnimationFrame(loop);
     })(t0);
   }
+
+
+  /* ---------- Demo jogável ---------- */
+  var play = document.getElementById('play');
+  document.getElementById('playBtn').addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'assets/labirinto/index.html';
+    f.title = 'O Labirinto, primeira fase jogável';
+    f.allow = 'autoplay';
+    play.appendChild(f);
+    play.classList.add('on');
+    f.addEventListener('load', function () { f.focus(); });
+  });
 
   /* ---------- Formação complementar ---------- */
   var data = [

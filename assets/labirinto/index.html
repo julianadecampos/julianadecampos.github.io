@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>O Labirinto: demonstração</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>body{margin:0;overflow:hidden}.intro-mark{width:12px;height:12px;border-radius:50%;background:#2B4CF0;margin:0 auto 12px}#intro{overflow-y:auto}@media (max-height:560px){.intro-inner{padding:14px 18px!important}.intro-inner h1{font-size:30px!important;margin:0 0 4px!important;line-height:1.05!important}.intro-lead{margin:0 0 8px!important}.intro-story{font-size:13px!important;line-height:1.45!important;margin:0 auto 10px!important;max-width:44ch}.intro-rules{display:grid!important;grid-template-columns:1fr 1fr;gap:4px 14px!important;font-size:11.5px!important;margin:0 auto 12px!important;max-width:470px}.intro-rules div{margin:0!important}.intro-foot{display:none}.btn.big{padding:10px 26px!important;font-size:14px!important}}</style>
+</head><body>
+<div id="stage">
+  <canvas id="game"></canvas>
+  <div id="hud"><div class="topbar">
+    <div class="hud-left"><div class="hud-level" id="hudLevel"></div><div class="hud-subtitle" id="hudSub">&nbsp;</div><div class="hud-dots" id="hudDots"></div></div>
+    <div class="hud-right">
+      <div class="stat-chip" title="Vidas infinitas"><span class="chip-ico">∞</span><span class="chip-lab">vidas</span></div>
+      <div class="stat-chip" title="Tarefas concluídas"><span class="chip-ico task">✓</span><span id="hudCoffee">0</span><span class="chip-lab">tasks</span></div>
+      <div class="stat-chip" title="Recomeços"><span class="chip-ico retry">↺</span><span id="hudDeaths">0</span></div>
+      <button class="sound-btn" id="soundBtn" title="Ligar ou desligar o som" aria-label="Ligar ou desligar o som"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9v6h4l5 4V5L9 9H5z"/><path class="wave" d="M17 9.5a4 4 0 0 1 0 5"/><path class="wave" d="M19.5 7a7.5 7.5 0 0 1 0 10"/><path class="slash" d="M3 3l18 18"/></svg></button>
+    </div></div></div>
+  <div id="banner"></div>
+  <div id="bossBar"><span class="boss-name"></span><span class="boss-track"><i id="bossFill"></i></span><span class="boss-count" id="bossCount"></span></div>
+  <div id="powerBar"><span class="power-label">MODO FOCO</span><span class="power-track"><i id="powerFill"></i></span><span class="power-time" id="powerTime">10.0s</span></div>
+  <div id="touchpad"><div class="pad-left"><button class="pad" id="padLeft" aria-label="Esquerda">◀</button><button class="pad" id="padRight" aria-label="Direita">▶</button></div>
+    <div class="pad-right"><button class="pad" id="padDuck" aria-label="Abaixar">▼</button><button class="pad pad-jump" id="padJump" aria-label="Pular">PULAR</button></div></div>
+  <div id="overlay" class="hidden"><div id="window" class="mac-window">
+    <div class="mac-titlebar"><div class="traffic"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div><div class="mac-title" id="winTitle"></div><div class="mac-spacer"></div></div>
+    <div class="mac-toolbar"><div class="tool-chip" id="chipApp"></div><div class="tool-chip ghost" id="chipTag"></div></div>
+    <div class="mac-body" id="winBody"></div>
+    <div class="mac-footer"><button class="btn ghost hidden" id="btnSecondary"></button><button class="btn" id="btnPrimary">Continuar</button></div>
+  </div></div>
+  <div id="intro"><div class="intro-inner">
+    <div class="intro-mark"></div>
+    <h1>O Labirinto</h1>
+    <p class="intro-lead">Demonstração: fase 1 de 5</p>
+    <p class="intro-story">Você precisa entregar um <strong>legal assessment</strong>. No caminho, a vida corporativa: reuniões que brotam do chão, notificações em enxame e prazos que correm atrás de você.</p>
+    <div class="intro-rules">
+      <div><span>←→</span> andar</div>
+      <div><span>↑</span> pular sobre os obstáculos</div>
+      <div><span>↓</span> abaixar para passar por baixo dos armários</div>
+      <div><span>✓</span> coletar tarefas concluídas</div>
+      <div><span>∞</span> vidas infinitas: caiu, volta perto de onde estava</div>
+    </div>
+    <button class="btn big" id="btnStart">Começar</button>
+    <p class="intro-foot">também funciona com WASD e espaço</p>
+  </div></div>
+</div>
+<script src="js/audio.js"></script><script src="js/levels.js"></script><script src="js/theme.js"></script><script src="js/sprites2d.js"></script><script src="js/scenery.js"></script><script src="js/actors.js"></script><script src="js/platformer.js"></script>
+</body></html>
