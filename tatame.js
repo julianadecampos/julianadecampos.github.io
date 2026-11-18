@@ -60,16 +60,16 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.08;
 
-const C = { bg: 0xF3F1EC, ink: 0x14110F, grey: 0xB9B2A4, greyNode: 0xDDD8CD, white: 0xFBFAF7, line: 0xE0DBD1, edge: 0xCFC8BA };
-const BELT = { none: "#B9B2A4", white: "#F4F2EC", blue: "#2346C8", purple: "#5B2D91", brown: "#6B4224", black: "#14110F" };
-const BAR = { none: "#B9B2A4", white: "#14110F", blue: "#14110F", purple: "#14110F", brown: "#14110F", black: "#C8102E" };
+const C = { bg: 0xEEF1F6, ink: 0x14110F, grey: 0xADB5C4, greyNode: 0xD8DEE8, white: 0xFBFCFE, line: 0xDCE1EA, edge: 0xC8CFDB };
+const BELT = { none: "#ADB5C4", white: "#F4F6F9", blue: "#2346C8", purple: "#5B2D91", brown: "#6B4224", black: "#14110F" };
+const BAR = { none: "#ADB5C4", white: "#14110F", blue: "#14110F", purple: "#14110F", brown: "#14110F", black: "#C8102E" };
 
 const scene = new THREE.Scene();
 { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture; scene.environmentIntensity = .45; }
 scene.background = new THREE.Color(C.bg);
 scene.fog = new THREE.Fog(C.bg, 14, 75);
 const camera = new THREE.PerspectiveCamera(isSmall() ? 62 : 52, innerWidth / innerHeight, .1, 600);
-scene.add(new THREE.HemisphereLight(0xffffff, 0xe6e0d4, 1.7));
+scene.add(new THREE.HemisphereLight(0xffffff, 0xE0E5ED, 1.7));
 const sun = new THREE.DirectionalLight(0xffffff, 1.3); sun.position.set(12, 24, 10); scene.add(sun);
 
 /* ================= helpers (shared vocabulary with the main scene) ================= */
@@ -120,7 +120,7 @@ function makePortal(type, { x, z, scale = 1, color = C.white, edgeOpacity = .35,
   scene.add(group);
   return { group, mat, lmat, topY: (cy + top) * scale };
 }
-function labelTexture(text, { bg = "#FBFAF7", fg = "#14110F", border = "#14110F", swatch = null, bar = null } = {}) {
+function labelTexture(text, { bg = "#FBFCFE", fg = "#14110F", border = "#14110F", swatch = null, bar = null } = {}) {
   const c = document.createElement("canvas"), x = c.getContext("2d");
   const fs = 44, padX = 30, sw = swatch ? 74 : 0, font = `500 ${fs}px "DM Mono", ui-monospace, monospace`;
   x.font = font;
@@ -195,7 +195,7 @@ function ribbon(half, y, colorAt) {                // a flat strip that follows 
   g.setIndex(idx); return g;
 }
 const unlit = new THREE.MeshBasicMaterial({ vertexColors: true });
-scene.add(new THREE.Mesh(ribbon(.36, .055, () => "#CFC8BA"), unlit));                 // the hem that outlines the belt
+scene.add(new THREE.Mesh(ribbon(.36, .055, () => "#C8CFDB"), unlit));                 // the hem that outlines the belt
 scene.add(new THREE.Mesh(ribbon(.3, .06, s => {
   const b = beltAt(s);
   const next = NODES.find(n => n.s > s + .01);                                        // the rank bar, just before each graduation
@@ -228,7 +228,7 @@ const beacon = new THREE.Mesh(new THREE.CylinderGeometry(.12, .12, 80, 8), new T
 beacon.position.set(endNode.x, 40, endNode.z); scene.add(beacon);
 const beaconCap = new THREE.Mesh(new THREE.OctahedronGeometry(.7), new THREE.MeshBasicMaterial({ color: C.ink, fog: false, transparent: true }));
 beaconCap.position.set(endNode.x, 8.5, endNode.z); scene.add(beaconCap);
-const northLabel = makeLabel("↑ VOZ", endNode.x, 10, endNode.z, 1, { bg: "#14110F", fg: "#FBFAF7", border: "#14110F" });
+const northLabel = makeLabel("↑ VOZ", endNode.x, 10, endNode.z, 1, { bg: "#14110F", fg: "#FBFCFE", border: "#14110F" });
 northLabel.material.fog = false;
 
 /* ================= the walker and the finale (same as the main page, in the red of the black belt's bar) ================= */
@@ -350,7 +350,7 @@ function frame() {
   /* each portal takes the colour of the belt it awarded once you have passed it */
   NODES.forEach(n => {
     const done = cur.air < .5 && cur.s >= n.s - (n.type === "end" ? 9.5 : .5);
-    n.portal.mat.color.lerp(col.set(done ? BELT[n.belt] : "#FBFAF7"), reduce ? 1 : .12);
+    n.portal.mat.color.lerp(col.set(done ? BELT[n.belt] : "#FBFCFE"), reduce ? 1 : .12);
     n.portal.lmat.opacity = lerp(n.portal.lmat.opacity, done ? .7 : .35, .12);
     n.label.material.opacity = ss(5, 11, camera.position.distanceTo(n.label.position));
   });

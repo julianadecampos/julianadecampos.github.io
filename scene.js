@@ -22,7 +22,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.08;
 
-const C = { bg: 0xF3F1EC, blue: 0x2B3BFF, ink: 0x14110F, grey: 0xB9B2A4, greyNode: 0xDDD8CD, white: 0xFBFAF7, orange: 0xFF5B1F };
+const C = { bg: 0xEEF1F6, blue: 0x2B3BFF, ink: 0x14110F, grey: 0xADB5C4, greyNode: 0xD8DEE8, white: 0xFBFCFE, orange: 0xFF5B1F };
 
 const scene = new THREE.Scene();
 { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture; scene.environmentIntensity = .45; }
@@ -30,12 +30,12 @@ scene.background = new THREE.Color(C.bg);
 scene.fog = new THREE.Fog(C.bg, 14, 75);
 const camera = new THREE.PerspectiveCamera(isSmall() ? 62 : 52, innerWidth / innerHeight, 0.1, 600);
 
-scene.add(new THREE.HemisphereLight(0xffffff, 0xe6e0d4, 1.7));
+scene.add(new THREE.HemisphereLight(0xffffff, 0xE0E5ED, 1.7));
 const sun = new THREE.DirectionalLight(0xffffff, 1.3);
 sun.position.set(12, 24, 10);
 scene.add(sun);
 
-const grid = new THREE.GridHelper(480, 240, 0xE0DBD1, 0xE6E2D9);
+const grid = new THREE.GridHelper(480, 240, 0xDCE1EA, 0xE3E7EE);
 scene.add(grid);
 
 /* ---------------- helpers ---------------- */
@@ -119,7 +119,7 @@ function makePortal(type, { x, z, scale = 1, color = C.white, edge = C.ink, edge
 }
 
 /* ---------------- labels (canvas sprites) ---------------- */
-function labelTexture(text, { bg = "#FBFAF7", fg = "#14110F", border = "#14110F" } = {}) {
+function labelTexture(text, { bg = "#FBFCFE", fg = "#14110F", border = "#14110F" } = {}) {
   const c = document.createElement("canvas"), x = c.getContext("2d");
   const fs = 44, padX = 30, font = `500 ${fs}px "DM Mono", ui-monospace, monospace`;
   x.font = font;
@@ -192,7 +192,7 @@ scene.add(beacon);
 const beaconCap = new THREE.Mesh(new THREE.OctahedronGeometry(.7), new THREE.MeshBasicMaterial({ color: C.blue, fog: false }));
 beaconCap.position.set(endNode.x, 8.5, endNode.z);
 scene.add(beaconCap);
-const northLabel = makeLabel("↑ " + LBL[lang].north, endNode.x, 10, endNode.z, 1, { bg: "#2B3BFF", fg: "#FBFAF7", border: "#2B3BFF" });
+const northLabel = makeLabel("↑ " + LBL[lang].north, endNode.x, 10, endNode.z, 1, { bg: "#2B3BFF", fg: "#FBFCFE", border: "#2B3BFF" });
 northLabel.material.fog = false;
 
 /* ---------------- the finale: the request reaches the end event, the ring closes
@@ -232,7 +232,7 @@ TOOLS.forEach(t => {
   scene.add(new THREE.Mesh(new THREE.TubeGeometry(bp, 80, .07, 6, false), t.mat));
   t.portal = makePortal("task", { x: t.x, z: gw.z - 9, scale: .5, color: C.greyNode, edgeOpacity: .25 });
   t.end = makePortal("end", { x: t.x, z: gw.z - 14, scale: .3, color: C.greyNode, edgeOpacity: .2 });
-  t.label = makeLabel(t.name, t.x, t.portal.topY + .55, gw.z - 9, .55, { bg: "#FBFAF7", fg: "#6E685E", border: "#CDC7BB" });
+  t.label = makeLabel(t.name, t.x, t.portal.topY + .55, gw.z - 9, .55, { bg: "#FBFCFE", fg: "#5D6477", border: "#C9CFDA" });
 });
 function highlightTool(i) {
   TOOLS.forEach((t, k) => {
