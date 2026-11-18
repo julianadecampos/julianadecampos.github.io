@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A trilha do tatame · Juliana de Campos Ribeiro</title>
+<meta name="description" content="A trajetória de Juliana de Campos Ribeiro no jiu-jitsu, faixa a faixa.">
+<meta name="theme-color" content="#F3F1EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="tatame.css?v=13">
+</head>
+<body class="dojo">
+<div class="scene-skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="capsule dojo-cap">
+    <a href="index.html#historico" class="back" data-t="back">← fluxo principal</a>
+    <div class="belt-prog" aria-hidden="true"><i id="beltFill"></i><b id="beltBar"></b></div>
+    <span class="mono dojo-stage" id="dojoStage">2014 · faixa branca</span>
+    <button class="lang" id="lang" type="button" aria-label="Mudar idioma / Change language">EN</button>
+  </div>
+</header>
+
+<main>
+  <section class="stage hero" data-stage="0">
+    <div class="hero-text">
+      <p class="tag"><span class="belt-ico" aria-hidden="true"></span><span data-t="k0">desvio opcional · a trilha do tatame</span></p>
+      <h1 data-t="h0">A trilha do <em>tatame</em>.</h1>
+      <p class="lead" data-t="p0">No tatame, a técnica se constrói pela repetição, com alguém atento aos detalhes. Role para percorrer a trajetória, faixa a faixa.</p>
+      <p class="scroll-hint mono" data-t="hint">role para seguir a trilha ↓</p>
+    </div>
+  </section>
+
+  <section class="stage" data-stage="1"><div class="panel dojo-card" style="--b:#F4F1EA">
+    <p class="tag mono"><span class="sw"></span>2014 · <span data-t="b1">faixa branca</span></p>
+    <h2 data-t="h1">O primeiro dia de <em>tatame</em>.</h2>
+    <p data-t="p1">Início no jiu-jitsu, na Soul Fighters.</p>
+  </div></section>
+
+  <section class="stage" data-stage="2"><div class="panel dojo-card" style="--b:#1F4FD1">
+    <p class="tag mono"><span class="sw"></span>2015 · <span data-t="b2">faixa azul</span></p>
+    <h2 data-t="h2">Faixa <em>azul</em>.</h2>
+    <p data-t="p2">A primeira graduação.</p>
+    <p class="ev" data-t="p2b">2019 · Aula Aberta de Feminismo e Defesa Pessoal no Teatro de Arena, em Porto Alegre, com a ONG Emancipa Mulher.</p>
+  </div></section>
+
+  <section class="stage" data-stage="3"><div class="panel dojo-card" style="--b:#6B3FA0">
+    <p class="tag mono"><span class="sw"></span>2019 · <span data-t="b3">faixa roxa</span></p>
+    <h2 data-t="h3">Faixa <em>roxa</em>.</h2>
+    <p data-t="p3">Ainda em 2019, a graduação seguinte.</p>
+  </div></section>
+
+  <section class="stage" data-stage="4"><div class="panel dojo-card" style="--b:#6B3FA0">
+    <p class="tag mono"><span class="sw"></span>2020 · SBA</p>
+    <h2 data-t="h4">Uma nova <em>casa</em>.</h2>
+    <p data-t="p4">Passa a treinar na SBA.</p>
+  </div></section>
+
+  <section class="stage" data-stage="5"><div class="panel dojo-card" style="--b:#7A4A26">
+    <p class="tag mono"><span class="sw"></span>2022 · <span data-t="b5">faixa marrom</span></p>
+    <h2 data-t="h5">Faixa <em>marrom</em>.</h2>
+    <p data-t="p5">A penúltima graduação.</p>
+  </div></section>
+
+  <section class="stage" data-stage="6"><div class="panel dojo-card black" style="--b:#14110F">
+    <p class="tag mono"><span class="sw"></span>2024 · <span data-t="b6">faixa preta</span></p>
+    <h2 data-t="h6">Faixa <em>preta</em>.</h2>
+    <p data-t="p6">Dez anos depois do primeiro dia de tatame.</p>
+  </div></section>
+
+  <section class="stage" data-stage="7"><div class="panel dojo-card black" style="--b:#14110F">
+    <p class="tag mono"><span class="sw"></span>2025 · <span data-t="b7">liderança</span></p>
+    <h2 data-t="h7">Formar outras <em>mulheres</em>.</h2>
+    <p class="ev" data-t="p7">Projeto de Formação de Lideranças Mulheres no Jiu-Jitsu.</p>
+  </div></section>
+
+  <section class="stage" data-stage="8"><div class="panel dojo-card black" style="--b:#14110F">
+    <p class="tag mono"><span class="sw"></span>2026 · Yvone Duarte Jiu-Jitsu</p>
+    <h2 data-t="h8">Aluna da Mestra <em>Yvone Duarte</em>.</h2>
+    <p data-t="p8">Passa a treinar na Yvone Duarte Jiu-Jitsu.</p>
+    <p class="ev" data-t="p8b">Seminário Público de Autodefesa com a Mestra Yvone Duarte, na UFRGS.</p>
+  </div></section>
+
+  <section class="stage end" data-stage="9"><div class="panel dojo-card black" style="--b:#14110F">
+    <p class="tag mono"><span class="sw"></span>VOZ</p>
+    <h2 data-t="h9">O tatame como <em>voz</em>.</h2>
+    <p data-t="p9">Idealizadora do VOZ, projeto social que desenvolve mulheres por meio do jiu-jitsu.</p>
+    <a class="btn big" href="index.html#historico" data-t="back2">← Voltar ao fluxo principal</a>
+  </div></section>
+</main>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span data-t="mq">faixa branca <i>✦</i> faixa azul <i>✦</i> faixa roxa <i>✦</i> faixa marrom <i>✦</i> faixa preta <i>✦</i> a técnica se constrói pela repetição <i>✦</i>&nbsp;</span>
+  <span data-t="mq">faixa branca <i>✦</i> faixa azul <i>✦</i> faixa roxa <i>✦</i> faixa marrom <i>✦</i> faixa preta <i>✦</i> a técnica se constrói pela repetição <i>✦</i>&nbsp;</span>
+</div></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="tatame.js?v=13"></script>
+</body>
+</html>

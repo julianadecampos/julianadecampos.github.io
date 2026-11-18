@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>O Labirinto · fase final</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root{color-scheme:light;box-sizing:border-box}
+  body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#faf9f5;color:#141413;overflow:hidden}
+  img{max-width:100%}
+  [hidden]:not([hidden=until-found i]){display:none!important}
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div class="topbar">
+      <div class="hud-left">
+        <div class="hud-level" id="hudLevel">Fase final</div>
+        <div class="hud-subtitle" id="hudSub">&nbsp;</div>
+        <div class="hud-dots" id="hudDots"></div>
+      </div>
+      <div class="hud-right">
+        <div class="stat-chip" title="Vidas infinitas">
+          <span class="chip-ico">∞</span><span class="chip-lab">vidas</span>
+        </div>
+        <div class="stat-chip" title="Tarefas concluídas">
+          <span class="chip-ico task">✓</span><span id="hudCoffee">0</span>
+          <span class="chip-lab">tasks</span>
+        </div>
+        <div class="stat-chip" title="Recomeços">
+          <span class="chip-ico retry">↺</span><span id="hudDeaths">0</span>
+        </div>
+        <button class="sound-btn" id="soundBtn" title="Ligar/desligar som" aria-label="Desligar som">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 9v6h4l5 4V5L9 9H5z"/>
+            <path class="wave" d="M17 9.5a4 4 0 0 1 0 5"/>
+            <path class="wave" d="M19.5 7a7.5 7.5 0 0 1 0 10"/>
+            <path class="slash" d="M3 3l18 18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="banner"></div>
+
+  <div id="bossBar">
+    <span class="boss-name">THREADS DO GRANDE CHAT</span>
+    <span class="boss-track"><i id="bossFill"></i></span>
+    <span class="boss-count" id="bossCount">6 / 6</span>
+  </div>
+
+  <div id="powerBar">
+    <span class="power-label">MODO FOCO</span>
+    <span class="power-track"><i id="powerFill"></i></span>
+    <span class="power-time" id="powerTime">10.0s</span>
+  </div>
+
+  <div id="touchpad">
+    <div class="pad-left">
+      <button class="pad" id="padLeft" aria-label="Esquerda">◀</button>
+      <button class="pad" id="padRight" aria-label="Direita">▶</button>
+    </div>
+    <div class="pad-right">
+      <button class="pad" id="padDuck" aria-label="Abaixar">▼</button>
+      <button class="pad pad-jump" id="padJump" aria-label="Pular">PULAR</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="hidden">
+    <div id="window" class="mac-window">
+      <div class="mac-titlebar">
+        <div class="traffic">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        </div>
+        <div class="mac-title" id="winTitle">Chat</div>
+        <div class="mac-spacer"></div>
+      </div>
+      <div class="mac-toolbar">
+        <div class="tool-chip" id="chipApp">Chat</div>
+        <div class="tool-chip ghost" id="chipTag">Jurídico</div>
+      </div>
+      <div class="mac-body" id="winBody"></div>
+      <div class="mac-footer">
+        <button class="btn ghost hidden" id="btnSecondary">Voltar</button>
+        <button class="btn" id="btnPrimary">Continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="intro">
+    <div class="intro-inner">
+      <div class="lumon-mark">
+        <svg viewBox="0 0 120 120" width="60" height="60" aria-hidden="true">
+          <circle cx="60" cy="60" r="54" fill="none" stroke="#7fd4c1" stroke-width="3"/>
+          <path d="M60 18 L60 60 L92 76" fill="none" stroke="#e8f6f2" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="6" fill="#7fd4c1"/>
+        </svg>
+      </div>
+      <h1>O Labirinto</h1>
+      <p class="intro-lead">Fase final &middot; versão de demonstração</p>
+      <p class="intro-story">
+        A demanda já passou por chat, e-mail, férias e reunião. Agora o
+        <strong>Grande Chat</strong> está soterrado de threads.
+      </p>
+      <p class="intro-text">
+        Atravesse o andar, desembarace as threads e leve a solicitação
+        até a Central de Serviços. Colete tarefas concluídas pelo caminho.
+      </p>
+      <div class="intro-rules">
+        <div><span>←→</span> andar</div>
+        <div><span>↑</span> pular &middot; salte sobre os obstáculos e pise nos novelos</div>
+        <div><span>↓</span> abaixar &middot; passa por baixo dos armários</div>
+        <div><span>∞</span> vidas infinitas &middot; volta pertinho de onde caiu</div>
+      </div>
+      <button class="btn big" id="btnStart">Começar</button>
+      <p class="intro-foot">também funciona com WASD e espaço</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sprites2d.js"></script>
+<script src="js/scenery.js"></script>
+<script src="js/actors.js"></script>
+<script src="js/platformer.js"></script>
+</body>
+</html>

@@ -1,1485 +1,314 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juliana de Campos Ribeiro</title>
-<meta name="description" content="Advogada em Legal Corporate. Uso inteligência artificial para transformar trabalho jurídico em processos, agentes e ferramentas.">
-<meta property="og:title" content="Juliana de Campos Ribeiro">
-<meta property="og:description" content="Advogada em Legal Corporate. Processos, agentes e ferramentas jurídicas construídas com IA.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://julianadecampos.github.io/jcr/">
-<meta name="theme-color" content="#ECEFF5" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#060913" media="(prefers-color-scheme: dark)">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juliana de Campos · jurídico não precisa ser um labirinto</title>
+<meta name="description" content="Juliana de Campos Ribeiro: processo, tecnologia e IA para times jurídicos. Atravesse o fluxo como uma solicitação.">
+<meta name="author" content="Juliana de Campos Ribeiro">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Juliana de Campos Ribeiro · Jurídico não precisa ser um labirinto">
+<meta property="og:description" content="Processo, tecnologia e IA para times jurídicos. Um portfólio que se percorre como um fluxo BPMN.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F3F1EC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23101628%22/><text y=%22.78em%22 x=%2222%22 font-size=%2286%22 font-family=%22serif%22 font-style=%22italic%22 fill=%22%23ECEFF5%22>j</text><circle cx=%2274%22 cy=%2230%22 r=%229%22 fill=%22%232B4CF0%22/></svg>">
-
-<script>
-  // Tema antes da primeira pintura, para não piscar
-  (function () {
-    var t = null;
-    try { t = localStorage.getItem('jcr-theme'); } catch (e) {}
-    if (t !== 'light' && t !== 'dark') {
-      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-theme', t);
-  })();
-</script>
-
-<style>
-  /* =========================================================
-     Tokens
-     ========================================================= */
-  :root {
-    --bg:        #ECEFF5;
-    --bg-2:      #E1E6F0;
-    --ink:       #101628;
-    --ink-2:     #2B3349;
-    --muted:     #5C6680;
-    --line:      rgba(16, 22, 40, 0.10);
-    --line-2:    rgba(16, 22, 40, 0.18);
-    --accent:    #2B4CF0;
-    --accent-2:  #1B36C4;
-    --on-accent: #FFFFFF;
-    --accent-soft: rgba(43, 76, 240, 0.10);
-
-    --glass:     rgba(255, 255, 255, 0.50);
-    --glass-2:   rgba(255, 255, 255, 0.78);
-    --spec-a:    rgba(255, 255, 255, 0.95);
-    --spec-b:    rgba(255, 255, 255, 0.18);
-    --spec-c:    rgba(16, 22, 40, 0.10);
-    --sheen:     rgba(255, 255, 255, 0.55);
-    --depth:     0 1px 0 rgba(255,255,255,0.7) inset, 0 24px 60px -30px rgba(16, 22, 40, 0.40);
-
-    --blob-1:    #8EA3FF;
-    --blob-2:    #9FE2EE;
-    --blob-3:    #CFC0FF;
-    --blob-o:    0.62;
-
-    --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
-    --body:    'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-    --r-panel: 3px;
-    --r-pill:  999px;
-
-    --ease:    cubic-bezier(0.22, 1, 0.36, 1);
-    --spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    --gutter:  clamp(1rem, 4vw, 3rem);
-    --maxw:    1240px;
-    color-scheme: light;
-  }
-
-  [data-theme="dark"] {
-    --bg:        #060913;
-    --bg-2:      #0B1122;
-    --ink:       #E9ECF6;
-    --ink-2:     #C4CBDC;
-    --muted:     #8C95AD;
-    --line:      rgba(233, 236, 246, 0.10);
-    --line-2:    rgba(233, 236, 246, 0.18);
-    --accent:    #7A90FF;
-    --accent-2:  #A3B2FF;
-    --on-accent: #060913;
-    --accent-soft: rgba(122, 144, 255, 0.14);
-
-    --glass:     rgba(255, 255, 255, 0.055);
-    --glass-2:   rgba(255, 255, 255, 0.11);
-    --spec-a:    rgba(255, 255, 255, 0.40);
-    --spec-b:    rgba(255, 255, 255, 0.04);
-    --spec-c:    rgba(255, 255, 255, 0.14);
-    --sheen:     rgba(160, 180, 255, 0.16);
-    --depth:     0 1px 0 rgba(255,255,255,0.08) inset, 0 30px 70px -30px rgba(0, 0, 0, 0.8);
-
-    --blob-1:    #2B4CF0;
-    --blob-2:    #157E96;
-    --blob-3:    #5B3FD1;
-    --blob-o:    0.42;
-    color-scheme: dark;
-  }
-
-  /* =========================================================
-     Base
-     ========================================================= */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-  body {
-    font-family: var(--body);
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--ink);
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-    transition: background-color 0.6s var(--ease), color 0.6s var(--ease);
-  }
-
-  ::selection { background: var(--accent); color: var(--on-accent); }
-
-  a { color: inherit; text-decoration: none; }
-  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-  img { display: block; max-width: 100%; }
-
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  .skip {
-    position: absolute; left: 1rem; top: -4rem; z-index: 200;
-    padding: 0.6rem 1rem; background: var(--ink); color: var(--bg);
-    border-radius: var(--r-pill);
-  }
-  .skip:focus { top: 1rem; }
-
-  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
-
-  /* =========================================================
-     Campo de luz (o que dá ao vidro algo para refratar)
-     ========================================================= */
-  .field {
-    position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
-  }
-  .field span {
-    position: absolute; border-radius: 50%; filter: blur(80px); opacity: var(--blob-o);
-    transition: background-color 0.8s var(--ease), opacity 0.8s var(--ease);
-    will-change: transform;
-  }
-  .field .b1 { width: 52vmax; height: 52vmax; background: var(--blob-1); top: -18vmax; right: -12vmax; animation: drift1 38s ease-in-out infinite alternate; }
-  .field .b2 { width: 40vmax; height: 40vmax; background: var(--blob-2); bottom: -16vmax; left: -10vmax; animation: drift2 44s ease-in-out infinite alternate; }
-  .field .b3 { width: 30vmax; height: 30vmax; background: var(--blob-3); top: 38%; left: 42%; animation: drift3 52s ease-in-out infinite alternate; }
-
-  @keyframes drift1 { to { transform: translate(-14vmax, 18vmax) scale(1.08); } }
-  @keyframes drift2 { to { transform: translate(16vmax, -12vmax) scale(0.94); } }
-  @keyframes drift3 { to { transform: translate(-22vmax, 10vmax) scale(1.15); } }
-
-  /* =========================================================
-     Vidro: material compartilhado
-     Painéis com canto reto, controles em pílula.
-     ========================================================= */
-  .glass {
-    position: relative;
-    background: var(--glass);
-    -webkit-backdrop-filter: blur(24px) saturate(170%);
-    backdrop-filter: blur(24px) saturate(170%);
-    box-shadow: var(--depth);
-    isolation: isolate;
-  }
-  /* borda especular: luz entrando pelo canto superior esquerdo */
-  .glass::before {
-    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-    background: linear-gradient(140deg, var(--spec-a), var(--spec-b) 35%, var(--spec-b) 65%, var(--spec-c));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none; z-index: 2;
-  }
-  /* brilho que segue o ponteiro */
-  .glass::after {
-    content: ""; position: absolute; inset: 0; border-radius: inherit;
-    background: radial-gradient(520px circle at var(--mx, 50%) var(--my, -30%), var(--sheen), transparent 55%);
-    opacity: 0; transition: opacity 0.5s var(--ease);
-    pointer-events: none; z-index: 1;
-  }
-  .glass.lit::after { opacity: 1; }
-
-  .panel { border-radius: var(--r-panel); }
-  .pill  { border-radius: var(--r-pill); }
-
-  /* =========================================================
-     Botões: pressão física + onda de luz no ponto do clique
-     ========================================================= */
-  .press {
-    position: relative; overflow: hidden;
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
-    transition: transform 0.45s var(--spring), background-color 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    -webkit-tap-highlight-color: transparent;
-  }
-  .press:active { transform: scale(0.965); transition-duration: 0.12s; }
-  .ripple {
-    position: absolute; border-radius: 50%; pointer-events: none; z-index: 3;
-    background: radial-gradient(circle, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.18) 40%, transparent 70%);
-    transform: scale(0); animation: ripple 0.7s var(--ease) forwards;
-    mix-blend-mode: soft-light;
-  }
-  [data-theme="dark"] .ripple { mix-blend-mode: screen; background: radial-gradient(circle, rgba(170,185,255,0.45) 0%, rgba(170,185,255,0.12) 40%, transparent 70%); }
-  @keyframes ripple { to { transform: scale(1); opacity: 0; } }
-
-  .btn {
-    min-height: 48px; padding: 0 1.5rem;
-    font-weight: 500; font-size: 0.98rem; letter-spacing: -0.005em;
-  }
-  .btn-solid {
-    background: var(--accent); color: var(--on-accent);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset, 0 14px 30px -14px var(--accent);
-  }
-  .btn-solid:hover { background: var(--accent-2); }
-  .btn-glass:hover { background: var(--glass-2); }
-
-  /* =========================================================
-     Navegação: pílula de vidro com gota que desliza
-     ========================================================= */
-  .nav {
-    position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
-    z-index: 100; width: min(calc(100% - 2rem), 760px);
-    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
-    padding: 6px;
-  }
-  .brand {
-    display: inline-flex; align-items: baseline; gap: 0.18em;
-    padding: 0 0.9rem; height: 40px; align-items: center;
-    font-family: var(--display); font-style: italic; font-size: 1.35rem; font-weight: 400;
-    font-variation-settings: "opsz" 36, "SOFT" 80, "WONK" 1;
-    letter-spacing: -0.02em;
-  }
-  .brand i {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-    transform: translateY(-0.35em); display: inline-block;
-  }
-
-  .nav-links { position: relative; display: flex; align-items: center; }
-  .nav-links a {
-    position: relative; z-index: 2;
-    height: 40px; display: inline-flex; align-items: center;
-    padding: 0 0.95rem; font-size: 0.92rem; font-weight: 450;
-    color: var(--muted); transition: color 0.3s var(--ease);
-    border-radius: var(--r-pill);
-  }
-  .nav-links a.is-active, .nav-links a:hover { color: var(--ink); }
-  .drop {
-    position: absolute; top: 0; left: 0; height: 40px; width: 0; z-index: 1;
-    border-radius: var(--r-pill);
-    background: var(--glass-2);
-    box-shadow: 0 1px 0 var(--spec-a) inset, 0 6px 16px -8px rgba(16,22,40,0.35);
-    transition: transform 0.55s var(--spring), width 0.55s var(--spring), opacity 0.3s var(--ease);
-    opacity: 0;
-  }
-
-  .theme {
-    width: 64px; height: 40px; border-radius: var(--r-pill);
-    position: relative; flex-shrink: 0;
-    background: var(--line);
-  }
-  .theme .knob {
-    position: absolute; top: 4px; left: 4px; width: 32px; height: 32px; border-radius: 50%;
-    background: var(--glass-2);
-    box-shadow: 0 1px 0 var(--spec-a) inset, 0 4px 10px -4px rgba(16,22,40,0.45);
-    display: grid; place-items: center;
-    transition: transform 0.6s var(--spring);
-  }
-  [data-theme="dark"] .theme .knob { transform: translateX(24px); }
-  .theme svg { width: 16px; height: 16px; position: absolute; transition: opacity 0.3s var(--ease), transform 0.6s var(--spring); }
-  .theme .sun  { opacity: 1; }
-  .theme .moon { opacity: 0; transform: rotate(-60deg); }
-  [data-theme="dark"] .theme .sun  { opacity: 0; transform: rotate(60deg); }
-  [data-theme="dark"] .theme .moon { opacity: 1; transform: none; }
-
-  @media (max-width: 720px) {
-    .nav-links { display: none; }
-  }
-
-  /* =========================================================
-     Hero
-     ========================================================= */
-  .hero {
-    min-height: 100svh;
-    display: grid; align-items: center;
-    padding: 7rem 0 4rem;
-  }
-  .hero .wrap {
-    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: clamp(2rem, 5vw, 5rem); align-items: center;
-  }
-  @media (max-width: 900px) {
-    .hero .wrap { grid-template-columns: 1fr; }
-    .hero { min-height: 0; padding: 6rem 0 3rem; }
-    .hero .hero-art { order: -1; height: clamp(220px, 34vh, 360px); }
-    .hero .hero-art .glyph { font-size: clamp(7rem, 46vw, 18rem); }
-    .art-hint { display: none; }
-  }
-
-  .status {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    height: 36px; padding: 0 1rem 0 0.8rem; margin-bottom: 1.75rem;
-    font-size: 0.88rem; color: var(--ink-2);
-  }
-  .status .pulse {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 0 0 var(--accent); animation: pulse 2.4s ease-out infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
-    100% { box-shadow: 0 0 0 10px transparent; }
-  }
-
-  .hero h1 {
-    font-family: var(--display);
-    font-weight: 380;
-    font-size: clamp(2.6rem, 5.2vw, 4.4rem);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
-    font-variation-settings: "opsz" 144, "SOFT" 30;
-    margin-bottom: 1.5rem;
-  }
-  .hero .lead {
-    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
-    line-height: 1.55;
-    color: var(--ink-2);
-    max-width: 34ch;
-    margin-bottom: 2.25rem;
-  }
-  .hero .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-  /* Monograma com lente de vidro */
-  .hero-art {
-    position: relative;
-    height: clamp(300px, 58vh, 620px);
-    display: grid; place-items: center;
-    touch-action: pan-y;
-  }
-  .glyph {
-    font-family: var(--display); font-style: italic; font-weight: 340;
-    font-size: clamp(8rem, 24vw, 23rem);
-    line-height: 0.8; letter-spacing: -0.05em;
-    font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
-    display: flex; align-items: baseline; gap: 0.06em;
-    color: var(--ink);
-    user-select: none;
-    white-space: nowrap;
-  }
-  .glyph .g-dot {
-    width: 0.09em; height: 0.09em; border-radius: 50%; background: var(--accent);
-    align-self: center; transform: translateY(-0.1em);
-    display: inline-block;
-  }
-  .glyph-base { position: absolute; inset: 0; display: grid; place-items: center; }
-
-  .lens {
-    position: absolute; left: 0; top: 0;
-    width: var(--lens, 220px); height: var(--lens, 220px);
-    border-radius: 50%; overflow: hidden; z-index: 4;
-    background: color-mix(in srgb, var(--bg) 62%, transparent);
-    -webkit-backdrop-filter: blur(10px) saturate(180%);
-    backdrop-filter: blur(10px) saturate(180%);
-    box-shadow:
-      inset 0 0 0 1px var(--spec-a),
-      inset 0 10px 22px -6px rgba(255,255,255,0.55),
-      inset 0 -14px 28px -10px rgba(16,22,40,0.28),
-      0 24px 50px -18px rgba(16,22,40,0.45);
-    will-change: transform;
-    opacity: 0;
-    animation: lensIn 1.2s var(--ease) 0.9s forwards;
-  }
-  [data-theme="dark"] .lens {
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.28),
-      inset 0 10px 22px -6px rgba(255,255,255,0.14),
-      inset 0 -14px 28px -10px rgba(0,0,0,0.6),
-      0 30px 60px -18px rgba(0,0,0,0.85);
-  }
-  @keyframes lensIn { to { opacity: 1; } }
-  .lens::after {
-    content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
-    background:
-      radial-gradient(60% 40% at 30% 18%, rgba(255,255,255,0.55), transparent 70%),
-      radial-gradient(80% 60% at 70% 95%, rgba(43,76,240,0.18), transparent 70%);
-    mix-blend-mode: soft-light;
-  }
-  .lens-inner {
-    position: absolute; left: 0; top: 0;
-    display: grid; place-items: center;
-    will-change: transform;
-  }
-  .lens .glyph {
-    color: var(--accent);
-    text-shadow: -1.5px 0 rgba(255, 70, 160, 0.35), 1.5px 0 rgba(40, 200, 255, 0.40);
-  }
-  .lens .glyph .g-dot { background: var(--ink); }
-
-  .art-hint {
-    position: absolute; bottom: 0.25rem; right: 0;
-    font-size: 0.82rem; color: var(--muted);
-    opacity: 0; animation: lensIn 0.8s var(--ease) 1.8s forwards;
-  }
-  @media (hover: none) { .art-hint { display: none; } }
-
-  /* entrada única do hero */
-  .rise { opacity: 0; transform: translateY(14px); animation: rise 1s var(--ease) forwards; }
-  .rise.d1 { animation-delay: 0.08s; }
-  .rise.d2 { animation-delay: 0.18s; }
-  .rise.d3 { animation-delay: 0.28s; }
-  .rise.d4 { animation-delay: 0.38s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-  .glyph-base .glyph { opacity: 0; animation: glyphIn 1.4s var(--ease) 0.2s forwards; }
-  @keyframes glyphIn { from { opacity: 0; letter-spacing: 0.02em; filter: blur(12px); } to { opacity: 1; letter-spacing: -0.05em; filter: blur(0); } }
-
-  /* =========================================================
-     Seções
-     ========================================================= */
-  section { scroll-margin-top: 90px; }
-  .section { padding: clamp(5rem, 10vw, 8rem) 0; }
-
-  .head {
-    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: 2rem 4rem; align-items: end;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  }
-  @media (max-width: 900px) { .head { grid-template-columns: 1fr; } }
-  .head h2 {
-    font-family: var(--display); font-weight: 380;
-    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
-    line-height: 1.02; letter-spacing: -0.028em;
-    font-variation-settings: "opsz" 144, "SOFT" 30;
-  }
-  .head p { color: var(--ink-2); max-width: 52ch; font-size: 1.05rem; }
-
-  /* =========================================================
-     Projetos: grade bento de painéis
-     ========================================================= */
-  .bento {
-    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .card { padding: clamp(1.4rem, 2.4vw, 2.1rem); display: flex; flex-direction: column; gap: 1rem; }
-  .card > * { position: relative; z-index: 3; }
-  .c-game  { grid-column: span 8; }
-  .c-class { grid-column: span 4; }
-  .c-poa   { grid-column: span 5; }
-  .c-news  { grid-column: span 7; }
-  .c-jira  { grid-column: span 7; }
-  .c-inv   { grid-column: span 5; }
-  @media (max-width: 1000px) {
-    .c-game, .c-class, .c-poa, .c-news, .c-jira, .c-inv { grid-column: span 12; }
-  }
-
-  .kind {
-    font-size: 0.86rem; color: var(--accent); font-weight: 500;
-  }
-  .card h3 {
-    font-family: var(--display); font-weight: 420;
-    font-size: clamp(1.45rem, 2.2vw, 1.9rem);
-    line-height: 1.1; letter-spacing: -0.02em;
-    font-variation-settings: "opsz" 72, "SOFT" 30;
-  }
-  .card p { color: var(--ink-2); font-size: 0.98rem; max-width: 60ch; }
-  .tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 0.5rem; }
-  .tools span {
-    font-size: 0.8rem; color: var(--ink-2);
-    padding: 0.28rem 0.7rem; border-radius: var(--r-pill);
-    border: 1px solid var(--line-2);
-  }
-
-  /* jogo */
-  .hazards { display: flex; flex-wrap: wrap; gap: 6px; }
-  .hazards span {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-size: 0.84rem; padding: 0.35rem 0.8rem 0.35rem 0.6rem;
-    border-radius: var(--r-pill); background: var(--glass-2);
-    box-shadow: 0 1px 0 var(--spec-a) inset;
-  }
-  .hazards svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
-
-
-  /* demo jogável */
-  .play {
-    position: relative; overflow: hidden; border-radius: 2px;
-    border: 1px solid var(--line-2); background: #DCE6FB;
-    aspect-ratio: 16 / 9;
-    box-shadow: 0 18px 40px -24px rgba(16,22,40,0.5);
-  }
-  .play img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 60%; transition: filter 0.6s var(--ease), transform 0.8s var(--ease); }
-  .play:hover img { transform: scale(1.02); }
-  .play::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(16,22,40,0.35)); z-index: 1; pointer-events: none; }
-  .play-btn {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
-    height: 54px; padding: 0 1.5rem 0 1.15rem; font-weight: 500; font-size: 1rem;
-    background: rgba(255,255,255,0.62); color: #101628;
-  }
-  .play-btn:active { transform: translate(-50%, -50%) scale(0.965); }
-  .play-btn svg { width: 20px; height: 20px; color: #2B4CF0; }
-  .play-note { position: absolute; left: 0; right: 0; bottom: 0.8rem; text-align: center; z-index: 3; font-size: 0.8rem; color: rgba(255,255,255,0.92); text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
-  .play iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 4; background: #DCE6FB; }
-  .play.on img, .play.on .play-btn, .play.on .play-note, .play.on::before { display: none; }
-  @media (hover: none) { .play-note { display: none; } }
-
-  /* oficinas */
-  .big {
-    font-family: var(--display); font-weight: 360;
-    font-size: clamp(3.4rem, 6vw, 4.8rem); line-height: 0.9; letter-spacing: -0.04em;
-    font-variation-settings: "opsz" 144, "SOFT" 20;
-  }
-  .big small { font-family: var(--body); font-size: 1rem; letter-spacing: 0; font-weight: 400; color: var(--muted); margin-left: 0.4rem; }
-  .bars { display: grid; gap: 0.9rem; list-style: none; }
-  .bars li { display: grid; gap: 0.35rem; }
-  .bars .row { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9rem; }
-  .bars .row span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .bar { height: 8px; border-radius: var(--r-pill); background: var(--line); overflow: hidden; }
-  .bar i { display: block; height: 100%; width: var(--w); border-radius: inherit; background: var(--accent); }
-
-  /* procurações: sequência real */
-  .steps { list-style: none; display: grid; gap: 0; counter-reset: s; }
-  .steps li {
-    counter-increment: s;
-    display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.9rem;
-    padding: 0.85rem 0; border-top: 1px solid var(--line);
-  }
-  .steps li::before {
-    content: counter(s);
-    font-family: var(--display); font-style: italic; font-size: 1.5rem; line-height: 1;
-    color: var(--accent); font-variation-settings: "opsz" 72, "SOFT" 80, "WONK" 1;
-  }
-  .steps strong { display: block; font-weight: 500; }
-  .steps span { color: var(--muted); font-size: 0.92rem; }
-
-  /* resumo semanal: maquete da newsletter */
-  .letter {
-    border-radius: 2px; padding: 1.1rem 1.2rem;
-    background: var(--glass-2); box-shadow: 0 1px 0 var(--spec-a) inset;
-    border: 1px solid var(--line);
-  }
-  .letter-top { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); margin-bottom: 0.4rem; }
-  .letter-top b { font-family: var(--display); font-weight: 450; font-size: 1.1rem; }
-  .letter-top span { font-size: 0.82rem; color: var(--muted); }
-  .topic { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
-  .topic:last-child { border-bottom: 0; }
-  .skel { display: grid; gap: 6px; }
-  .skel i { display: block; height: 7px; border-radius: 4px; background: var(--line-2); }
-  .skel i:first-child { width: var(--a, 60%); background: color-mix(in srgb, var(--ink) 30%, transparent); }
-  .skel i:last-child { width: var(--b, 85%); }
-  .thread { font-size: 0.8rem; color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
-  .thread svg { width: 13px; height: 13px; }
-
-  /* jira */
-  .jira-grid { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem 2rem; align-items: end; }
-  @media (max-width: 560px) { .jira-grid { grid-template-columns: 1fr; } }
-  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .flow span {
-    font-size: 0.84rem; padding: 0.4rem 0.85rem; border-radius: var(--r-pill);
-    background: var(--glass-2); box-shadow: 0 1px 0 var(--spec-a) inset;
-  }
-  .flow svg { width: 14px; height: 14px; color: var(--muted); }
-
-  /* task inventory */
-  .inv { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.8rem; align-items: center; }
-  .inv-list { display: grid; gap: 5px; }
-  .inv-list i { display: block; height: 9px; border-radius: 2px; background: var(--line-2); }
-  .inv-list i:nth-child(2) { width: 80%; } .inv-list i:nth-child(3) { width: 92%; } .inv-list i:nth-child(4) { width: 64%; } .inv-list i:nth-child(5) { width: 75%; }
-  .inv-mid { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
-  .inv-mid svg { width: 18px; height: 18px; }
-  .inv-flow { position: relative; height: 70px; }
-  .inv-flow svg { width: 100%; height: 100%; overflow: visible; }
-
-  /* =========================================================
-     Trajetória
-     ========================================================= */
-  .path { list-style: none; border-top: 1px solid var(--line-2); }
-  .stop {
-    display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-    gap: 1rem 3rem; padding: 2.25rem 0; border-bottom: 1px solid var(--line-2);
-  }
-  @media (max-width: 760px) { .stop { grid-template-columns: 1fr; } }
-  .when {
-    font-family: var(--display); font-style: italic; font-weight: 360;
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.1; color: var(--accent);
-    font-variation-settings: "opsz" 72, "SOFT" 80, "WONK" 1;
-  }
-  .stop h3 {
-    font-family: var(--display); font-weight: 420; font-size: clamp(1.35rem, 2vw, 1.65rem);
-    line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 0.3rem;
-    font-variation-settings: "opsz" 72, "SOFT" 30;
-  }
-  .stop .where { color: var(--muted); margin-bottom: 1rem; }
-  .stop p { color: var(--ink-2); max-width: 64ch; }
-  .facts { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin-top: 1rem; }
-  @media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
-  .facts li { padding: 0.65rem 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.96rem; }
-  .facts b { font-weight: 500; color: var(--ink); }
-
-  /* =========================================================
-     Formação
-     ========================================================= */
-  .degrees { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
-  @media (max-width: 1000px) { .degrees { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .degrees { grid-template-columns: 1fr; } }
-  .degree { padding: 1.5rem; display: grid; gap: 0.35rem; align-content: start; min-height: 170px; }
-  .degree > * { position: relative; z-index: 3; }
-  .degree .yr { font-size: 0.86rem; color: var(--muted); }
-  .degree.now .yr { color: var(--accent); font-weight: 500; }
-  .degree h3 { font-family: var(--display); font-weight: 420; font-size: 1.3rem; line-height: 1.15; letter-spacing: -0.01em; font-variation-settings: "opsz" 48, "SOFT" 30; }
-  .degree .inst { color: var(--ink-2); font-size: 0.95rem; margin-top: auto; }
-
-  /* =========================================================
-     Contato
-     ========================================================= */
-  footer { padding: 2.5rem 0 3rem; color: var(--muted); font-size: 0.88rem; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
-
-
-  /* barra de leitura na navegação */
-  .progress {
-    position: absolute; left: 22px; right: 22px; bottom: 0; height: 1.5px; z-index: 3;
-    background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0));
-    border-radius: 2px; opacity: 0.75; pointer-events: none;
-  }
-
-  /* método: abas de vidro */
-  .method { padding: clamp(1.2rem, 2.6vw, 2.2rem); }
-  .method > * { position: relative; z-index: 3; }
-  .tabs {
-    position: relative; display: inline-flex; padding: 5px; gap: 2px;
-    background: var(--line); box-shadow: none; margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-    max-width: 100%; overflow-x: auto; scrollbar-width: none;
-  }
-  .tabs::before, .tabs::after { display: none; }
-  .tab {
-    position: relative; z-index: 2; height: 42px; padding: 0 1.25rem;
-    border-radius: var(--r-pill); font-weight: 500; font-size: 0.95rem; color: var(--muted);
-    white-space: nowrap;
-  }
-  .tab[aria-selected="true"] { color: var(--ink); }
-  .tab-drop {
-    position: absolute; top: 5px; left: 0; height: 42px; z-index: 1; border-radius: var(--r-pill);
-    background: var(--glass-2);
-    box-shadow: 0 1px 0 var(--spec-a) inset, 0 8px 18px -10px rgba(16,22,40,0.45);
-    transition: transform 0.6s var(--spring), width 0.6s var(--spring);
-  }
-  .pane { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem 4rem; }
-  .pane[hidden] { display: none; }
-  .pane.is-on .pane-lead, .pane.is-on .proof li { animation: paneIn 0.6s var(--ease) both; }
-  .pane.is-on .proof li:nth-child(2) { animation-delay: 0.06s; }
-  .pane.is-on .proof li:nth-child(3) { animation-delay: 0.12s; }
-  @keyframes paneIn { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
-  @media (max-width: 860px) { .pane { grid-template-columns: 1fr; } }
-  .pane-lead h3 {
-    font-family: var(--display); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem);
-    line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 0.9rem;
-    font-variation-settings: "opsz" 144, "SOFT" 30;
-  }
-  .pane-lead p { color: var(--ink-2); max-width: 44ch; }
-  .proof { list-style: none; border-top: 1px solid var(--line-2); }
-  .proof li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 0.4rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-  @media (max-width: 560px) { .proof li { grid-template-columns: 1fr; } }
-  .proof b { font-weight: 500; }
-  .proof span { color: var(--ink-2); font-size: 0.95rem; }
-
-  /* tatame */
-  .dojo { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem 4rem; align-items: center; padding: clamp(1.6rem, 4vw, 3.5rem); }
-  .dojo > * { position: relative; z-index: 3; }
-  @media (max-width: 860px) { .dojo { grid-template-columns: 1fr; } }
-  .dojo h2 {
-    font-family: var(--display); font-style: italic; font-weight: 360;
-    font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 0.95; letter-spacing: -0.035em;
-    font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1; margin: 0.4rem 0 1.25rem;
-  }
-  .dojo p { color: var(--ink-2); max-width: 54ch; margin-bottom: 0.9rem; }
-  .dojo strong { font-weight: 500; color: var(--ink); }
-  .mat { justify-self: end; width: 100%; max-width: 380px; }
-  .mat-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; gap: 6px; aspect-ratio: 4 / 3; }
-  .mat-grid > * {
-    border-radius: 2px; border: 1px solid var(--line-2);
-    background: linear-gradient(140deg, var(--glass-2), transparent);
-    opacity: 0; transform: scale(0.92);
-    transition: opacity 0.6s var(--ease), transform 0.6s var(--spring);
-  }
-  .mat.seen .mat-grid > * { opacity: 1; transform: none; }
-  .mat-core {
-    grid-column: 2 / 4; grid-row: 2;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-    background: var(--accent-soft) !important; border-color: color-mix(in srgb, var(--accent) 40%, transparent) !important;
-  }
-  .mat-n {
-    font-family: var(--display); font-style: italic; font-weight: 340; font-size: clamp(2.6rem, 5vw, 3.8rem); line-height: 0.85;
-    color: var(--accent); letter-spacing: -0.04em; font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
-  }
-  .mat-l { font-size: 0.84rem; color: var(--ink-2); margin-top: 0.3rem; }
-  @media (max-width: 860px) { .mat { justify-self: start; max-width: 320px; } }
-
-  /* diário de bordo */
-  .logbook { padding: clamp(1.3rem, 3vw, 2.4rem); }
-  .logbook > * { position: relative; z-index: 3; }
-  .log-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; margin-bottom: 0.75rem; }
-  .log-top h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.8rem, 3.2vw, 2.6rem); letter-spacing: -0.025em; line-height: 1; margin-top: 0.35rem; font-variation-settings: "opsz" 144, "SOFT" 30; }
-  .odometer { display: flex; align-items: baseline; gap: 0.25rem; }
-  .odo {
-    font-family: var(--display); font-weight: 340; font-size: clamp(3.6rem, 8vw, 6rem); line-height: 0.9;
-    letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
-    font-variation-settings: "opsz" 144, "SOFT" 20;
-    background: linear-gradient(180deg, var(--ink) 40%, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .odo-unit { font-family: var(--display); font-style: italic; font-size: 1.8rem; color: var(--accent); }
-  .log-note { color: var(--muted); max-width: 62ch; margin-bottom: 1.75rem; }
-  .leg { border-top: 1px solid var(--line-2); }
-  .leg-btn { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(90px, 220px) auto 28px; gap: 1rem; align-items: center; padding: 1.05rem 0.25rem; text-align: left; border-radius: 2px; }
-  .leg-btn .t { font-weight: 500; font-size: 1.03rem; }
-  .leg-btn .t small { display: block; font-weight: 400; color: var(--muted); font-size: 0.86rem; margin-top: 0.1rem; }
-  .gauge { height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; }
-  .gauge i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 1.2s var(--ease); }
-  .route.seen .gauge i { width: var(--w); }
-  .leg-btn .h { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 0.92rem; white-space: nowrap; text-align: right; min-width: 3.5rem; }
-  @media (max-width: 620px) {
-    .leg-btn { grid-template-columns: minmax(0, 1fr) auto 28px; }
-    .leg-btn .gauge { display: none; }
-  }
-  .chev { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--line); transition: transform 0.5s var(--spring), background-color 0.3s var(--ease); }
-  .chev svg { width: 14px; height: 14px; }
-  .leg.open .chev { transform: rotate(180deg); background: var(--accent-soft); color: var(--accent); }
-  .leg-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s var(--ease); }
-  .leg.open .leg-body { grid-template-rows: 1fr; }
-  .leg-body > div { overflow: hidden; }
-  .leg-body .pad { padding: 0 0.25rem 1rem; }
-  .course {
-    display: grid; grid-template-columns: minmax(0, 1fr) 190px 52px 72px; gap: 1rem;
-    padding: 0.6rem 0; border-top: 1px dashed var(--line); font-size: 0.92rem; align-items: baseline;
-  }
-  .course:first-child { border-top: 0; }
-  .course .ci, .course .cd { color: var(--muted); font-size: 0.85rem; }
-  .course .ch { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 0.85rem; }
-  .course .cd { text-align: right; }
-  .course.key .cn::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 0.55rem; transform: translateY(-2px); }
-  @media (max-width: 700px) {
-    .course { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1rem; }
-    .course .cn { grid-column: 1 / -1; }
-    .course .ch { display: none; }
-  }
-  .archive { margin-top: 2rem; }
-  .archive .leg { border-top: 1px dashed var(--line-2); opacity: 0.72; transition: opacity 0.3s var(--ease); }
-  .archive .leg:hover, .archive .leg.open { opacity: 1; }
-  .archive-label { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.25rem; }
-
-  /* contato sóbrio */
-  .contact { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem 3rem; padding: clamp(1.6rem, 3.5vw, 2.8rem); }
-  .contact h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; letter-spacing: -0.025em; margin-bottom: 0.5rem; font-variation-settings: "opsz" 144, "SOFT" 30; }
-  .contact .lead { color: var(--ink-2); margin: 0; }
-  .contact .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .contact .btn svg { width: 18px; height: 18px; }
-
-  /* jogo: fechar */
-  .play-close {
-    position: absolute; top: 10px; right: 10px; z-index: 5; display: none;
-    height: 34px; padding: 0 0.9rem; font-size: 0.85rem; font-weight: 500;
-    background: rgba(255,255,255,0.78); color: #101628;
-  }
-  .play.on .play-close { display: inline-flex; }
-
-  /* =========================================================
-     Movimento reduzido
-     ========================================================= */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.001ms !important; animation-delay: 0s !important; transition-duration: 0.001ms !important; }
-    .field span { animation: none; }
-    html { scroll-behavior: auto; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
+<a class="skip" href="#historico" data-i18n="skip">Pular direto para os fatos</a>
 
-<a class="skip" href="#metodo">Pular para o conteúdo</a>
+<div class="scene-skeleton" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
 
-<div class="field" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
-
-<!-- ================= Navegação ================= -->
-<nav class="nav glass pill" aria-label="Principal">
-  <span class="progress" id="progress" aria-hidden="true"></span>
-  <a class="brand" href="#topo" aria-label="Início">j<i></i>cr</a>
-  <div class="nav-links" id="navLinks">
-    <span class="drop" id="drop" aria-hidden="true"></span>
-    <a href="#metodo">Método</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#trajetoria">Trajetória</a>
-    <a href="#formacao">Formação</a>
-    <a href="#contato">Contato</a>
-  </div>
-  <button class="theme press" id="themeBtn" type="button" aria-label="Alternar tema claro e escuro">
-    <span class="knob">
-      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-    </span>
-  </button>
-</nav>
-
-<main id="topo">
-
-<!-- ================= Hero ================= -->
-<header class="hero">
-  <div class="wrap">
-    <div>
-      <span class="status glass pill rise d1"><span class="pulse"></span>Legal Analyst em Legal Corporate</span>
-      <h1 class="rise d2">Juliana de Campos Ribeiro</h1>
-      <p class="lead rise d3">Instrumentalizo times jurídicos com processo, tecnologia e IA, e ensino as pessoas a usar o que construí.</p>
-      <div class="actions rise d4">
-        <a class="btn btn-solid pill press" href="#metodo">Como eu trabalho</a>
-        <a class="btn btn-glass glass pill press" href="#contato">Entrar em contato</a>
-      </div>
+<!-- The header is the process itself: the brand is the start event, every stage a BPMN symbol on the rail. -->
+<header class="top">
+  <div class="capsule">
+    <nav class="rail" id="rail" aria-label="Etapas do processo">
+      <span class="rail-line" aria-hidden="true"></span>
+      <span class="rail-fill" aria-hidden="true"></span>
+      <span class="rail-token" aria-hidden="true"></span>
+      <button type="button" class="node start" data-go="0"><b>jcr</b></button>
+      <button type="button" class="node task" data-go="1"><i></i></button>
+      <button type="button" class="node gateway" data-go="2"><i></i></button>
+      <button type="button" class="node task" data-go="3"><i></i></button>
+      <button type="button" class="node sub" data-go="4"><i></i></button>
+      <button type="button" class="node data" data-go="5"><i></i></button>
+      <button type="button" class="node end" data-go="6"><i></i></button>
+    </nav>
+    <div class="meta" aria-live="polite">
+      <span class="mono meta-stage" id="tkStage">00 · início</span>
+      <span class="mono meta-id" id="tkId">JCR-26-0000</span>
     </div>
-
-    <div class="hero-art" id="art" role="img" aria-label="Monograma j c r">
-      <div class="glyph-base" aria-hidden="true">
-        <div class="glyph"><span>j</span><span class="g-dot"></span><span>cr</span></div>
-      </div>
-      <div class="lens" id="lens" aria-hidden="true">
-        <div class="lens-inner" id="lensInner">
-          <div class="glyph"><span>j</span><span class="g-dot"></span><span>cr</span></div>
-        </div>
-      </div>
-      <span class="art-hint" aria-hidden="true">Passe o cursor pela lente</span>
-    </div>
+    <button class="lang" id="lang" type="button" aria-label="Mudar idioma / Change language">EN</button>
   </div>
 </header>
 
-<!-- ================= Método ================= -->
-<section id="metodo" class="section">
-  <div class="wrap">
-    <div class="head">
-      <h2>Quatro alavancas, uma entrega</h2>
-      <p>Um time jurídico rende mais quando o trabalho tem caminho, ferramenta e gente que sabe usar as duas. É nisso que eu atuo.</p>
+<main>
+  <!-- 00 · HERO (aerial view) -->
+  <section class="stage hero" id="topo" data-stage="0" data-status="open">
+    <div class="hero-text">
+      <p class="tag"><span class="ico ring"></span><span data-i18n="k0">Juliana de Campos Ribeiro · jurídico, processo e IA</span></p>
+      <h1 data-i18n="h0">Jurídico não precisa ser um <em>labirinto</em>.</h1>
+      <p class="lead" data-i18n="p0">Desenho o caminho das demandas jurídicas com processo, tecnologia e IA, e ensino as pessoas a percorrê-lo. Aqui, você é a solicitação.</p>
+      <button type="button" class="btn big start" id="startBtn"><span class="ico ring"></span><span data-i18n="start">Iniciar processo</span></button>
+      <p class="scroll-hint mono" data-i18n="hint0">ou role para entrar no fluxo ↓</p>
     </div>
+  </section>
 
-    <div class="method glass panel">
-      <div class="tabs glass pill" role="tablist" aria-label="Alavancas">
-        <span class="tab-drop" id="tabDrop" aria-hidden="true"></span>
-        <button class="tab press" role="tab" aria-selected="true" aria-controls="m-processo" id="t-processo">Processo</button>
-        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-tecnologia" id="t-tecnologia" tabindex="-1">Tecnologia</button>
-        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-ia" id="t-ia" tabindex="-1">IA</button>
-        <button class="tab press" role="tab" aria-selected="false" aria-controls="m-ensino" id="t-ensino" tabindex="-1">Ensino</button>
-      </div>
-
-      <div class="panes">
-        <div class="pane is-on" role="tabpanel" id="m-processo" aria-labelledby="t-processo">
-          <div class="pane-lead">
-            <h3>Antes da ferramenta, o mapa.</h3>
-            <p>Levanto as tarefas reais de quem executa e desenho o fluxo a partir delas. Sem processo claro, automação só acelera a bagunça.</p>
-          </div>
-          <ul class="proof">
-            <li><b>Task inventory com IA</b><span>Mapeamento de processos no jurídico corporativo, do levantamento ao fluxo.</span></li>
-            <li><b>Procurações</b><span>Base que vivia numa pasta do Drive, agora mapeada e com processo definido.</span></li>
-            <li><b>BPMN institucional</b><span>Todos os processos de uma entidade do Sistema S mapeados e convertidos em normas internas.</span></li>
-          </ul>
-        </div>
-        <div class="pane" role="tabpanel" id="m-tecnologia" aria-labelledby="t-tecnologia" hidden>
-          <div class="pane-lead">
-            <h3>Cada demanda com dono, prazo e histórico.</h3>
-            <p>Escolho a ferramenta pelo problema e coloco a fila do time num lugar só, onde dá para enxergar e medir.</p>
-          </div>
-          <ul class="proof">
-            <li><b>Mais de 90% no Jira</b><span>As demandas do time entram por um canal, com triagem e títulos padronizados pelo Rovo.</span></li>
-            <li><b>Portal de Contratos</b><span>Mais de 1.000 contratos e 15 gestores reunidos no Fluig, com dados do RM Totvs.</span></li>
-          </ul>
-        </div>
-        <div class="pane" role="tabpanel" id="m-ia" aria-labelledby="t-ia" hidden>
-          <div class="pane-lead">
-            <h3>IA onde o trabalho se repete.</h3>
-            <p>Construo com Claude e Claude Code: agentes que consultam bases, rotinas que resumem conversas, assistentes que guiam quem pede.</p>
-          </div>
-          <ul class="proof">
-            <li><b>Agente de procurações</b><span>Responde dúvidas consultando a base diretamente.</span></li>
-            <li><b>Resumo semanal</b><span>Toda sexta, o space mais movimentado do jurídico vira uma newsletter com link para cada conversa.</span></li>
-            <li><b>Assistente de SMS e TR</b><span>Guia demandantes na elaboração dos documentos que formalizam uma contratação.</span></li>
-          </ul>
-        </div>
-        <div class="pane" role="tabpanel" id="m-ensino" aria-labelledby="t-ensino" hidden>
-          <div class="pane-lead">
-            <h3>Ferramenta que ninguém sabe usar não muda nada.</h3>
-            <p>Por isso ensino. Em oficina, em conversa individual, em jogo. O hábito vem do tatame.</p>
-          </div>
-          <ul class="proof">
-            <li><b>83 pessoas em três oficinas de IA</b><span>Legal Corporate Brasil, Legal Corporate Latam e o jurídico inteiro.</span></li>
-            <li><b>O Labirinto</b><span>Jogo que ensina a quem pede ao jurídico qual é o canal certo para cada demanda.</span></li>
-            <li><b>Capacitação interna</b><span>Colegas treinados na elaboração dos documentos que amparam as contratações.</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= Projetos ================= -->
-<section id="projetos" class="section">
-  <div class="wrap">
-    <div class="head">
-      <h2>O que estou construindo agora</h2>
-      <p>Em Legal Corporate, numa proptech, uso IA para tirar o trabalho repetitivo do caminho do jurídico: agentes que consultam bases, rotinas que resumem conversas, demandas organizadas e processos mapeados.</p>
-    </div>
-
-    <div class="bento">
-
-      <!-- Jogo -->
-      <article class="card c-game glass panel">
-        <span class="kind">Jogo educativo · Claude Code</span>
-        <h3>O Labirinto</h3>
-        <div class="play" id="play">
-          <img src="assets/jogo.jpg" alt="Primeira fase do jogo: a personagem no andar de recepção, cercada de documentos, telas e mesas de escritório" width="1902" height="844" loading="lazy">
-          <button class="play-btn glass pill press" id="playBtn" type="button">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
-            Jogar a primeira fase
-          </button>
-          <button class="play-close glass pill press" id="playClose" type="button">Fechar jogo</button>
-          <span class="play-note">Teclado: setas ou WASD. No celular, controles na tela.</span>
-        </div>
-        <p>Um jogo de plataforma para ensinar a quem pede ajuda ao jurídico qual é o canal certo para cada demanda. São cinco fases, e a personagem precisa entregar um legal assessment atravessando a vida corporativa, com o poder do foco para não ser atingida. A primeira fase está liberada aqui.</p>
-        <div class="hazards" aria-label="Obstáculos do jogo">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 1 3 6.2"/><path d="M4 19v-5h5"/></svg>Follow-up que sempre volta</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/></svg>Pilhas de papel</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M3 3l18 18"/></svg>Microfone no mudo</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg>Poder do foco</span>
-        </div>
-      </article>
-
-      <!-- Oficinas -->
-      <article class="card c-class glass panel">
-        <span class="kind">Oficinas de IA</span>
-        <h3>83 pessoas do jurídico em três turmas</h3>
-        <ul class="bars">
-          <li><div class="row"><span>Legal Corporate Brasil</span><span>8 pessoas · 1h30</span></div><div class="bar"><i style="--w: 11.4%"></i></div></li>
-          <li><div class="row"><span>Legal Corporate Latam</span><span>5 pessoas · 1h</span></div><div class="bar"><i style="--w: 7.1%"></i></div></li>
-          <li><div class="row"><span>Jurídico inteiro</span><span>70 pessoas · 30 min</span></div><div class="bar"><i style="--w: 100%"></i></div></li>
+  <!-- 01 · TRIAGE -->
+  <section class="stage" id="triagem" data-stage="1" data-status="triage">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico task"></span><span data-i18n="k1">01 · processo · tarefa de triagem</span></p>
+        <h2 data-i18n="h1">Começo pelo trabalho que as pessoas <em>realmente</em> fazem.</h2>
+        <p data-i18n="p1">Leio o fluxo como ele acontece de verdade e o formalizo em processo: cada etapa passa a ter registro, responsável e caminho definido. A demanda deixa de se perder em e-mails e conversas e ganha entrada, triagem e rastro.</p>
+        <ul class="proofs">
+          <li><span class="ico task"></span><div><b data-i18n="pr1t">Centralização das solicitações</b><span data-i18n="pr1d">Um canal único de entrada, com triagem, registro e acompanhamento de cada demanda.</span></div></li>
+          <li><span class="ico data"></span><div><b data-i18n="pr2t">Gestão da informação</b><span data-i18n="pr2d">Contratos e procurações organizados e fáceis de consultar: o que existe, quem assina, o que vence.</span></div></li>
         </ul>
-        <p>Depois das oficinas vieram conversas individuais com quem quis entender como construí as páginas em HTML, e retorno de quem aplicou as dicas de economia de tokens.</p>
-      </article>
-
-      <!-- Procurações -->
-      <article class="card c-poa glass panel">
-        <span class="kind">Agente de IA</span>
-        <h3>Procurações que respondem perguntas</h3>
-        <p>As procurações ficavam em uma pasta do Drive, sem mapeamento. Organizei o tema em três etapas:</p>
-        <ol class="steps">
-          <li><div><strong>Mapeamento</strong><span>Inventário de toda a base existente.</span></div></li>
-          <li><div><strong>Processo</strong><span>Fluxo definido para emissão e controle.</span></div></li>
-          <li><div><strong>Agente</strong><span>Responde dúvidas consultando a base diretamente.</span></div></li>
-        </ol>
-      </article>
-
-      <!-- Resumo semanal -->
-      <article class="card c-news glass panel">
-        <span class="kind">Automação · Google Chat</span>
-        <h3>A semana do jurídico em uma newsletter</h3>
-        <p>Toda sexta, um script lê o space mais movimentado do jurídico e entrega um resumo organizado por assunto, com o link de cada conversa.</p>
-        <div class="letter" aria-hidden="true">
-          <div class="letter-top"><b>Resumo da semana</b><span>sexta-feira</span></div>
-          <div class="topic"><div class="skel" style="--a:46%;--b:88%"><i></i><i></i></div><span class="thread">thread<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-          <div class="topic"><div class="skel" style="--a:62%;--b:74%"><i></i><i></i></div><span class="thread">thread<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-          <div class="topic"><div class="skel" style="--a:38%;--b:81%"><i></i><i></i></div><span class="thread">thread<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
-        </div>
-      </article>
-
-      <!-- Jira -->
-      <article class="card c-jira glass panel">
-        <span class="kind">Gestão de demandas · Jira e Rovo</span>
-        <div class="jira-grid">
-          <div class="big">90%<small>+</small></div>
-          <h3>das demandas do time já entram pelo Jira</h3>
-        </div>
-        <p>Automações no Rovo fazem a triagem de cada ticket e dão a ele um título padronizado, fácil de achar. Em paralelo, estou aprendendo gestão de projetos na prática, com a fila do time como campo de treino.</p>
-        <div class="flow" aria-label="Fluxo do ticket">
-          <span>Pedido</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          <span>Triagem automática</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          <span>Título padronizado</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          <span>Responsável</span>
-        </div>
-      </article>
-
-      <!-- Task inventory -->
-      <article class="card c-inv glass panel">
-        <span class="kind">Processos</span>
-        <h3>Do inventário de tarefas ao fluxo, com IA</h3>
-        <div class="inv" aria-hidden="true">
-          <div class="inv-list"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="inv-mid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div>
-          <div class="inv-flow">
-            <svg viewBox="0 0 120 70" fill="none">
-              <path d="M14 35h22M50 35c10 0 10-18 20-18h16M50 35c10 0 10 18 20 18h16" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"/>
-              <rect x="2" y="27" width="16" height="16" rx="2" fill="var(--accent)"/>
-              <rect x="34" y="27" width="16" height="16" rx="2" transform="rotate(45 42 35)" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
-              <rect x="86" y="9" width="30" height="16" rx="2" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/>
-              <rect x="86" y="45" width="30" height="16" rx="2" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/>
-            </svg>
-          </div>
-        </div>
-        <p>Mapeio processos a partir do task inventory: levanto as tarefas reais de quem executa e uso IA para chegar ao fluxo. O Bizagi saiu do meu caminho.</p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= Tatame ================= -->
-<section id="tatame" class="section">
-  <div class="wrap">
-    <div class="dojo glass panel">
-      <div class="dojo-text">
-        <span class="kind">Onde aprendi a ensinar</span>
-        <h2>No tatame.</h2>
-        <p>Sou faixa preta de jiu-jitsu, aluna da mestra Yvone Duarte, com doze anos de prática. No jiu-jitsu, técnica se aprende repetindo, com alguém do lado corrigindo o detalhe. Levo essa lógica para as oficinas e para o dia a dia do time.</p>
-        <p>Fundei o <strong>VOZ</strong>, projeto social de desenvolvimento de mulheres no jiu-jitsu.</p>
       </div>
-      <figure class="mat" aria-label="Doze anos de prática de jiu-jitsu">
-        <div class="mat-grid">
-          <i></i><i></i><i></i><i></i><i></i>
-          <figcaption class="mat-core"><span class="mat-n">12</span><span class="mat-l">anos de tatame</span></figcaption>
-          <i></i><i></i><i></i><i></i><i></i>
+      <div class="p-body">
+        <div class="flow-demo" id="flowDemo">
+          <div class="fd-switch" role="group" aria-label="Antes e depois">
+            <button type="button" class="on" data-mode="raw" data-i18n="fdRaw">Informal</button>
+            <button type="button" data-mode="ok" data-i18n="fdOk">Formalizado</button>
+          </div>
+          <div class="fd-board" aria-live="polite">
+            <div class="fd-intake mono"><span class="ico task"></span><span data-i18n="fdIntake">canal único de entrada</span></div>
+            <div class="fd-card" style="--x:4%;--y:6%;--r:-5deg;--i:0">
+              <div class="raw"><span class="src mono" data-i18n="fdS1">chat</span><span data-i18n="fdR1">“oi! tem um minuto? é rapidinho”</span></div>
+              <div class="ok"><b data-i18n="fdO1">[Contratos] Cláusula de confidencialidade</b><span class="fd-meta mono"><i></i><span data-i18n="fdM">dono · prazo · histórico</span></span></div>
+            </div>
+            <div class="fd-card" style="--x:34%;--y:30%;--r:4deg;--i:1">
+              <div class="raw"><span class="src mono" data-i18n="fdS2">e-mail</span><span data-i18n="fdR2">“ENC: ENC: RE: aditivo (v7 final)”</span></div>
+              <div class="ok"><b data-i18n="fdO2">[Contratos] Revisão de aditivo com fornecedor</b><span class="fd-meta mono"><i></i><span data-i18n="fdM">dono · prazo · histórico</span></span></div>
+            </div>
+            <div class="fd-card" style="--x:8%;--y:56%;--r:3deg;--i:2">
+              <div class="raw"><span class="src mono" data-i18n="fdS3">corredor</span><span data-i18n="fdR3">“lembra daquela procuração?”</span></div>
+              <div class="ok"><b data-i18n="fdO3">[Procurações] Renovação para assinatura de locação</b><span class="fd-meta mono"><i></i><span data-i18n="fdM">dono · prazo · histórico</span></span></div>
+            </div>
+            <div class="fd-card" style="--x:38%;--y:78%;--r:-3deg;--i:3">
+              <div class="raw"><span class="src mono" data-i18n="fdS4">planilha</span><span data-i18n="fdR4">“linha 47: ver com o jurídico”</span></div>
+              <div class="ok"><b data-i18n="fdO4">[Societário] Ata de reunião de sócios</b><span class="fd-meta mono"><i></i><span data-i18n="fdM">dono · prazo · histórico</span></span></div>
+            </div>
+          </div>
+          <p class="note" data-i18n="fdNote">Ilustração: as mesmas demandas, antes e depois de um processo formalizado. Arraste o quadro para os lados.</p>
         </div>
-      </figure>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= Trajetória ================= -->
-<section id="trajetoria" class="section">
-  <div class="wrap">
-    <div class="head">
-      <h2>Trajetória</h2>
-      <p>Mais de dez anos de direito. Os últimos cinco no direito público e em contratações, agora no jurídico corporativo de uma empresa de tecnologia.</p>
+  <!-- 02 · GATEWAY -->
+  <section class="stage" id="gateway" data-stage="2" data-status="route">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico gateway"></span><span data-i18n="k2">02 · tecnologia · gateway</span></p>
+        <h2 data-i18n="h2">Primeiro o diagnóstico. Depois, a <em>ferramenta</em>.</h2>
+        <p data-i18n="p2">Não são caminhos excludentes: integro ferramentas, cada uma com sua função no fluxo. Parto do diagnóstico do problema para definir a combinação adequada. Selecione um cenário.</p>
+        <div class="gw" id="gwProblems" role="group"></div>
+      </div>
+      <div class="p-body">
+        <div class="eco" id="eco" aria-label="Ecossistema de ferramentas"></div>
+        <div class="gw-out" id="gwOut" aria-live="polite"></div>
+      </div>
     </div>
 
-    <ol class="path">
-      <li class="stop">
-        <div class="when">2026 até hoje</div>
-        <div>
-          <h3>Legal Analyst, Legal Corporate</h3>
-          <div class="where">Proptech, desde agosto de 2026</div>
-          <p>Contratos corporativos, M&amp;A, governança de IA e centralização das demandas jurídicas. Construo com Claude e Claude Code as ferramentas que o time usa e ensino o jurídico a fazer o mesmo.</p>
-        </div>
-      </li>
-      <li class="stop">
-        <div class="when">2021 a 2026</div>
-        <div>
-          <h3>Analista de Licitações e Contratos, Pregoeira e Presidente da CPL</h3>
-          <div class="where">SENAR-RS, entidade do Sistema S</div>
-          <p>Do planejamento da contratação à fiscalização do contrato, sob o regulamento próprio de licitações da entidade.</p>
-          <ul class="facts">
-            <li><b>Portal de Contratos</b> no Fluig, com dados do RM Totvs: mais de 1.000 contratos e 15 gestores em um só lugar.</li>
-            <li><b>Mapeamento BPMN</b> de todos os processos da entidade, convertido em normas internas.</li>
-            <li><b>Mais de 40 lotes por ano</b> conduzidos como pregoeira.</li>
-            <li><b>Assistente com IA</b> que guia os demandantes na elaboração de SMS e Termo de Referência.</li>
+    <div class="panel split creds-panel" id="creds">
+      <div class="p-head">
+        <p class="tag"><span class="ico data"></span><span data-i18n="credT">02 · tecnologia · credenciais</span></p>
+        <h2 data-i18n="credH">A formação por trás de cada <em>escolha</em>.</h2>
+        <p data-i18n="credSub">Cursos e certificações em IA generativa, gestão de serviços e modelagem de processos. Ao selecionar um cenário acima, as credenciais relacionadas se destacam.</p>
+      </div>
+      <div class="p-body">
+        <div class="cred-group">
+          <p class="mono lbl" data-i18n="cgAi">IA generativa</p>
+          <ul class="cred-list">
+            <li class="cred" data-tools="claude cowork"><span class="iss mono">Anthropic</span><b>Introduction to Claude Cowork · Claude 101 · <span data-i18n="cAiFl">Fluência em IA</span></b><span class="cred-meta mono">2026 · <a href="https://verify.skilljar.com/c/wa9unusx3gei" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
+            <li class="cred" data-tools="gemini nblm gws"><span class="iss mono">Google</span><b>AI Boost Bites · Gemini, NotebookLM <span data-i18n="cAnd">e</span> Workspace</b><span class="cred-meta mono">2026 · <a href="https://www.skills.google/public_profiles/1e2ddac1-0683-48f5-b39d-eb84114a8077" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
+            <li class="cred" data-tools="claude gpt"><span class="iss mono">Future Law</span><b>Agentes e Assistentes de IA no Jurídico: Claude, GPT e Ecossistema</b><span class="cred-meta mono">2026 · <a href="https://future-s-school-5d1d.thinkific.com/certificates/jtlcktzuts" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
+            <li class="cred" data-tools="gpt"><span class="iss mono">ISC · TCU</span><b>Engenharia de Prompt para ChatGPT</b><span class="cred-meta mono">2026</span></li>
+            <li class="cred" data-tools="ai"><span class="iss mono">Trybe</span><b>IA Generativa Aplicada ao Direito</b><span class="cred-meta mono">2024</span></li>
+            <li class="cred" data-tools="ai"><span class="iss mono">Enap</span><b>Trilha fluêncIA</b><span class="cred-meta mono">2024</span></li>
           </ul>
         </div>
-      </li>
-      <li class="stop">
-        <div class="when">Antes</div>
-        <div>
-          <h3>Advocacia e consultoria em licitações</h3>
-          <div class="where">GAZEN Advogados, E3 Licitações e LICIJUR</div>
+        <div class="cred-group">
+          <p class="mono lbl" data-i18n="cgSvc">gestão de serviços</p>
+          <ul class="cred-list">
+            <li class="cred" data-tools="jira rovo"><span class="iss mono">Atlassian</span><b>Credentialed in JSM Fundamentals with AI</b><span class="cred-meta mono">2026 · <a href="https://cp.certmetrics.com/atlassian/en/public/verify/credential" target="_blank" rel="noopener" title="1b68dea9b6424bee946e6e619ff59d45"><span data-i18n="vf">verificar</span> ↗</a></span></li>
+          </ul>
         </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ================= Formação ================= -->
-<section id="formacao" class="section">
-  <div class="wrap">
-    <div class="head">
-      <h2>Formação</h2>
-      <p>Direito, direito público e comunicação na base. Agora, M&amp;A. Em volta, um diário de bordo de cursos que não para de somar horas.</p>
-    </div>
-
-    <div class="degrees">
-      <div class="degree glass panel now">
-        <span class="yr">Conclusão prevista em maio de 2027</span>
-        <h3>Pós-graduação em M&amp;A</h3>
-        <span class="inst">Galícia Educação</span>
-      </div>
-      <div class="degree glass panel">
-        <span class="yr">2021</span>
-        <h3>Pós-graduação em Comunicação em Redes Sociais</h3>
-        <span class="inst">FADERGS</span>
-      </div>
-      <div class="degree glass panel">
-        <span class="yr">2016</span>
-        <h3>Especialização em Direito Público</h3>
-        <span class="inst">FMP/RS</span>
-      </div>
-      <div class="degree glass panel">
-        <span class="yr">2013</span>
-        <h3>Bacharelado em Direito</h3>
-        <span class="inst">PUCRS</span>
-      </div>
-    </div>
-
-    <div class="logbook glass panel">
-      <div class="log-top">
-        <div>
-          <span class="kind">Diário de bordo</span>
-          <h3>Horas de voo</h3>
-        </div>
-        <div class="odometer" aria-label="913,5 horas registradas">
-          <span class="odo" id="odo" data-to="913.5">0</span><span class="odo-unit">h</span>
+        <div class="cred-group">
+          <p class="mono lbl" data-i18n="cgProc">processos</p>
+          <ul class="cred-list">
+            <li class="cred" data-tools="bizagi"><span class="iss mono">UFV</span><b>Modelagem de processos com o Bizagi</b><span class="cred-meta mono">2026</span></li>
+          </ul>
         </div>
       </div>
-      <p class="log-note">Cada curso conta como hora de voo. A rota atual é o que uso hoje; os voos anteriores ficam registrados no diário.</p>
-      <div class="route" id="route"></div>
-      <div class="archive" id="archive"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= Contato ================= -->
-<section id="contato" class="section">
-  <div class="wrap">
-    <div class="contact glass panel">
-      <div>
-        <h2>Contato</h2>
-        <p class="lead">Para falar sobre IA no jurídico, processos ou oficinas.</p>
+
+  <!-- 03 · AGENT -->
+  <section class="stage" id="agente" data-stage="3" data-status="service">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico task"></span><span data-i18n="k3">03 · IA · tarefa de serviço</span></p>
+        <h2 data-i18n="h3">Agentes que respondem <em>com fonte</em>.</h2>
+        <p data-i18n="p3">A base de procurações vivia numa pasta do Drive. Hoje tem processo definido e um agente de consulta. Converse com a versão de demonstração.</p>
+        <p class="small" data-i18n="p3b">Também construí um assistente que guia requisitantes na redação de SMS e Termos de Referência, e a newsletter de sexta, que resume o espaço mais movimentado do jurídico no Google Chat.</p>
       </div>
-      <div class="actions">
-        <a class="btn btn-solid pill press" href="mailto:juridicojulianacampos@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-          Enviar e-mail
+      <div class="p-body">
+        <div class="chat">
+          <div class="chat-bar mono"><span data-i18n="aHead">agente · procurações</span><span class="badge" data-i18n="aBadge">dados fictícios</span></div>
+          <div class="agent-log" id="agentLog" aria-live="polite"></div>
+          <div class="chips pad" id="agentChips"></div>
+          <form class="agent-form" id="agentForm">
+            <input id="agentIn" autocomplete="off" data-i18n-ph="aPh" placeholder="Pergunte sobre as procurações…">
+            <button class="btn" type="submit" data-i18n="aSend">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · TEACHING -->
+  <section class="stage" id="ensino" data-stage="4" data-status="train">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico sub"></span><span data-i18n="k4">04 · ensino · subprocesso</span></p>
+        <h2 data-i18n="h4">Domínio que se converte em <em>ensino</em>.</h2>
+        <p data-i18n="p4">Tecnologia só gera valor quando é adotada. Por isso, depois de dominar uma ferramenta ou um processo, eu o traduzo para quem vai utilizá-lo, com oficinas, acompanhamento e recursos de aprendizagem criados sob medida.</p>
+        <ol class="method" aria-label="Método">
+          <li><span class="mono n">01</span><b data-i18n="m1t">Domínio</b><span data-i18n="m1d">Estudo e aplico a ferramenta ou o processo até compreendê-lo por inteiro.</span></li>
+          <li><span class="mono n">02</span><b data-i18n="m2t">Tradução</b><span data-i18n="m2d">Converto o conhecimento técnico em linguagem e exemplos do cotidiano jurídico.</span></li>
+          <li><span class="mono n">03</span><b data-i18n="m3t">Prática</b><span data-i18n="m3d">Acompanho a aplicação com as pessoas até que o uso se torne rotina.</span></li>
+        </ol>
+      </div>
+      <div class="p-body">
+        <p class="mono lbl" data-i18n="fmtT">formatos</p>
+        <ul class="formats">
+          <li><b data-i18n="f1t">Oficinas de IA</b><span data-i18n="f1d">Para equipes jurídicas, de grupos reduzidos ao departamento inteiro.</span></li>
+          <li><b data-i18n="f2t">Acompanhamento individual</b><span data-i18n="f2d">Sessões dedicadas a levar o aprendizado para a rotina de cada pessoa.</span></li>
+          <li><b data-i18n="f3t">Treinamentos aplicados</b><span data-i18n="f3d">Como explorar a IA além do óbvio: estruturar conteúdo em Markdown e HTML e construir as primeiras ferramentas próprias.</span></li>
+        </ul>
+        <article class="feature">
+          <div class="feature-head">
+            <p class="mono lbl" data-i18n="gKick">jogo educativo · desenvolvido com Claude Code</p>
+            <h3>O Labirinto</h3>
+            <p data-i18n="gDesc">Um jogo de plataforma, em cinco fases, que ensina a quem demanda o jurídico qual canal utilizar para cada solicitação. A personagem precisa entregar um parecer atravessando a rotina corporativa.</p>
+          </div>
+          <div class="game-cta">
+            <button type="button" class="btn" id="playGame"><span class="play-ico" aria-hidden="true"></span><span data-i18n="gPlay">Jogar a fase final</span></button>
+            <span class="mono game-meta" data-i18n="gCap">jogo de plataforma · 5 fases</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · RECORD -->
+  <section class="stage" id="historico" data-stage="5" data-status="log">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico data"></span><span data-i18n="k5">05 · objeto de dados · histórico</span></p>
+        <h2 data-i18n="h5">Mais de uma década de direito. Os últimos anos, <em>redesenhando</em> como ele funciona.</h2>
+        <p class="mono lbl" data-i18n="eduT">formação</p>
+        <ul class="edu">
+          <li data-i18n="e1">Pós em M&amp;A · Galícia Educação · 2027</li>
+          <li data-i18n="e2">Pós em Comunicação em Mídias Sociais · FADERGS · 2019</li>
+          <li data-i18n="e3">Especialização em Direito Público · FMP/RS · 2016</li>
+          <li data-i18n="e4">Direito · PUCRS · 2013</li>
+        </ul>
+        <a href="tatame.html" class="detour" id="openMat">
+          <span class="belt-mini" aria-hidden="true"></span>
+          <span class="detour-txt"><span class="mono lbl" data-i18n="dtK">desvio opcional</span><b data-i18n="dtT">A trilha do tatame</b><small data-i18n="dtS">Faixa preta de jiu-jitsu, para quem estiver curioso.</small></span>
+          <span class="detour-arr" aria-hidden="true">→</span>
         </a>
-        <a class="btn btn-glass glass pill press" href="https://www.linkedin.com/in/julianadecampos/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-          LinkedIn
-        </a>
+      </div>
+      <div class="p-body">
+        <ol class="timeline">
+          <li class="tl now">
+            <span class="tl-year mono" data-i18n="y1">2026 → hoje</span><span class="tl-dot"></span>
+            <div class="tl-body"><span class="tl-org mono">Legal Corporate · proptech</span><b data-i18n="l1t">Analista Jurídica</b><p data-i18n="l1d">Contratos societários, M&amp;A, governança de IA e centralização das demandas. Construo ferramentas com Claude e Claude Code para o time.</p></div>
+          </li>
+          <li class="tl major">
+            <span class="tl-year mono">2021–2026</span><span class="tl-dot"></span>
+            <div class="tl-body"><span class="tl-org mono" data-i18n="l2o">Serviços Sociais Autônomos</span><b data-i18n="l2t">Contratos e Compras · Pregoeira · Presidente da CPL</b><p data-i18n="l2d">Governança corporativa nas contratações de entidade paraestatal, uso de IA para gerir a informação e desburocratizar processos, e formação interna dos colaboradores em compras e contratações.</p></div>
+          </li>
+          <li class="tl lane"><span></span><span class="tl-dot"></span><p class="mono lbl" data-i18n="lane">advocacia e consultoria</p></li>
+          <li class="tl compact">
+            <span class="tl-year mono">2020</span><span class="tl-dot"></span>
+            <div class="tl-body"><b>E3 Licitações</b><span data-i18n="rCons">Consultoria em licitações</span></div>
+          </li>
+          <li class="tl compact">
+            <span class="tl-year mono">2016</span><span class="tl-dot"></span>
+            <div class="tl-body tl-pair">
+              <div><b>Gazen Advogados <em class="tl-role" data-i18n="rCoord">· Coordenadora</em></b><span data-i18n="rAdvLic">Advocacia e Consultoria em Direito Empresarial, Societário e Administrativo</span></div>
+              <div><b>Andrade Maia</b><span data-i18n="rAdv">Advogada</span></div>
+            </div>
+          </li>
+          <li class="tl compact">
+            <span class="tl-year mono">2014</span><span class="tl-dot"></span>
+            <div class="tl-body"><b>Areas e Tavares</b><span data-i18n="rAdv">Advogada</span></div>
+          </li>
+          <li class="tl compact first">
+            <span class="tl-year mono">2013</span><span class="tl-dot"></span>
+            <div class="tl-body"><b>Licijur</b><span data-i18n="rCons">Consultoria em licitações</span></div>
+          </li>
+        </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- 06 · END -->
+  <section class="stage end" id="resolucao" data-stage="6" data-status="done">
+    <div class="panel split">
+      <div class="p-head">
+        <p class="tag"><span class="ico end"></span><span data-i18n="k6">06 · evento final</span></p>
+        <h2 data-i18n="h6">Solicitação <em>deferida</em>.</h2>
+        <p data-i18n="p6">O percurso termina aqui. A próxima etapa é uma conversa.</p>
+        <div class="cta">
+          <a class="btn big" href="mailto:juridicojulianacampos@gmail.com" data-i18n="c1">Entrar em contato</a>
+          <a class="btn ghost big" href="https://www.linkedin.com/in/julianadecampos/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <p class="foot mono">© 2026 · Porto Alegre · OAB/RS 94.800</p>
+      </div>
+      <div class="p-body">
+        <div class="receipt" id="summary" aria-live="polite"></div>
+        <details class="making">
+          <summary class="mono" data-i18n="mkT">bastidores · como este site foi feito</summary>
+          <p data-i18n="mkP">Este site foi desenvolvido em colaboração com o Claude Code, do conceito ao código, ao longo de sucessivas iterações. A cena 3D é gerada em código com three.js. O método também integra o portfólio.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Juliana de Campos Ribeiro</span>
-    <span>OAB/RS 94.800, Porto Alegre</span>
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span data-i18n="mq">processo <i>✦</i> tecnologia <i>✦</i> inteligência artificial <i>✦</i> ensino <i>✦</i> jurídico não precisa ser um labirinto <i>✦</i> juridicojulianacampos@gmail.com <i>✦</i>&nbsp;</span>
+  <span data-i18n="mq">processo <i>✦</i> tecnologia <i>✦</i> inteligência artificial <i>✦</i> ensino <i>✦</i> jurídico não precisa ser um labirinto <i>✦</i> juridicojulianacampos@gmail.com <i>✦</i>&nbsp;</span>
+</div></div>
+
+<dialog class="game-dlg" id="gameDlg" aria-label="O Labirinto · fase final">
+  <div class="game-dlg-bar">
+    <span class="mono">O Labirinto · <span data-i18n="gDlg">fase final</span></span>
+    <button type="button" class="game-close" id="closeGame" aria-label="Fechar o jogo">✕</button>
   </div>
-</footer>
+  <iframe id="gameFrame" title="O Labirinto · fase final" allow="autoplay"></iframe>
+  <div class="game-skel" aria-hidden="true" data-i18n="gLoad">carregando o labirinto…</div>
+</dialog>
 
-<script>
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement;
-
-  /* ---------- Tema ---------- */
-  var themeBtn = document.getElementById('themeBtn');
-  themeBtn.addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('jcr-theme', next); } catch (e) {}
-  });
-
-  /* ---------- Onda de luz no clique ---------- */
-  document.addEventListener('pointerdown', function (e) {
-    var el = e.target.closest('.press');
-    if (!el || reduce) return;
-    var r = el.getBoundingClientRect();
-    var size = Math.max(r.width, r.height) * 2.2;
-    var s = document.createElement('span');
-    s.className = 'ripple';
-    s.style.width = s.style.height = size + 'px';
-    s.style.left = (e.clientX - r.left - size / 2) + 'px';
-    s.style.top = (e.clientY - r.top - size / 2) + 'px';
-    el.appendChild(s);
-    s.addEventListener('animationend', function () { s.remove(); });
-  });
-
-  /* ---------- Brilho do vidro seguindo o ponteiro ---------- */
-  if (window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.glass').forEach(function (el) {
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-      el.addEventListener('pointerenter', function () { el.classList.add('lit'); });
-      el.addEventListener('pointerleave', function () { el.classList.remove('lit'); });
-    });
-  }
-
-  /* ---------- Navegação: gota que acompanha a seção ---------- */
-  var navLinks = document.getElementById('navLinks');
-  var drop = document.getElementById('drop');
-  var links = Array.prototype.slice.call(navLinks.querySelectorAll('a'));
-  var active = null;
-
-  function placeDrop(a) {
-    if (!a) { drop.style.opacity = 0; return; }
-    drop.style.opacity = 1;
-    drop.style.width = a.offsetWidth + 'px';
-    drop.style.transform = 'translateX(' + a.offsetLeft + 'px)';
-  }
-  function setActive(a) {
-    active = a;
-    links.forEach(function (l) { l.classList.toggle('is-active', l === a); });
-    placeDrop(a);
-  }
-  links.forEach(function (a) {
-    a.addEventListener('pointerenter', function () { placeDrop(a); });
-  });
-  navLinks.addEventListener('pointerleave', function () { placeDrop(active); });
-
-  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) {
-        var i = sections.indexOf(en.target);
-        if (i > -1) setActive(links[i]);
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach(function (s) { if (s) io.observe(s); });
-  window.addEventListener('scroll', function () {
-    if (window.scrollY < window.innerHeight * 0.5) setActive(null);
-  }, { passive: true });
-  window.addEventListener('resize', function () { placeDrop(active); });
-
-  /* ---------- Lente sobre o monograma ---------- */
-  var art = document.getElementById('art');
-  var lens = document.getElementById('lens');
-  var inner = document.getElementById('lensInner');
-  var ZOOM = 1.45;
-  var size = 220, W = 0, H = 0;
-  var cur = { x: 0, y: 0 }, target = { x: 0, y: 0 };
-  var lastPointer = -1e9;
-
-  function measure() {
-    var r = art.getBoundingClientRect();
-    W = r.width; H = r.height;
-    size = Math.round(Math.min(Math.max(W * 0.3, 112), 250));
-    lens.style.setProperty('--lens', size + 'px');
-    inner.style.width = W + 'px';
-    inner.style.height = H + 'px';
-    if (!cur.x) { cur.x = target.x = W * 0.36; cur.y = target.y = H * 0.5; }
-  }
-  measure();
-  window.addEventListener('resize', measure);
-
-  art.addEventListener('pointermove', function (e) {
-    var r = art.getBoundingClientRect();
-    target.x = e.clientX - r.left;
-    target.y = e.clientY - r.top;
-    lastPointer = performance.now();
-  });
-
-  function render() {
-    var x = cur.x, y = cur.y;
-    var lx = x - size / 2, ly = y - size / 2;
-    lens.style.transform = 'translate3d(' + lx + 'px,' + ly + 'px,0)';
-    inner.style.transformOrigin = x + 'px ' + y + 'px';
-    inner.style.transform = 'translate3d(' + (-lx) + 'px,' + (-ly) + 'px,0) scale(' + ZOOM + ')';
-  }
-
-  if (reduce) {
-    cur.x = W * 0.5; cur.y = H * 0.5; render();
-  } else {
-    var t0 = performance.now();
-    (function loop(now) {
-      if (now - lastPointer > 2200) {
-        var t = (now - t0) / 1000;
-        target.x = W * (0.5 + 0.3 * Math.sin(t * 0.45));
-        target.y = H * (0.5 + 0.16 * Math.sin(t * 0.9 + 1.2));
-      }
-      cur.x += (target.x - cur.x) * 0.12;
-      cur.y += (target.y - cur.y) * 0.12;
-      render();
-      requestAnimationFrame(loop);
-    })(t0);
-  }
-
-
-  /* ---------- Barra de leitura ---------- */
-  var prog = document.getElementById('progress');
-  function onScroll() {
-    var h = document.documentElement.scrollHeight - innerHeight;
-    prog.style.setProperty('--p', h > 0 ? Math.min(1, scrollY / h) : 0);
-  }
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-  /* ---------- Método: abas ---------- */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
-  var tabDrop = document.getElementById('tabDrop');
-  function placeTab(t) {
-    tabDrop.style.width = t.offsetWidth + 'px';
-    tabDrop.style.transform = 'translateX(' + (t.offsetLeft - 5) + 'px)';
-  }
-  function selectTab(t, focus) {
-    tabs.forEach(function (x) {
-      var on = x === t, pane = document.getElementById(x.getAttribute('aria-controls'));
-      x.setAttribute('aria-selected', on ? 'true' : 'false');
-      x.tabIndex = on ? 0 : -1;
-      pane.hidden = !on; pane.classList.toggle('is-on', on);
-    });
-    placeTab(t);
-    if (focus) t.focus();
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { selectTab(t); });
-    t.addEventListener('keydown', function (e) {
-      var k = e.key, n = null;
-      if (k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-      if (k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (k === 'Home') n = tabs[0];
-      if (k === 'End') n = tabs[tabs.length - 1];
-      if (n) { e.preventDefault(); selectTab(n, true); }
-    });
-  });
-  requestAnimationFrame(function () { tabDrop.style.transition = 'none'; placeTab(tabs[0]); requestAnimationFrame(function () { tabDrop.style.transition = ''; }); });
-  addEventListener('resize', function () { placeTab(tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0]); });
-
-  /* ---------- Demo jogável ---------- */
-  var play = document.getElementById('play');
-  var frame = null;
-  function closeGame() {
-    if (!frame) return;
-    frame.remove(); frame = null;            // remover o iframe corta música e efeitos na hora
-    play.classList.remove('on');
-  }
-  document.getElementById('playBtn').addEventListener('click', function () {
-    frame = document.createElement('iframe');
-    frame.src = 'assets/labirinto/index.html';
-    frame.title = 'O Labirinto, primeira fase jogável';
-    play.appendChild(frame);
-    play.classList.add('on');
-    frame.addEventListener('load', function () { frame && frame.focus(); });
-  });
-  document.getElementById('playClose').addEventListener('click', closeGame);
-  new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (!e.isIntersecting) closeGame(); });
-  }, { threshold: 0 }).observe(play);
-  window.addEventListener('message', function (e) {
-    if (e.data === 'labirinto:fim' && frame && e.source === frame.contentWindow) { /* o próprio jogo já parou o som */ }
-  });
-
-  /* ---------- Tatame ---------- */
-  var mat = document.querySelector('.mat');
-  mat.querySelectorAll('.mat-grid > *').forEach(function (t, i) {
-    var r = Math.floor(i / 4), c = i % 4;
-    t.style.transitionDelay = ((r + c) * 0.06) + 's';
-  });
-  new IntersectionObserver(function (es, o) {
-    es.forEach(function (e) { if (e.isIntersecting) { mat.classList.add('seen'); o.disconnect(); } });
-  }, { threshold: 0.5 }).observe(mat);
-
-  /* ---------- Diário de bordo ---------- */
-  var route = [
-    ['Inteligência artificial e tecnologia', 'Ferramenta de trabalho diária', [
-      ['Engenharia de Prompt para ChatGPT', 'ISC · TCU', '15h', 'mai/2026', 1],
-      ['AI Fluency: Framework & Foundations', 'Anthropic', '', 'abr/2026', 1],
-      ['Claude 101', 'Anthropic', '', 'abr/2026', 1],
-      ['AI Boost Bites: Prompting like a Pro with Google Workspace', 'Google', '', 'abr/2026'],
-      ['AI Boost Bites: Personalization with customized prompts', 'Google', '', 'abr/2026'],
-      ['AI Boost Bites: TL;DR with Gemini in Docs & Drive', 'Google', '', 'abr/2026'],
-      ['Desvendando a IA na Administração Pública', 'Enap', '25h', 'set/2025'],
-      ['IA no Contexto do Serviço Público', 'Enap', '20h', 'set/2025'],
-      ['Bootcamp IA Generativa com AWS', 'Trybe · AWS', '10h', 'set/2024', 1],
-      ['IA Generativa Aplicada ao Direito', 'OAB SP · Trybe · Jusbrasil · ITS', '4h', 'ago/2024', 1],
-      ['Trilha fluêncIA', 'Enap', '10h', 'ago/2024'],
-      ['IA e o Novo Contexto da Cultura Digital', 'Fundação Bradesco', '20h', 'ago/2024'],
-      ['Direito e Novas Tecnologias', 'Enap', '5h', 'ago/2024'],
-      ['IA para Simplificar o Dia a Dia', 'Enap', '4h', 'ago/2024'],
-      ['IA na Prática', 'Future Law', '2h', 'ago/2024'],
-      ['Como Utilizar a IA em Licitações e Contratos', 'Sollicita', '1h', 'mar/2024'],
-      ['Plataforma Digital: Novas Formas de Trabalho', 'ESA · OAB SP', '2,5h', 'nov/2023']
-    ]],
-    ['Proteção de dados e compliance', 'Governança e risco no dia a dia corporativo', [
-      ['Como Implementar a LGPD: Bases, Mecanismos e Processos', 'Enap', '25h', 'ago/2024', 1],
-      ['Compliance e Proteção de Dados', 'PUCRS', '10h', 'ago/2024', 1],
-      ['Proteção de Dados Pessoais', 'OAB Federal', '2h', 'set/2024'],
-      ['Corrupção e Compliance: Desafios Contemporâneos', 'ESA · OAB SP', '12h', 'nov/2023'],
-      ['Normas Anticorrupção, Antissuborno e Compliance Público', 'FGV Online', '5h', 'nov/2023'],
-      ['Proteção de Dados', 'FGV · nic.br', '5h', 'nov/2023'],
-      ['Compliance', 'FGV', '30h', 'nov/2022', 1],
-      ['Fundamentos da LGPD', 'Enap', '15h', 'abr/2022'],
-      ['Introdução à Lei Brasileira de Proteção de Dados Pessoais', 'Enap', '10h', 'fev/2022']
-    ]],
-    ['Processos e gestão', 'Mapeamento, priorização e projetos', [
-      ['Mapeamento de Processos de Trabalho com BPMN e Bizagi', 'ISC · TCU', '10h', 'set/2025', 1],
-      ['Estratégias de Produtividade: Clareza, Propósito e Priorização', 'Enap', '25h', 'ago/2024'],
-      ['Scrum no Contexto do Serviço Público', 'Enap', '15h', 'out/2023', 1],
-      ['Get Started with Bizagi Modeler', 'Bizagi Training', '', 'nov/2023']
-    ]],
-    ['Contabilidade', 'Base financeira para M&A', [
-      ['Análise das Demonstrações Contábeis', 'FGV', '30h', 'mai/2026', 1]
-    ]],
-    ['Comunicação e pessoas', 'Ensinar e conduzir times', [
-      ['Comunicação Não Violenta', 'Enap', '20h', 'dez/2023', 1],
-      ['Diversidade e Inclusão no Ambiente de Trabalho', 'Enap', '20h', 'set/2025'],
-      ['Virtudes e Forças de Caráter', 'PUCRS', '10h', 'set/2024']
-    ]],
-    ['Inglês', 'EF SET, nível C2 Proficient', [
-      ['EF SET English Certificate, nível C2 Proficient', 'EF SET', '', 'ago/2024', 1]
-    ]]
-  ];
-  var archive = [
-    ['Contratações públicas', 'Cinco anos como pregoeira e analista de contratos', [
-      ['Termo de Referência e Projeto Básico nas Licitações', 'EGP · TCE-PR', '8h', 'set/2025'],
-      ['Treinamento e Capacitação: Gestão de Contratos (RLC Sistema S)', 'INGEP', '20h', 'out/2024'],
-      ['Treinamento Orientativo: Gestão de Contratos (RLC Sistema S)', 'INGEP', '16h', 'out/2024'],
-      ['Licitação e Contratos Administrativos: Lei 14.133/2021', 'ILB · Senado Federal', '60h', 'set/2024'],
-      ['Elaboração de Editais para Aquisições no Setor Público', 'Enap', '25h', 'jan/2024'],
-      ['Aplicação de Penalidades nos Contratos Administrativos', 'Enap', '32h', 'jan/2024'],
-      ['Nova Lei de Licitações: Seleção do Fornecedor e Procedimentos Auxiliares', 'CNJ', '15h', 'nov/2023'],
-      ['Nova Lei de Licitações: Governança e Planejamento das Contratações', 'CNJ', '15h', 'nov/2023'],
-      ['Nova Lei de Licitações: Execução Contratual', 'CNJ', '15h', 'nov/2023'],
-      ['Formação de Pregoeiros: Visão Geral', 'Enap', '30h', 'out/2023'],
-      ['Formação de Pregoeiros: Teoria', 'Enap', '20h', 'out/2023'],
-      ['Licitação por Concorrência, Concurso, Leilão e Diálogo Competitivo', 'Enap', '20h', 'out/2023'],
-      ['Nova Lei de Licitações: Gestão Contratual', 'Enap', '25h', 'out/2023'],
-      ['Nova Lei de Licitações e Contratos: Aspectos Gerais e Pontos de Atenção', 'Enap', '40h', 'set/2023'],
-      ['Nova Lei de Licitações: Sanções ao Fornecedor', 'Enap', '25h', 'set/2023'],
-      ['Nova Lei de Licitações: Modalidade e Seleção de Fornecedores', 'Enap', '25h', 'set/2023'],
-      ['Nova Lei de Licitações: Procedimentos Auxiliares', 'Enap', '20h', 'set/2023'],
-      ['Nova Lei de Licitações: Contratações Diretas', 'Enap', '30h', 'set/2023'],
-      ['Nova Lei de Licitações: Visão Geral', 'Enap', '10h', 'set/2023'],
-      ['Elaboração de Termos de Referência para Contratação de Bens e Serviços', 'Enap', '20h', 'set/2023'],
-      ['Gestão e Fiscalização de Contratos Administrativos', 'Enap', '40h', 'abr/2022'],
-      ['Fundamentos dos Contratos', 'Prime Cursos', '40h', 'jun/2021']
-    ]]
-  ];
-
-  function hrs(list) { var t = 0; list.forEach(function (c) { if (c[2]) t += parseFloat(c[2].replace(',', '.')); }); return t; }
-  function fmt(n) { return String(n).replace('.', ','); }
-  function esc(x) { return x.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-  var maxH = Math.max.apply(null, route.map(function (c) { return hrs(c[2]); }));
-
-  function legHTML(cat, id, gauge) {
-    var h = hrs(cat[2]), n = cat[2].length;
-    var rows = cat[2].map(function (c) {
-      return '<div class="course' + (c[4] ? ' key' : '') + '"><span class="cn">' + esc(c[0]) + '</span><span class="ci">' + esc(c[1]) + '</span><span class="ch">' + (c[2] || '') + '</span><span class="cd">' + c[3] + '</span></div>';
-    }).join('');
-    return '<div class="leg"><button class="leg-btn" type="button" aria-expanded="false" aria-controls="' + id + '">' +
-      '<span class="t">' + cat[0] + '<small>' + cat[1] + '</small></span>' +
-      (gauge && h ? '<span class="gauge" aria-hidden="true"><i style="--w:' + Math.max(4, h / maxH * 100).toFixed(1) + '%"></i></span>' : '<span></span>') +
-      '<span class="h">' + (h ? fmt(h) + 'h' : n + (n === 1 ? ' certificado' : ' cursos')) + '</span>' +
-      '<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></button>' +
-      '<div class="leg-body" id="' + id + '"><div><div class="pad">' + rows + '</div></div></div></div>';
-  }
-  var routeEl = document.getElementById('route'), archEl = document.getElementById('archive');
-  routeEl.innerHTML = route.map(function (c, i) { return legHTML(c, 'r' + i, true); }).join('');
-  archEl.innerHTML = '<div class="archive-label">Voos anteriores</div>' + archive.map(function (c, i) { return legHTML(c, 'a' + i, false); }).join('');
-  document.querySelectorAll('.leg').forEach(function (l) {
-    var b = l.querySelector('.leg-btn');
-    b.addEventListener('click', function () {
-      var open = !l.classList.contains('open');
-      l.classList.toggle('open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  });
-
-  // odômetro: soma tudo e conta até o total quando o diário entra na tela
-  var total = hrs([].concat.apply([], route.concat(archive).map(function (c) { return c[2]; })));
-  var odo = document.getElementById('odo');
-  odo.parentNode.setAttribute('aria-label', fmt(total) + ' horas registradas');
-  new IntersectionObserver(function (es, o) {
-    es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      o.disconnect(); routeEl.classList.add('seen');
-      if (reduce) { odo.textContent = fmt(total); return; }
-      var t0 = performance.now(), D = 1600;
-      (function step(now) {
-        var k = Math.min(1, (now - t0) / D), ease = 1 - Math.pow(1 - k, 4);
-        var v = total * ease;
-        odo.textContent = k < 1 ? Math.floor(v).toLocaleString('pt-BR') : fmt(total);
-        if (k < 1) requestAnimationFrame(step);
-      })(t0);
-    });
-  }, { threshold: 0.35 }).observe(document.querySelector('.logbook'));
-})();
+<script src="app.js?v=12"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
 </script>
+<script type="module" src="scene.js?v=12"></script>
 </body>
 </html>
