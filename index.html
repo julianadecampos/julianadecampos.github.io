@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
 <a class="skip" href="#historico" data-i18n="skip">Pular direto para os fatos</a>
@@ -33,10 +33,11 @@
       <span class="rail-token" aria-hidden="true"></span>
       <button type="button" class="node start" data-go="0"><b>jcr</b></button>
       <button type="button" class="node task" data-go="1"><i></i></button>
-      <button type="button" class="node gateway" data-go="2"><i></i></button>
+      <button type="button" class="node task" data-go="2"><i></i></button>
       <button type="button" class="node task" data-go="3"><i></i></button>
       <button type="button" class="node sub" data-go="4"><i></i></button>
       <button type="button" class="node data" data-go="5"><i></i></button>
+      <a class="fork" href="tatame.html" id="railFork" data-label="gateway · trilha do tatame" aria-label="Gateway: desvio opcional para a trilha do tatame"><i></i></a>
       <button type="button" class="node end" data-go="6"><i></i></button>
     </nav>
     <div class="meta" aria-live="polite">
@@ -102,51 +103,31 @@
     </div>
   </section>
 
-  <!-- 02 · GATEWAY -->
-  <section class="stage" id="gateway" data-stage="2" data-status="route">
+  <!-- 02 · TECHNOLOGY (task) -->
+  <section class="stage" id="tecnologia" data-stage="2" data-status="route">
     <div class="panel split">
       <div class="p-head">
-        <p class="tag"><span class="ico gateway"></span><span data-i18n="k2">02 · tecnologia · gateway</span></p>
-        <h2 data-i18n="h2">Primeiro o diagnóstico. Depois, a <em>ferramenta</em>.</h2>
-        <p data-i18n="p2">Não são caminhos excludentes: integro ferramentas, cada uma com sua função no fluxo. Parto do diagnóstico do problema para definir a combinação adequada. Selecione um cenário.</p>
-        <div class="gw" id="gwProblems" role="group"></div>
+        <p class="tag"><span class="ico task"></span><span data-i18n="k2">02 · tecnologia · tarefa</span></p>
+        <h2 data-i18n="h2">Ferramentas que se combinam, cada uma com sua <em>função</em>.</h2>
+        <p data-i18n="p2">Não são caminhos excludentes: integro ferramentas conforme o diagnóstico de cada problema, cada uma com seu papel no fluxo. Toque em uma ferramenta para saber o que ela é e ver as certificações relacionadas.</p>
+        <div class="gw-out" id="gwOut" aria-live="polite"></div>
       </div>
       <div class="p-body">
         <div class="eco" id="eco" aria-label="Ecossistema de ferramentas"></div>
-        <div class="gw-out" id="gwOut" aria-live="polite"></div>
       </div>
     </div>
+  </section>
 
+  <!-- 02 · technology certifications: its own block, between the technology and agent stages -->
+  <section class="stage aside-stage" id="certificacoes">
     <div class="panel split creds-panel" id="creds">
       <div class="p-head">
-        <p class="tag"><span class="ico data"></span><span data-i18n="credT">02 · tecnologia · credenciais</span></p>
-        <h2 data-i18n="credH">A formação por trás de cada <em>escolha</em>.</h2>
-        <p data-i18n="credSub">Cursos e certificações em IA generativa, gestão de serviços e modelagem de processos. Ao selecionar um cenário acima, as credenciais relacionadas se destacam.</p>
+        <p class="tag"><span class="ico data"></span><span data-i18n="credT">02 · tecnologia · certificações</span></p>
+        <h2 data-i18n="credH">Certificações em <em>tecnologia</em>.</h2>
+        <p data-i18n="credSub">IA generativa, gestão de serviços e modelagem de processos. Ao tocar em uma ferramenta na etapa de tecnologia, as certificações relacionadas se destacam.</p>
       </div>
       <div class="p-body">
-        <div class="cred-group">
-          <p class="mono lbl" data-i18n="cgAi">IA generativa</p>
-          <ul class="cred-list">
-            <li class="cred" data-tools="claude cowork"><span class="iss mono">Anthropic</span><b>Introduction to Claude Cowork · Claude 101 · <span data-i18n="cAiFl">Fluência em IA</span></b><span class="cred-meta mono">2026 · <a href="https://verify.skilljar.com/c/wa9unusx3gei" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
-            <li class="cred" data-tools="gemini nblm gws"><span class="iss mono">Google</span><b>AI Boost Bites · Gemini, NotebookLM <span data-i18n="cAnd">e</span> Workspace</b><span class="cred-meta mono">2026 · <a href="https://www.skills.google/public_profiles/1e2ddac1-0683-48f5-b39d-eb84114a8077" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
-            <li class="cred" data-tools="claude gpt"><span class="iss mono">Future Law</span><b>Agentes e Assistentes de IA no Jurídico: Claude, GPT e Ecossistema</b><span class="cred-meta mono">2026 · <a href="https://future-s-school-5d1d.thinkific.com/certificates/jtlcktzuts" target="_blank" rel="noopener"><span data-i18n="vf">verificar</span> ↗</a></span></li>
-            <li class="cred" data-tools="gpt"><span class="iss mono">ISC · TCU</span><b>Engenharia de Prompt para ChatGPT</b><span class="cred-meta mono">2026</span></li>
-            <li class="cred" data-tools="ai"><span class="iss mono">Trybe</span><b>IA Generativa Aplicada ao Direito</b><span class="cred-meta mono">2024</span></li>
-            <li class="cred" data-tools="ai"><span class="iss mono">Enap</span><b>Trilha fluêncIA</b><span class="cred-meta mono">2024</span></li>
-          </ul>
-        </div>
-        <div class="cred-group">
-          <p class="mono lbl" data-i18n="cgSvc">gestão de serviços</p>
-          <ul class="cred-list">
-            <li class="cred" data-tools="jira rovo"><span class="iss mono">Atlassian</span><b>Credentialed in JSM Fundamentals with AI</b><span class="cred-meta mono">2026 · <a href="https://cp.certmetrics.com/atlassian/en/public/verify/credential" target="_blank" rel="noopener" title="1b68dea9b6424bee946e6e619ff59d45"><span data-i18n="vf">verificar</span> ↗</a></span></li>
-          </ul>
-        </div>
-        <div class="cred-group">
-          <p class="mono lbl" data-i18n="cgProc">processos</p>
-          <ul class="cred-list">
-            <li class="cred" data-tools="bizagi"><span class="iss mono">UFV</span><b>Modelagem de processos com o Bizagi</b><span class="cred-meta mono">2026</span></li>
-          </ul>
-        </div>
+        <ul class="cert-grid" id="techCerts" aria-label="Certificações em tecnologia"></ul>
       </div>
     </div>
   </section>
@@ -212,55 +193,80 @@
 
   <!-- 05 · RECORD -->
   <section class="stage" id="historico" data-stage="5" data-status="log">
-    <div class="panel split">
-      <div class="p-head">
+    <div class="panel record" id="recordPanel">
+      <div class="rec-head">
         <p class="tag"><span class="ico data"></span><span data-i18n="k5">05 · objeto de dados · histórico</span></p>
         <h2 data-i18n="h5">Mais de uma década de direito. Os últimos anos, <em>redesenhando</em> como ele funciona.</h2>
-        <p class="mono lbl" data-i18n="eduT">formação</p>
-        <ul class="edu">
-          <li data-i18n="e1">Pós em M&amp;A · Galícia Educação · 2027</li>
-          <li data-i18n="e2">Pós em Comunicação em Mídias Sociais · FADERGS · 2019</li>
-          <li data-i18n="e3">Especialização em Direito Público · FMP/RS · 2016</li>
-          <li data-i18n="e4">Direito · PUCRS · 2013</li>
-        </ul>
-        <a href="tatame.html" class="detour" id="openMat">
-          <span class="belt-mini" aria-hidden="true"></span>
-          <span class="detour-txt"><span class="mono lbl" data-i18n="dtK">desvio opcional</span><b data-i18n="dtT">A trilha do tatame</b><small data-i18n="dtS">Faixa preta de jiu-jitsu, para quem estiver curioso.</small></span>
-          <span class="detour-arr" aria-hidden="true">→</span>
-        </a>
       </div>
-      <div class="p-body">
-        <ol class="timeline">
-          <li class="tl now">
-            <span class="tl-year mono" data-i18n="y1">2026 → hoje</span><span class="tl-dot"></span>
-            <div class="tl-body"><span class="tl-org mono">Legal Corporate · proptech</span><b data-i18n="l1t">Analista Jurídica</b><p data-i18n="l1d">Contratos societários, M&amp;A, governança de IA e centralização das demandas. Construo ferramentas com Claude e Claude Code para o time.</p></div>
-          </li>
-          <li class="tl major">
-            <span class="tl-year mono">2021–2026</span><span class="tl-dot"></span>
-            <div class="tl-body"><span class="tl-org mono" data-i18n="l2o">Serviços Sociais Autônomos</span><b data-i18n="l2t">Contratos e Compras · Pregoeira · Presidente da CPL</b><p data-i18n="l2d">Governança corporativa nas contratações de entidade paraestatal, uso de IA para gerir a informação e desburocratizar processos, e formação interna dos colaboradores em compras e contratações.</p></div>
-          </li>
-          <li class="tl lane"><span></span><span class="tl-dot"></span><p class="mono lbl" data-i18n="lane">advocacia e consultoria</p></li>
-          <li class="tl compact">
-            <span class="tl-year mono">2020</span><span class="tl-dot"></span>
-            <div class="tl-body"><b>E3 Licitações</b><span data-i18n="rCons">Consultoria em licitações</span></div>
-          </li>
-          <li class="tl compact">
-            <span class="tl-year mono">2016</span><span class="tl-dot"></span>
-            <div class="tl-body tl-pair">
-              <div><b>Gazen Advogados <em class="tl-role" data-i18n="rCoord">· Coordenadora</em></b><span data-i18n="rAdvLic">Advocacia e Consultoria em Direito Empresarial, Societário e Administrativo</span></div>
-              <div><b>Andrade Maia</b><span data-i18n="rAdv">Advogada</span></div>
-            </div>
-          </li>
-          <li class="tl compact">
-            <span class="tl-year mono">2014</span><span class="tl-dot"></span>
-            <div class="tl-body"><b>Areas e Tavares</b><span data-i18n="rAdv">Advogada</span></div>
-          </li>
-          <li class="tl compact first">
-            <span class="tl-year mono">2013</span><span class="tl-dot"></span>
-            <div class="tl-body"><b>Licijur</b><span data-i18n="rCons">Consultoria em licitações</span></div>
-          </li>
-        </ol>
+      <p class="mono lbl" data-i18n="eduT">formação jurídica</p>
+      <ol class="degrees row">
+        <li class="degree">
+          <span class="mono dg-lvl" data-i18n="dg1l">pós-graduação · em curso</span>
+          <b data-i18n="dg1t">Fusões e Aquisições (M&amp;A)</b>
+          <span class="mono dg-org">Galícia Educação</span>
+          <span class="dg-year"><small class="mono" data-i18n="dgPrev">conclusão</small>2027</span>
+        </li>
+        <li class="degree">
+          <span class="mono dg-lvl" data-i18n="dg2l">especialização</span>
+          <b data-i18n="dg2t">Direito Público</b>
+          <span class="mono dg-org">FMP/RS</span>
+          <span class="dg-year">2016</span>
+        </li>
+        <li class="degree">
+          <span class="mono dg-lvl" data-i18n="dg3l">bacharelado</span>
+          <b data-i18n="dg3t">Direito</b>
+          <span class="mono dg-org">PUCRS</span>
+          <span class="dg-year">2013</span>
+        </li>
+      </ol>
+      <div class="rec-grid">
+        <div class="rec-col">
+          <p class="mono lbl" data-i18n="trajT">trajetória</p>
+      <ol class="timeline">
+        <li class="tl now">
+          <span class="tl-year mono" data-i18n="y1">2026 → hoje</span><span class="tl-dot"></span>
+          <div class="tl-body"><span class="tl-org mono">Legal Corporate · proptech</span><b data-i18n="l1t">Analista Jurídica</b><p data-i18n="l1d">Contratos societários, M&amp;A, governança de IA e centralização das demandas. Construo ferramentas com Claude e Claude Code para o time.</p></div>
+        </li>
+        <li class="tl major">
+          <span class="tl-year mono">2021–2026</span><span class="tl-dot"></span>
+          <div class="tl-body"><span class="tl-org mono" data-i18n="l2o">Serviços Sociais Autônomos</span><b data-i18n="l2t">Contratos e Compras · Pregoeira · Presidente da CPL</b><p data-i18n="l2d">Governança corporativa nas contratações de entidade paraestatal, uso de IA para gerir a informação e desburocratizar processos, e formação interna dos colaboradores em compras e contratações.</p></div>
+        </li>
+        <li class="tl lane"><span></span><span class="tl-dot"></span><p class="mono lbl" data-i18n="lane">advocacia e consultoria</p></li>
+        <li class="tl compact">
+          <span class="tl-year mono">2020</span><span class="tl-dot"></span>
+          <div class="tl-body"><b>E3 Licitações</b><span data-i18n="rCons">Consultoria em licitações</span></div>
+        </li>
+        <li class="tl compact">
+          <span class="tl-year mono">2016</span><span class="tl-dot"></span>
+          <div class="tl-body tl-pair">
+            <div><b>Gazen Advogados <em class="tl-role" data-i18n="rCoord">· Coordenadora</em></b><span data-i18n="rAdvLic">Advocacia e Consultoria em Direito Empresarial, Societário e Administrativo</span></div>
+            <div><b>Andrade Maia</b><span data-i18n="rAdv">Advogada</span></div>
+          </div>
+        </li>
+        <li class="tl compact">
+          <span class="tl-year mono">2014</span><span class="tl-dot"></span>
+          <div class="tl-body"><b>Areas e Tavares</b><span data-i18n="rAdv">Advogada</span></div>
+        </li>
+        <li class="tl compact first">
+          <span class="tl-year mono">2013</span><span class="tl-dot"></span>
+          <div class="tl-body"><b>Licijur</b><span data-i18n="rCons">Consultoria em licitações</span></div>
+        </li>
+      </ol>
+        </div>
+        <div class="rec-col">
+          <p class="mono lbl" data-i18n="lawCertT">certificações jurídicas</p>
+          <ul class="cert-grid one" id="lawCerts" aria-label="Certificações jurídicas"></ul>
+          <p class="mono lbl lbl-gap" data-i18n="designT">comunicação e design</p>
+          <ul class="cert-grid one">
+            <li class="cert"><div><span class="mk ci img-mk" aria-hidden="true"><img src="assets/logos/fadergs.png" alt="" decoding="async"></span><span class="cert-txt"><b data-i18n="e2">Pós-graduação em Comunicação em Mídias Sociais</b><span class="mono cert-meta">FADERGS · 2019–2020</span><small class="cert-note" data-i18n="e2d">A base do meu repertório visual e de design.</small></span></div></li>
+          </ul>
+        </div>
       </div>
+      <a href="tatame.html" class="gate" id="openMat">
+        <span class="gate-tunnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b></b></span>
+        <span class="gate-txt"><span class="mono lbl" data-i18n="dtK">gateway · desvio opcional</span><b data-i18n="dtT">A trilha do tatame</b><small data-i18n="dtS">Faixa preta de jiu-jitsu, para quem estiver curioso.</small></span>
+        <span class="gate-go mono" aria-hidden="true"><span data-i18n="dtGo">entrar</span> ↘</span>
+      </a>
     </div>
   </section>
 
@@ -302,13 +308,13 @@
   <div class="game-skel" aria-hidden="true" data-i18n="gLoad">carregando o labirinto…</div>
 </dialog>
 
-<script src="app.js?v=14"></script>
+<script src="app.js?v=30"></script>
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
 } }
 </script>
-<script type="module" src="scene.js?v=14"></script>
+<script type="module" src="scene.js?v=23"></script>
 </body>
 </html>

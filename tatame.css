@@ -32,3 +32,18 @@
   .belt-prog{width:auto;flex:1}
   .dojo-stage{display:none}
 }
+
+/* arriving through the gateway: the black hole opens from the centre and the diamonds fly past */
+@property --hole{syntax:"<length>";inherits:false;initial-value:0px}
+.warp-out{display:none}
+html.warp-in .warp-out{display:block;position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}
+html.warp-in .warp-out b{position:absolute;inset:0;background:#050505;
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent var(--hole),#000 calc(var(--hole) + 40px));mask:radial-gradient(circle at 50% 50%,transparent var(--hole),#000 calc(var(--hole) + 40px));
+  animation:hole-open 1.1s cubic-bezier(.16,1,.3,1) .1s forwards}
+@keyframes hole-open{to{--hole:120vmax}}
+html.warp-in .warp-out i{position:absolute;left:50%;top:50%;z-index:1;width:58px;height:58px;margin:-29px 0 0 -29px;border:2px solid var(--bc);border-radius:7px;opacity:0;transform:rotate(45deg) scale(.2);animation:ring-out 1s cubic-bezier(.16,1,.3,1) forwards}
+.warp-out i:nth-child(1){--bc:#E0213F}.warp-out i:nth-child(2){--bc:#14110F;animation-delay:.05s}.warp-out i:nth-child(3){--bc:#B07A4E;animation-delay:.1s}
+.warp-out i:nth-child(4){--bc:#9A6AD8;animation-delay:.15s}.warp-out i:nth-child(5){--bc:#4C74F2;animation-delay:.2s}.warp-out i:nth-child(6){--bc:#ECE9E1;animation-delay:.25s}
+@keyframes ring-out{0%{opacity:0;transform:rotate(45deg) scale(.2)}15%{opacity:1}100%{opacity:0;transform:rotate(45deg) scale(36)}}
+html.warp-in main{animation:arrive 1.1s cubic-bezier(.16,1,.3,1) both}
+@keyframes arrive{from{transform:scale(1.06);filter:blur(4px)}to{transform:none;filter:none}}

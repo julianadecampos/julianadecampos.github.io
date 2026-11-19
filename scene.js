@@ -150,7 +150,7 @@ function setLabel(s, text) {
 }
 
 /* ---------------- the blue path ---------------- */
-const MAIN = [[0, 10], [0, -22], [12, -22], [12, -56], [-4, -56], [-4, -88], [6, -88], [6, -97]];   // the path ends inside the end event
+const MAIN = [[0, 10], [0, -22], [12, -22], [12, -56], [-4, -56], [-4, -98], [6, -98], [6, -107]];   // the path ends inside the end event
 const path = orthoPath(MAIN.map(([x, z]) => V(x, z)), 3);
 const L = path.getLength();
 const blueMat = new THREE.MeshBasicMaterial({ color: C.blue });
@@ -166,15 +166,16 @@ function sOf(x, z) {
 const NODES = [
   { key: "start", type: "ring", x: 0, z: 0, stage: 0 },
   { key: "triage", type: "task", x: 0, z: -12, back: 8, h: 1.8, stage: 1 },
-  { key: "gateway", type: "gateway", x: 12, z: -32, back: 6, h: 8.5, ahead: 15, ly: .6, stage: 2 },
+  { key: "tech", type: "task", x: 12, z: -34, back: 8, h: 1.8, stage: 2 },
   { key: "agent", type: "task", x: 12, z: -48, back: 8, h: 1.8, stage: 3 },
-  { key: "teach", type: "task", x: -4, z: -68, back: 8, h: 1.8, stage: 4 },
-  { key: "record", type: "data", x: -4, z: -80, back: 8, h: 1.8, stage: 5 },
-  { key: "end", type: "end", x: 6, z: -97, back: 8, h: 1.8, stage: 6 }
+  { key: "teach", type: "task", x: -4, z: -64, back: 8, h: 1.8, stage: 4 },
+  { key: "record", type: "data", x: -4, z: -76, back: 8, h: 1.8, stage: 5 },
+  { key: "fork", type: "gateway", x: -4, z: -88 },                              // the only real fork: the optional mat detour
+  { key: "end", type: "end", x: 6, z: -107, back: 8, h: 1.8, stage: 6 }
 ];
 const LBL = {
-  pt: { start: "00 · início", triage: "01 · triagem", gateway: "02 · gateway", agent: "03 · agente de IA", teach: "04 · capacitação", record: "05 · histórico", end: "06 · resolução", north: "norte" },
-  en: { start: "00 · start", triage: "01 · triage", gateway: "02 · gateway", agent: "03 · AI agent", teach: "04 · enablement", record: "05 · record", end: "06 · resolution", north: "north" }
+  pt: { start: "00 · início", triage: "01 · triagem", tech: "02 · tecnologia", agent: "03 · agente de IA", teach: "04 · capacitação", record: "05 · histórico", fork: "gateway · desvio", mat: "trilha do tatame →", end: "06 · resolução", north: "norte" },
+  en: { start: "00 · start", triage: "01 · triage", tech: "02 · technology", agent: "03 · AI agent", teach: "04 · enablement", record: "05 · record", fork: "gateway · detour", mat: "the mat trail →", end: "06 · resolution", north: "north" }
 };
 let lang = root.lang.startsWith("en") ? "en" : "pt";
 
@@ -221,34 +222,26 @@ function burstWave(on) {
 }
 const easeOutBack = x => 1 + 2.4 * Math.pow(x - 1, 3) + 1.4 * Math.pow(x - 1, 2);
 
-/* ---------------- gateway branches (tools) ---------------- */
-const gw = NODES[2];
-const TOOLS = [{ x: 2, name: "Jira + Rovo" }, { x: 6.5, name: "Fluig + RM Totvs" }, { x: 17.5, name: "Bizagi · BPMN" }, { x: 22, name: "Claude Code" }];
-const greyMat = new THREE.MeshBasicMaterial({ color: C.grey });
-TOOLS.forEach(t => {
-  const side = t.x < gw.x ? -1 : 1;
-  const bp = orthoPath([V(gw.x + side * 3, gw.z), V(t.x, gw.z), V(t.x, gw.z - 14)], 1.6);
-  t.mat = greyMat.clone();
-  scene.add(new THREE.Mesh(new THREE.TubeGeometry(bp, 80, .07, 6, false), t.mat));
-  t.portal = makePortal("task", { x: t.x, z: gw.z - 9, scale: .5, color: C.greyNode, edgeOpacity: .25 });
-  t.end = makePortal("end", { x: t.x, z: gw.z - 14, scale: .3, color: C.greyNode, edgeOpacity: .2 });
-  t.label = makeLabel(t.name, t.x, t.portal.topY + .55, gw.z - 9, .55, { bg: "#FBFCFE", fg: "#5D6477", border: "#C9CFDA" });
+/* ---------------- the gateway's second path: the mat trail, drawn in belt colours ---------------- */
+const gw = NODES.find(n => n.key === "fork");
+const BELTS = [0xE4E1D8, 0x1F4FD1, 0x6B3FA0, 0x7A4A26, 0x14110F];
+const SEG = 3.6, MAT_X0 = gw.x - 3.2;
+BELTS.forEach((c, i) => {
+  const a = V(MAT_X0 - i * SEG, gw.z), b = V(MAT_X0 - (i + 1) * SEG, gw.z);
+  scene.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.LineCurve3(a, b), 8, .11, 8, false), new THREE.MeshBasicMaterial({ color: c })));
 });
-function highlightTool(i) {
-  TOOLS.forEach((t, k) => {
-    const on = k === i;
-    t.mat.color.setHex(on ? C.blue : C.grey);
-    t.portal.mat.color.setHex(on ? C.blue : C.greyNode);
-    t.end.mat.color.setHex(on ? C.blue : C.greyNode);
-    t.label.material.opacity = on || i == null ? 1 : .45;
-  });
-  mapHighlight(i);
+{ // the black belt's red bar, then the entrance to the trail
+  const xb = MAT_X0 - BELTS.length * SEG + 1.4;
+  scene.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.LineCurve3(V(xb, gw.z), V(xb - .7, gw.z)), 4, .13, 8, false), new THREE.MeshBasicMaterial({ color: 0xC8102E })));
 }
-document.addEventListener("jcr:route", e => highlightTool(e.detail));
+const matX = MAT_X0 - BELTS.length * SEG - 1.4;
+const matDoor = makePortal("ring", { x: matX, z: gw.z, scale: .62, facing: Math.PI / 2 });
+const matLabel = makeLabel(LBL[lang].mat, matX, matDoor.topY + .6, gw.z, .55, { bg: "#14110F", fg: "#FBFCFE", border: "#14110F" });
 
 /* ---------------- the maze: grey decoy flows ---------------- */
+const greyMat = new THREE.MeshBasicMaterial({ color: C.grey });
 const avoid = [...path.getSpacedPoints(500)];
-TOOLS.forEach(t => { for (let z = gw.z; z >= gw.z - 15; z -= 1) avoid.push(V(t.x, z)); for (let x = Math.min(t.x, gw.x); x <= Math.max(t.x, gw.x); x++) avoid.push(V(x, gw.z)); });
+for (let x = gw.x; x >= matX - 3; x -= 1) avoid.push(V(x, gw.z));
 const near = (x, z, r) => avoid.some(p => (p.x - x) ** 2 + (p.z - z) ** 2 < r * r);
 const rand = rng(1984);
 const DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
@@ -365,9 +358,6 @@ function el(tag, attrs, parent = svg) { const e = document.createElementNS(NS, t
 function buildMap() {
   if (!svg) return; // the 2D map now lives in the header rail
   svg.innerHTML = "";
-  TOOLS.forEach((t, i) => {
-    mapTools[i] = el("polyline", { points: `${mx(gw.x)},${my(gw.z)} ${mx(t.x)},${my(gw.z)} ${mx(t.x)},${my(gw.z - 12)}`, class: "m-branch" });
-  });
   el("polyline", { points: MAIN.map(([x, z]) => `${mx(x)},${my(z)}`).join(" "), class: "m-path" });
   NODES.forEach(n => {
     const x = mx(n.x), y = my(n.z), g = el("g", { class: "m-node", "data-stage": n.stage, tabindex: 0, role: "link" });
@@ -393,12 +383,13 @@ buildMap();
 document.addEventListener("jcr:lang", e => {
   lang = e.detail === "en" ? "en" : "pt";
   NODES.forEach(n => setLabel(n.label, LBL[lang][n.key]));
+  setLabel(matLabel, LBL[lang].mat);
   setLabel(northLabel, "↑ " + LBL[lang].north);
   buildMap();
 });
 document.fonts && document.fonts.ready.then(() => {
   NODES.forEach(n => setLabel(n.label, LBL[lang][n.key]));
-  TOOLS.forEach(t => setLabel(t.label, t.name));
+  setLabel(matLabel, LBL[lang].mat);
   setLabel(northLabel, "↑ " + LBL[lang].north);
 });
 
