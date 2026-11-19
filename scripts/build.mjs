@@ -10,7 +10,7 @@ import { parseHTML } from "linkedom";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
-const SITE = "https://julianadecampos.github.io/jcr/";
+const SITE = "https://julianadecampos.github.io/";
 const src = f => path.join(ROOT, f);
 const out = f => path.join(DIST, f);
 const hash = s => createHash("sha256").update(s).digest("hex").slice(0, 10);

@@ -795,3 +795,7 @@ html.warping main,html.warping #scene{transition:transform 1s cubic-bezier(.7,0,
 /* affordance: the first tool tile invites a tap until the visitor has tried one */
 html:not(.tools-touched) #eco .eco-row:first-child .tool:first-child .mk{animation:nudge-ring 2.4s ease-out infinite}
 @media (prefers-reduced-motion:reduce){html:not(.tools-touched) #eco .tool .mk{animation:none}}
+/* the address is a link: it opens the visitor's email app with the recipient filled in */
+.mail-link{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+.mail-link:hover{color:var(--blue);border-color:var(--blue)}
+.mail-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}

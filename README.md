@@ -2,7 +2,7 @@
 
 Um portfólio que se percorre como um fluxo BPMN em 3D: cada etapa é um painel, e a câmera segue o caminho conforme a rolagem.
 
-**No ar:** https://julianadecampos.github.io/jcr/ (inglês em `/en/`)
+**No ar:** https://julianadecampos.github.io/ (inglês em `/en/`)
 
 ## Estrutura
 
@@ -39,11 +39,11 @@ Os relatórios ficam na aba **Actions** do repositório.
 
 ## Pendências que dependem de conta própria
 
-**Domínio próprio** (ex.: `julianadecampos.com.br`):
+**Domínio pago (opcional).** O site já usa o endereço gratuito `julianadecampos.github.io`. Para usar um domínio registrado (ex.: `julianadecampos.adv.br`, reservado a advogados):
 1. Registre o domínio (Registro.br, para `.com.br`).
 2. No painel do domínio, crie um registro `CNAME` de `www` para `julianadecampos.github.io` e os registros `A` do domínio raiz para os IPs do GitHub Pages (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153).
 3. Em **Settings → Pages → Custom domain** do repositório, informe o domínio e marque **Enforce HTTPS**.
-4. Troque o endereço `https://julianadecampos.github.io/jcr/` pelo novo em `scripts/build.mjs` (constante `SITE`), nos `<head>` das duas páginas, em `sitemap.xml` e em `robots.txt`.
+4. Troque o endereço `https://julianadecampos.github.io/` pelo novo em `scripts/build.mjs` (constante `SITE`), nos `<head>` das duas páginas, em `sitemap.xml` e em `robots.txt`.
 
 **Estatísticas de visita** (sem cookies):
 1. Crie uma conta gratuita no GoatCounter (https://www.goatcounter.com) com um código, por exemplo `julianadecampos`.

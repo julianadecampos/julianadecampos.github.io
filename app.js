@@ -373,7 +373,10 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
   const MAIL = ["juridicojulianacampos", "gmail.com"].join("@");
   function fillEmail() {
     $$(".em").forEach(s => { s.textContent = MAIL; });
-    $("#mailCta").href = "mailto:" + MAIL;
+    /* the address and the button open the visitor's own email app, addressed to me, with a subject */
+    const subject = lang === "en" ? "Contact from your portfolio" : "Contato pelo portfólio";
+    const href = `mailto:${MAIL}?subject=${encodeURIComponent(subject)}`;
+    $$(".mail-link, #mailCta").forEach(a => { a.href = href; });
   }
   $("#copyMail").addEventListener("click", async e => {
     const b = e.currentTarget;
