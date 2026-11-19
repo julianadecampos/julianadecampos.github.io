@@ -551,7 +551,7 @@ h1{margin-left:-.045em}
 /* a lighter leading front, then the field of orange that stays */
 .finale-wave i:first-child{background:radial-gradient(closest-side,#FFC29A,#FF8A4C 72%,#FF7034)}
 .finale-wave i:last-child{background:radial-gradient(closest-side,#FF7A3D,#FF5B1F 55%,#F24E14)}
-.finale-wave.on i{transform:scale(1.02);opacity:1;transition:transform 1.25s cubic-bezier(.76,0,.24,1),opacity .18s linear}
+.finale-wave.on i{transform:scale(1.02);opacity:1;transition:transform 1.1s var(--ease-inout),opacity .18s linear}
 .finale-wave.on i:last-child{transition-delay:.12s,.12s}
 html.finale-done .ticker{background:#14110F}
 .stage.end .panel{transition:background-color .6s ease .9s,box-shadow .6s ease .9s}
@@ -733,12 +733,12 @@ a.gw-certs:hover{text-decoration:underline;text-underline-offset:3px}
 /* the warp: the page falls into the gateway (main site) */
 .warp{position:fixed;inset:0;z-index:90;pointer-events:none;overflow:hidden}
 .warp i{position:absolute;left:var(--cx);top:var(--cy);width:58px;height:58px;margin:-29px 0 0 -29px;border:2px solid var(--bc);border-radius:7px;opacity:0;transform:rotate(45deg) scale(.4)}
-.warp.go i{animation:warp-ring .95s cubic-bezier(.55,0,.8,.2) forwards}
+.warp.go i{animation:warp-ring 1.1s var(--ease-inout) forwards}
 .warp i:nth-child(1){--bc:#ECE9E1}.warp i:nth-child(2){--bc:#4C74F2;animation-delay:.06s}.warp i:nth-child(3){--bc:#9A6AD8;animation-delay:.12s}
 .warp i:nth-child(4){--bc:#B07A4E;animation-delay:.18s}.warp i:nth-child(5){--bc:#14110F;animation-delay:.24s}.warp i:nth-child(6){--bc:#E0213F;animation-delay:.3s}
 @keyframes warp-ring{0%{opacity:0;transform:rotate(45deg) scale(.4)}20%{opacity:1}100%{opacity:1;transform:rotate(45deg) scale(48)}}
 .warp b{position:absolute;left:var(--cx);top:var(--cy);width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:#050505;box-shadow:0 0 30px 18px #050505;transform:scale(0)}
-.warp.go b{animation:warp-hole 1s cubic-bezier(.7,0,.84,0) .15s forwards}
+.warp.go b{animation:warp-hole 1s var(--ease-inout) .1s forwards}
 @keyframes warp-hole{to{transform:scale(var(--k,60))}}
 html.warping main,html.warping #scene{transition:transform 1s cubic-bezier(.7,0,.84,0),filter 1s;transform-origin:var(--ox) var(--oy);transform:scale(.92);filter:blur(3px)}
 @media (prefers-reduced-motion:reduce){.gate-tunnel i{animation:none;opacity:.85}.gate-tunnel i:nth-child(2){transform:scale(.8)}.gate-tunnel i:nth-child(3){transform:scale(.6)}.gate-tunnel i:nth-child(4){transform:scale(.42)}.gate-tunnel i:nth-child(5){transform:scale(.26)}}
@@ -748,3 +748,50 @@ html.warping main,html.warping #scene{transition:transform 1s cubic-bezier(.7,0,
 .copy-mail:hover{border-color:var(--blue)}
 .copy-mail:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .r-times dd{overflow-wrap:normal;word-break:normal;hyphens:manual}
+
+/* ================= UX pass: pacing, hero, one surface system, legibility ================= */
+/* pacing: a third less empty scroll between stages; on desktop the scroll settles where the camera rests */
+.stage{padding-top:20vh;padding-bottom:38vh}
+.aside-stage{padding-top:6vh;padding-bottom:30vh}
+.stage.end{padding-bottom:24vh}
+@media (min-width:820px){
+  html{scroll-snap-type:y proximity}
+  .stage:not(.hero)>.panel:first-child{scroll-snap-align:start;scroll-margin-top:20vh}
+}
+/* hero: the contact shortcut sits beside the main action */
+.hero-cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:6px}
+.hero-talk{font:500 15px var(--sans);color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--line);padding-bottom:2px;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.hero-talk:hover{border-color:var(--blue);color:var(--blue)}
+.hero-talk:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:2px}
+
+/* one surface system: panel (the stage), inset block (content inside a panel), tile (something you touch) */
+:root{--r-panel:22px;--r-block:14px;--r-tile:12px;--surface-inset:#F5F7FB;--shadow-inset:0 1px 0 rgba(20,17,15,.03);
+  --dur-fast:.2s;--dur-slow:.6s;--ease-inout:cubic-bezier(.76,0,.24,1)}
+.chat,.eco,.fd-board,.feature,.receipt,.gw-out,.degree,.gate{border-radius:var(--r-block);border:1px solid var(--line);box-shadow:var(--shadow-inset)}
+.chat,.eco,.receipt,.feature{background:var(--paper)}
+.gw-out,.fd-board{background:var(--surface-inset)}
+.mk.tile,.try,.cert>a,.cert>div{border-radius:var(--r-tile)}
+/* legibility: panels are nearly opaque, so the moving scene never runs under the text */
+.panel{background:rgba(251,252,254,.97)}
+/* phones: past the hero, the scene steps back behind the panels */
+@media (max-width:819px){
+  #scene{transition:opacity var(--dur-slow) var(--ease-out),filter var(--dur-slow) var(--ease-out)}
+  html.past-hero #scene{opacity:.45;filter:blur(2px) saturate(.85)}
+}
+
+/* ================= motion pass ================= */
+/* fewer ambient loops: the ticker rests under the cursor; the tunnel only runs while on screen */
+.ticker:hover .track{animation-play-state:paused}
+.gate:not(.live) .gate-tunnel i{animation-play-state:paused}
+/* choreography: when a stage arrives, its content enters in order (title, text, interaction) */
+.motion .panel :is(.p-head,.p-body,.rec-head,.rec-grid,.ins-head)>*,.motion .panel.record>.degrees,.motion .panel.record>.gate,.motion .panel.record>.lbl{
+  transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out);transition-delay:calc(var(--k,0) * 70ms)}
+.motion .panel:not(.revealed) :is(.p-head,.p-body,.rec-head,.rec-grid)>*,.motion .panel.record:not(.revealed)>:is(.degrees,.gate,.lbl){opacity:0;transform:translateY(14px)}
+.motion .panel :is(.p-head,.p-body,.rec-head,.rec-grid)>:nth-child(2){--k:1}
+.motion .panel :is(.p-head,.p-body,.rec-head,.rec-grid)>:nth-child(3){--k:2}
+.motion .panel :is(.p-head,.p-body,.rec-head,.rec-grid)>:nth-child(4){--k:3}
+.motion .panel :is(.p-head,.p-body,.rec-head,.rec-grid)>:nth-child(n+5){--k:4}
+.motion .panel .p-body>*{--k:3}
+/* affordance: the first tool tile invites a tap until the visitor has tried one */
+html:not(.tools-touched) #eco .eco-row:first-child .tool:first-child .mk{animation:nudge-ring 2.4s ease-out infinite}
+@media (prefers-reduced-motion:reduce){html:not(.tools-touched) #eco .tool .mk{animation:none}}

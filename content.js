@@ -26,7 +26,8 @@ export const TOOL_MARK = { jira: "jira", rovo: "rovo", fluig: "fluig", totvs: "t
 
 export const EN = {
   skip: "Skip straight to the facts",
-  k0: "Juliana de Campos Ribeiro · legal, process and AI",
+  k0: "Juliana de Campos Ribeiro · lawyer · OAB/RS 94.800",
+  talk0: "Talk to me",
   h0: "Legal doesn't have to be a <em>maze</em>.",
   p0: "I design the path legal requests travel, with process, technology and AI, and I teach people to walk it. Here, you are the request.",
   start: "Start the process", hint0: "or scroll to enter the flow ↓",

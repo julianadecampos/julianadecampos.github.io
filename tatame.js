@@ -324,6 +324,7 @@ const pose = (s, h, ahead, ly) => [path.getPointAt(clamp(s / L)).add(tmp.set(0, 
 /* idle throttle: with no input for 2 s and the camera at rest, the scene draws at ~20 fps */
 let lastInput = performance.now(), lastDraw = 0;
 for (const ev of ["scroll", "pointermove", "pointerdown", "keydown", "resize", "wheel", "touchmove"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true });
+let bank = 0;
 function frame() {
   { const t0 = performance.now(), atRest = Math.abs(cur.s - want.s) < .02 && Math.abs(cur.air - want.air) < .002 && (typeof finale === "undefined" || finale.phase === 0 || finale.phase === 5);
     if (atRest && t0 - lastInput > 2000 && t0 - lastDraw < 48) { requestAnimationFrame(frame); return; }
@@ -338,6 +339,15 @@ function frame() {
   pos.copy(p0).lerp(AERIAL.pos, cur.air); look.copy(l0).lerp(AERIAL.look, cur.air);
   if (!isSmall() && !reduce) { par.lerp(tmp.set(px * .45, -py * .2, 0), .05); pos.add(par); }
   camera.position.copy(pos); camera.lookAt(look);
+  /* camera craft: lean slightly into the turns, and let the lens breathe as it comes to rest */
+  if (!reduce) {
+    const ta = path.getTangentAt(clamp(cur.s / L)), tb = path.getTangentAt(clamp((cur.s + 6) / L));
+    bank = lerp(bank, -(ta.x * tb.z - ta.z * tb.x) * .09 * (1 - cur.air), k * .6);
+    camera.rotateZ(bank);
+    const moving = Math.min(1, Math.abs(want.s - cur.s) / 4), fov0 = isSmall() ? 62 : 52;
+    const fov = fov0 + moving * 2.2 - (1 - moving) * .8 * (1 - cur.air);
+    if (Math.abs(camera.fov - fov) > .01) { camera.fov = lerp(camera.fov, fov, k * .5); camera.updateProjectionMatrix(); }
+  }
   scene.fog.near = lerp(PATHFOG.near, AERIAL.near, cur.air); scene.fog.far = lerp(PATHFOG.far, AERIAL.far, cur.air);
 
   /* each portal takes the colour of the belt it awarded once you have passed it */

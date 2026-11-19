@@ -34,7 +34,7 @@
   "three/addons/": "./vendor/three/addons/"
 } }
 </script>
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=35">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,10 +92,13 @@
   <!-- 00 · HERO (aerial view) -->
   <section class="stage hero" id="topo" data-stage="0" data-status="open">
     <div class="hero-text">
-      <p class="tag"><span class="ico ring"></span><span data-i18n="k0">Juliana de Campos Ribeiro · jurídico, processo e IA</span></p>
+      <p class="tag"><span class="ico ring"></span><span data-i18n="k0">Juliana de Campos Ribeiro · advogada · OAB/RS 94.800</span></p>
       <h1 data-i18n="h0">Jurídico não precisa ser um <em>labirinto</em>.</h1>
       <p class="lead" data-i18n="p0">Desenho o caminho das demandas jurídicas com processo, tecnologia e IA, e ensino as pessoas a percorrê-lo. Aqui, você é a solicitação.</p>
-      <button type="button" class="btn big start" id="startBtn"><span class="ico ring"></span><span data-i18n="start">Iniciar processo</span></button>
+      <div class="hero-cta">
+        <button type="button" class="btn big start" id="startBtn"><span class="ico ring"></span><span data-i18n="start">Iniciar processo</span></button>
+        <a class="hero-talk" href="#resolucao" id="talkLink"><span data-i18n="talk0">Falar comigo</span> →</a>
+      </div>
       <p class="scroll-hint mono" data-i18n="hint0">ou role para entrar no fluxo ↓</p>
     </div>
   </section>
@@ -349,7 +352,7 @@
   <div class="game-skel" aria-hidden="true" data-i18n="gLoad">carregando o labirinto…</div>
 </dialog>
 
-<script type="module" src="app.js?v=32"></script>
-<script type="module" src="scene.js?v=32"></script>
+<script type="module" src="app.js?v=33"></script>
+<script type="module" src="scene.js?v=33"></script>
 </body>
 </html>

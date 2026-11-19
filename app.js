@@ -1,5 +1,5 @@
 /* Behaviour: demos, the process rail and the visitor's request. Content lives in content.js; the 3D journey in scene.js. */
-import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=2";
+import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=3";
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -70,6 +70,7 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
   function goStage(i) { const A = anchors(); scrollTo({ top: A[i] + (i ? 2 : 0), behavior: reduce ? "auto" : "smooth" }); }
   nodes.forEach(n => n.addEventListener("click", () => goStage(+n.dataset.go)));
   $("#startBtn").addEventListener("click", () => goStage(1));
+  $("#talkLink").addEventListener("click", e => { e.preventDefault(); goStage(nodes.length - 1); });
 
   /* stage in view → status (drives the receipt) */
   const io = new IntersectionObserver(es => es.forEach(e => {
@@ -91,7 +92,7 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
     document.documentElement.style.setProperty("--oy", `${cy + scrollY}px`);
     requestAnimationFrame(() => { w.classList.add("go"); document.documentElement.classList.add("warping"); });
     try { sessionStorage.setItem("jcr-warp", "1"); } catch {}
-    setTimeout(() => { location.href = href; }, 1050);
+    setTimeout(() => { location.href = href; }, 1150);
   }
   $$("#openMat, #railFork").forEach(a => a.addEventListener("click", e => {
     if (reduce || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
@@ -109,8 +110,25 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
 
   /* hero veil fades as you dive in */
   const veil = $(".veil");
-  const onScroll = () => { veil.style.opacity = innerWidth >= 820 ? Math.max(0, 1 - scrollY / (innerHeight * .55)) : 1; };
+  const onScroll = () => {
+    veil.style.opacity = innerWidth >= 820 ? Math.max(0, 1 - scrollY / (innerHeight * .55)) : 1;
+    document.documentElement.classList.toggle("past-hero", scrollY > innerHeight * .6);   // phones: the scene steps back behind panels
+  };
   addEventListener("scroll", onScroll, { passive: true }); addEventListener("resize", onScroll); onScroll();
+
+  /* ================= motion: stages reveal their content on arrival; loops run only while seen ================= */
+  if (!reduce && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("motion");
+    const arrive = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("revealed"); arrive.unobserve(e.target); }
+    }), { threshold: .18 });
+    $$("main .panel").forEach(p => arrive.observe(p));
+    const gate = $("#openMat");
+    if (gate) new IntersectionObserver(es => es.forEach(e => gate.classList.toggle("live", e.isIntersecting))).observe(gate);
+  } else {
+    $$("main .panel").forEach(p => p.classList.add("revealed"));
+    $("#openMat")?.classList.add("live");
+  }
 
   /* ================= 01 before / after board ================= */
   /* A tiny spring (mass 1, tension k, friction c): interruptible, velocity-aware. */
@@ -174,6 +192,7 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
     $("#eco").innerHTML = Object.keys(l.layers).map(k => `<div class="eco-row"><span class="mono eco-l">${esc(l.layers[k])}</span><ul class="tiles">${
       TOOLS.filter(t => t[0] === k).map(t => `<li class="tool${sel === t[1] ? " on" : ""}"><button type="button" class="tool-b" data-id="${t[1]}" aria-pressed="${sel === t[1]}">${mark(TOOL_MARK[t[1]], "tile")}<span class="tool-n">${esc(t[2])}</span></button></li>`).join("")}</ul></div>`).join("");
     $$("#eco .tool-b").forEach(b => b.addEventListener("click", () => {
+      document.documentElement.classList.add("tools-touched");
       toolSel = toolSel === b.dataset.id ? null : b.dataset.id;
       if (toolSel) { seenTools.add(toolSel); T.counts.tools = seenTools.size; }
       renderGateway(); renderSummary();
@@ -263,6 +282,7 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
     clearTimeout(tryTimer);
     const qs = L().agentQs, q = qs[tryI % qs.length], el = $("#agentChips .try-q");
     if (!el) return;
+    if (engaged) { el.textContent = q; return; }                       // the visitor already engaged: no more ambient typing
     if (reduce) { el.textContent = q; tryTimer = setTimeout(() => { tryI++; typeSuggestion(); }, 4500); return; }
     let n = 0;
     const type = () => { el.textContent = q.slice(0, ++n); tryTimer = setTimeout(n < q.length ? type : erase, n < q.length ? 32 : 2600); };
