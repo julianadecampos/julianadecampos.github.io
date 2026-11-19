@@ -26,6 +26,7 @@ function applyLang() {
   const d = lang === "en" ? EN : PT;
   $$("[data-t]").forEach(el => { if (d[el.dataset.t] != null) el.innerHTML = d[el.dataset.t]; });
   $("#lang").textContent = lang === "en" ? "PT" : "EN";
+  $("#lang").setAttribute("aria-label", lang === "en" ? "PT · mudar para português" : "EN · switch to English");
   onLang.forEach(f => f());
 }
 $("#lang").addEventListener("click", () => {

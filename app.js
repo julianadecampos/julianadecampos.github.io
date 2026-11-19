@@ -15,7 +15,7 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
   const CODE = `<svg viewBox="0 0 24 24" fill="none" stroke="#14110F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>`;
   const mark = (key, cls) => key === "code" ? `<span class="mk ${cls}" aria-hidden="true">${CODE}</span>`
     : LOGO[key] ? `<span class="mk ${cls}" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="${LOGO[key][0]}" d="${LOGO[key][1]}"/></svg></span>`
-    : IMG[key] ? `<span class="mk ${cls} img-mk${key === "enap" ? " wide" : ""}" aria-hidden="true"><img src="${ROOT_PATH}assets/logos/${IMG[key]}" alt="" decoding="async"></span>`
+    : IMG[key] ? `<span class="mk ${cls} img-mk${key === "enap" ? " wide" : ""}" aria-hidden="true"><img src="${ROOT_PATH}assets/logos/${IMG[key]}" alt="" width="64" height="64" decoding="async"></span>`
     : `<span class="mk ${cls} mono-mk" aria-hidden="true">·</span>`;
 
   /* ================= i18n (PT lives in the HTML) ================= */
@@ -371,7 +371,8 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
     $$("[data-i18n]").forEach(el => { const v = dict[el.dataset.i18n]; if (v != null) el.innerHTML = v; });
     $$("[data-i18n-ph]").forEach(el => { const v = dict[el.dataset.i18nPh]; if (v != null) el.placeholder = v; });
     $("#lang").textContent = lang === "en" ? "PT" : "EN";
-    nodes.forEach((n, i) => { const label = `${String(i).padStart(2, "0")} · ${L().stages[i]}`; n.dataset.label = label; n.setAttribute("aria-label", label); });
+    $("#lang").setAttribute("aria-label", lang === "en" ? "PT · mudar para português" : "EN · switch to English");
+    nodes.forEach((n, i) => { const label = `${String(i).padStart(2, "0")} · ${L().stages[i]}`; n.dataset.label = label; n.setAttribute("aria-label", i === 0 ? `jcr · ${label}` : label); });
     const fk = $("#railFork"); fk.dataset.label = L().fork; fk.setAttribute("aria-label", L().fork);
     renderCerts(); renderGateway(); renderAgent(); renderSummary(); updateRail(); fillEmail();
     emit("jcr:lang", lang);
