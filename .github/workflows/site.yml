@@ -1,0 +1,70 @@
+# Builds, checks and publishes the site.
+# Every push and pull request: build, share images, smoke tests (desktop + phone), Lighthouse, link check.
+# Pushes to main publish dist/ to GitHub Pages, but only if the build and the tests pass.
+name: site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run og
+      - name: Smoke tests (desktop + phone)
+        run: npm test
+      - name: Test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+      - name: Lighthouse (performance, accessibility, SEO; reported, not blocking)
+        continue-on-error: true
+        run: npx --yes @lhci/cli@0.14.0 autorun
+      - name: Lighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: lhci
+          if-no-files-found: ignore
+      - name: Link check (e.g. certificate verification links; reported, not blocking)
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-retries 2 --accept 200,206,403,429,999 --exclude-mail 'dist/**/*.html'
+          fail: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

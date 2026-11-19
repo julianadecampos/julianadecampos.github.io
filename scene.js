@@ -1,4 +1,4 @@
-﻿/* The 3D journey: a maze of grey process flows, one blue path, a beacon to the north.
+/* The 3D journey: a maze of grey process flows, one blue path, a beacon to the north.
    Scrolling moves the camera along the blue path; every BPMN element is a portal you pass through. */
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -16,7 +16,8 @@ try {
   throw e;
 }
 root.classList.add("has3d");
-renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall() ? 1.5 : 2));
+const LOW_POWER = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+renderer.setPixelRatio(Math.min(devicePixelRatio, LOW_POWER ? 1 : isSmall() ? 1.5 : 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -407,7 +408,13 @@ addEventListener("resize", () => {
 const clock = new THREE.Clock();
 let last = performance.now();
 const pos = new THREE.Vector3(), look = new THREE.Vector3(), par = new THREE.Vector3();
+/* idle throttle: with no input for 2 s and the camera at rest, the scene draws at ~20 fps */
+let lastInput = performance.now(), lastDraw = 0;
+for (const ev of ["scroll", "pointermove", "pointerdown", "keydown", "resize", "wheel", "touchmove"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true });
 function frame() {
+  { const t0 = performance.now(), atRest = Math.abs(cur.s - want.s) < .02 && Math.abs(cur.air - want.air) < .002 && (typeof finale === "undefined" || finale.phase === 0 || finale.phase === 5);
+    if (atRest && t0 - lastInput > 2000 && t0 - lastDraw < 48) { requestAnimationFrame(frame); return; }
+    lastDraw = t0; }
   const t = clock.getElapsedTime();
   const now = performance.now(), dt = Math.min(.1, (now - last) / 1000); last = now;
   target(scrollY);

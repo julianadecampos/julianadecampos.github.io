@@ -1,9 +1,10 @@
-﻿/* A trilha do tatame — the same flow world as the main page, drawn on a tatami floor.
+/* A trilha do tatame — the same flow world as the main page, drawn on a tatami floor.
    The belt is the path: one ribbon that changes colour at every graduation.
    Graduations are BPMN intermediate events, the other moments are tasks, VOZ is the end event.
    As you walk, each portal takes the colour of the belt you were wearing. */
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EN, STAGE_LABEL } from "./tatame-content.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -15,30 +16,10 @@ const ss = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
 
 /* ================= i18n ================= */
-const EN = {
-  back: "← main flow", back2: "← Back to the main flow",
-  k0: "optional detour · the mat trail", h0: "The <em>mat</em> trail.",
-  p0: "On the mat, technique is built through repetition, with someone attentive to the details. Scroll to walk the journey, belt by belt.",
-  hint: "scroll to follow the trail ↓",
-  b1: "white belt", h1: "The first day on the <em>mat</em>.", p1: "Started jiu-jitsu at Soul Fighters.",
-  b2: "blue belt", h2: "Blue <em>belt</em>.", p2: "The first graduation.",
-  p2b: "2019 · Open Class on Feminism and Self-Defense at Teatro de Arena, Porto Alegre, with the NGO Emancipa Mulher.",
-  b3: "purple belt", h3: "Purple <em>belt</em>.", p3: "Later in 2019, the next graduation.",
-  h4: "A new <em>home</em>.", p4: "Starts training at SBA.",
-  b5: "brown belt", h5: "Brown <em>belt</em>.", p5: "The second-to-last graduation.",
-  b6: "black belt", h6: "Black <em>belt</em>.", p6: "Ten years after the first day on the mat.",
-  b7: "leadership", h7: "Developing other <em>women</em>.", p7: "Women's Leadership Development Project in Jiu-Jitsu.",
-  h8: "A student of Master <em>Yvone Duarte</em>.", p8: "Starts training at Yvone Duarte Jiu-Jitsu.", p8b: "Public Self-Defense Seminar with Master Yvone Duarte at UFRGS.",
-  h9: "The mat as a <em>voice</em>.", p9: "Creator of VOZ, a social project that develops women through jiu-jitsu.",
-  mq: "white belt <i>✦</i> blue belt <i>✦</i> purple belt <i>✦</i> brown belt <i>✦</i> black belt <i>✦</i> technique is built through repetition <i>✦</i>&nbsp;"
-};
 const PT = {};
 $$("[data-t]").forEach(el => { if (!(el.dataset.t in PT)) PT[el.dataset.t] = el.innerHTML; });
-let lang = store.get("jcr-lang") === "en" ? "en" : "pt";
-const STAGE_LABEL = {
-  pt: ["entrada", "2014 · faixa branca", "2015 · faixa azul", "2019 · faixa roxa", "2020 · SBA", "2022 · faixa marrom", "2024 · faixa preta", "2025 · liderança", "2026 · Yvone Duarte", "VOZ"],
-  en: ["entrance", "2014 · white belt", "2015 · blue belt", "2019 · purple belt", "2020 · SBA", "2022 · brown belt", "2024 · black belt", "2025 · leadership", "2026 · Yvone Duarte", "VOZ"]
-};
+const root = document.documentElement, FIXED = root.dataset.lang;   // built /en/ pages fix their language
+let lang = FIXED || (store.get("jcr-lang") === "en" ? "en" : "pt");
 const onLang = [];
 function applyLang() {
   document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
@@ -47,14 +28,19 @@ function applyLang() {
   $("#lang").textContent = lang === "en" ? "PT" : "EN";
   onLang.forEach(f => f());
 }
-$("#lang").addEventListener("click", () => { lang = lang === "en" ? "pt" : "en"; store.set("jcr-lang", lang); applyLang(); });
+$("#lang").addEventListener("click", () => {
+  const next = lang === "en" ? "pt" : "en"; store.set("jcr-lang", next);
+  if (root.dataset.alt) { location.href = root.dataset.alt + location.hash; return; }
+  lang = next; applyLang();
+});
 
 /* ================= renderer: identical to the main page ================= */
 const canvas = $("#scene");
 let renderer;
 try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" }); }
 catch (e) { document.documentElement.classList.add("no3d"); throw e; }
-renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall() ? 1.5 : 2));
+const LOW_POWER = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+renderer.setPixelRatio(Math.min(devicePixelRatio, LOW_POWER ? 1 : isSmall() ? 1.5 : 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -334,7 +320,13 @@ addEventListener("pointermove", e => { px = e.clientX / innerWidth * 2 - 1; py =
 const pos = new THREE.Vector3(), look = new THREE.Vector3(), par = new THREE.Vector3(), tmp = new THREE.Vector3(), col = new THREE.Color();
 const pose = (s, h, ahead, ly) => [path.getPointAt(clamp(s / L)).add(tmp.set(0, h, 0)), path.getPointAt(clamp((s + ahead) / L)).add(tmp.set(0, ly, 0))];
 
+/* idle throttle: with no input for 2 s and the camera at rest, the scene draws at ~20 fps */
+let lastInput = performance.now(), lastDraw = 0;
+for (const ev of ["scroll", "pointermove", "pointerdown", "keydown", "resize", "wheel", "touchmove"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true });
 function frame() {
+  { const t0 = performance.now(), atRest = Math.abs(cur.s - want.s) < .02 && Math.abs(cur.air - want.air) < .002 && (typeof finale === "undefined" || finale.phase === 0 || finale.phase === 5);
+    if (atRest && t0 - lastInput > 2000 && t0 - lastDraw < 48) { requestAnimationFrame(frame); return; }
+    lastDraw = t0; }
   const now = performance.now(), dt = Math.min(.1, (now - last) / 1000); last = now;
   const prog = target(scrollY);
   const k = reduce ? 1 : 1 - Math.pow(.004, dt);
