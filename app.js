@@ -378,16 +378,12 @@ import { LOGO, IMG, TOOL_MARK, EN, D, ROLE, TOOLS, CERTS } from "./content.js?v=
     const href = `mailto:${MAIL}?subject=${encodeURIComponent(subject)}`;
     $$(".mail-link, #mailCta").forEach(a => { a.href = href; });
   }
-  $("#copyMail").addEventListener("click", async e => {
-    const b = e.currentTarget;
-    try { await navigator.clipboard.writeText(MAIL); }
-    catch {                                                   // no clipboard access: select the text instead
-      const range = document.createRange(), sel = window.getSelection();
-      range.selectNodeContents($(".mail-line .em")); sel.empty(); sel.addRange(range);
-    }
-    b.textContent = lang === "en" ? EN.cpyOk : EN.cpyPt;
-    setTimeout(() => { b.textContent = lang === "en" ? EN.cpy : "copiar"; }, 1600);
-  });
+  /* one click does both: the address is copied, and the link goes on to open the email app */
+  $$(".mail-link").forEach(a => a.addEventListener("click", () => {
+    navigator.clipboard?.writeText(MAIL).catch(() => {});      // best effort; the mail app opens either way
+    a.dataset.done = lang === "en" ? EN.cpyOk : EN.cpyPt;
+    clearTimeout(a._t); a._t = setTimeout(() => { delete a.dataset.done; }, 1800);
+  }));
   function applyLang() {
     document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
     const dict = lang === "en" ? EN : PT;

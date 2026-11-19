@@ -799,3 +799,6 @@ html:not(.tools-touched) #eco .eco-row:first-child .tool:first-child .mk{animati
 .mail-link{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
 .mail-link:hover{color:var(--blue);border-color:var(--blue)}
 .mail-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+/* after a click the address confirms it was copied, while the email app opens */
+.mail-link{position:relative}
+.mail-link[data-done]::after{content:"✓ " attr(data-done);position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);animation:settle var(--dur-slow) var(--ease-out) both}
